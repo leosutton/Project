@@ -2,14 +2,16 @@ import math
 import sys
 import pygame
 from pygame.constants import QUIT, MOUSEMOTION
-from Main import loop, surface, WINDOWWIDTH, WINDOWHEIGHT, people, gaussian, SIGMA, get_pos, rectangle, can_see
+from MainController import loop, surface, WINDOWWIDTH, WINDOWHEIGHT, people, gaussian, SIGMA, get_pos, rectangle, \
+    can_see
 
 __author__ = 'Leo'
 
 
-class Controller():
+class Controller:
     def __init__(self):
         pass
+
     def control(self):
         while loop:
             surface.fill((255, 255, 255))
@@ -29,7 +31,7 @@ class Controller():
                     # for point in people:
                     # point.direction = point.direction + ((random.random() -0.5)*10)
                     # point.x = math.sin(math.radians(point.direction))+point.x
-                    #        point.y = math.cos(math.radians(point.direction))+point.y
+                    # point.y = math.cos(math.radians(point.direction))+point.y
 
             current_positions = {}
 

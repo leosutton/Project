@@ -3,7 +3,7 @@ import random
 from Wall import photo, status
 
 
-class Person():
+class Person:
     def __init__(self, x, y, direction):
         self.x = x
         self.y = y
