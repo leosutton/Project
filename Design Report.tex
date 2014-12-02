@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{times}
+\usepackage{durhampaper}
+\usepackage{harvard}
+
+\citationmode{abbr}
+\bibliographystyle{agsm}
+
+\title{User Interaction Discovery in Virtual Environments}
+\student{L.A. Sutton}
+\supervisor{W. Li}
+\degree{BSc Natural Science}
+
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+
+{\bf Context/Background}
+In this project I have taken user interaction to mean any process that happens between two users that changes their relationship in some way. Virtual environments I have taken to mean any computer based environment in which these interactions are possible, this includes social networks, VoIP, interactions with avatars in 3D environments and others.
+
+{\bf Aims}
+The aim of the project is firstly to produce an effective way of modelling and visualising these interactions, then to use this model and visualisation to discover clustering of these interactions, and the evolution of the model over time with a view to applying the data to draw real-world conclusions.
+
+{\bf Method}
+A system for visualising multiple modes of interaction will be implemented in Python and a an underlying model will be developed based on available literature. The system will then be developed so that it can identify clustering within the network according to their interaction before giving a quantification of this clustering that can be seen changing over time.
+
+{\bf Proposed Solution}
+An application that will visualise and model user interactions of many different types and allow their visualisation. It will also allow visualisation of the clustering of users according to their interaction and provide a numerical output that can provide meaningful insight into real-world scenarios
+
+\end{abstract}
+
+\begin{keywords}
+user interaction; virtual environment
+\end{keywords}
+
+\section{Literature Review}
+
+\subsection{Current Work}
+
+\subsubsection{Social Network Visualisation}
+%There has already been much work carried out on the visualisation of the relationships and interaction within virtual networks. Previously, low level visualisation tools have been developed specifically for the purpose of visualisation of data within a network \cite{heer2005prefuse}. These have been designed so that they have the flexibility to accommodate a range of presentation techniques. The these tools have been use to build fully functional tools designed to be used by users with little technical experience. For example an application has been made that visualizes data from the 'Friendster' social network and allows this data to be viewed in different ways to facilitate discovery of previously unknown information\cite{heer2005vizster}. They allow the user to modify the layout themselves by simply intuitive controls and use colour and position to make the visualisation more clear. There have also been tools developed that, as well as visualising the data provide tools for detailed statistical analysis providing numerical data on graph clustering and community identification\cite{borgatti2002ucinet}. However, these tools have focused on the analysis and visualisation of snapshots of data remaining static, rather than data sets that evolve over time.
+Network visualisation is already a science with a long history, especially since being able to use computers to position and draw the output. There are currently low-level tools that exist with the intention that they have the necessary flexibility to accommodate a wide variety of visualisation styles and techniques \cite{heer2005prefuse}. As well as this, there are tools that exist to provide numerical analysis
+
+\subsubsection{Information Presentation}
+There is also a wide variety of information on the presentation of data on computer screens. One particularly popular model can be summed up as 'Overview, Zoom, Filter' \cite{shneiderman1996eyes}. In this it is suggested that the initial view of the data should be a movable field of view with emphasis on allowing the user to gain an 'overview' of relevant data and identify areas which will be of interest. Specific areas of interest can then be zoomed in on preserving the context of the overall picture before extra information of areas of interest can be viewed possibly by clicking on them. This paper also talks about things such as the importance of smooth display updates and responsiveness to user input. This is built upon by the ideas of making information more clear by distorting the 'presentation space' \cite{carpendale2001framework}. This is the method used in Vizster and can be seen in common usage in many different data visualisation applications. It imagines that the virtual space in which the data is presented is a real material that can be stretched and viewed through a movable lens as necessary to make the relevant areas of the information more clear. These ideas area also expanded on further to see what kinds of lenses are suitable for which purposes, and suggests a mathematical framework for implementing such a lens \cite{leung1994review}. Contained in all of these articles on visualisation are also many suggestions for evaluation of data presentation on computers for example by the ability to maintain context between switching between the three areas on the 'Overview, Zoom, Filter' model and the responsiveness to user input that is possible.
+
+\subsubsection{Graph Drawing}
+There is also previous literature on the drawing of graphs in aesthetically pleasing ways. Almost all current research makes use of a force directed spring layout. In this algorithm, each node is modelled is repelling each other node and the edges between them are modelled as springs\cite{fruchterman1991graph}. Included in these papers are suggestions for the strength of the attractive and repulsive forces different distances and the size of graph that this can be expected to create. However, this algorithm doesn't scale well with rapidly increasing numbers of vertices. It has been pointed out that with a large number of nodes, calculating the layout in this way is very expensive in terms of computing power. However, with the correct optimisations it is possible to reduce the complexity to $o(nlog(n))$ \cite{barnes1986hierarchical}.
+
+\subsubsection{Modelling Social Networks}
+The ability to produce networks of relations and interactions from many different data sources is also explored in a variety of different papers. For example, networks of social interaction have been produced from a history of email correspondence within an organisation \cite{fisher2004social}. Here other relevant ideas are explored such as the privacy implications of collecting data on a large scale and the ability to reconstruct the whole graph from only partial data. The same has also been achieved using the transcript of an internet relay chat \cite{mutton2004inferring} again struggling with the problem of reconstructing a complete graph from partial data. It is then further shown that the same method including the temporal decay of relationships can be applied to other sources of relationship information involving over time such as the plays of William Shakespeare.
+
+\subsubsection{Categorisation of Interactions}
+Previous reserach has also explored categorisation of interactions by their characteristics. This has mainly in the past been applied to social iterations writing 3D virtual environments in which people interact as virtual avatars, referred to as Networked-Virtual Environments. One particular application of this is games \cite{manninen2000interaction}. Here we can see that there is more than one way of categorising interactions, one way being based on their purpose. These papers also show how it is possible for many different modes of interaction to happen symeltaniously. It is possible to use communicative action theory to categorise interactions by their purpose, this is extended in other papers by comparing interactions in a selection of game environments \cite{becker2002social}. Extending this to other environments such as the social network, other papers show how much of the interaction that goes on writhing a virtual environment is hidden from the user. We can see just how much data website such as Facebook collect about us including in our making interactions which we wouldn't normally consider meaningful \cite{schneier2010taxonomy}
+
+\subsubsection{Evolution of social networks}
+Ideas of the behaviour of users in social networks have been the subject of many different papers. This includes homophily \cite{adamic2003social} which is the idea that people on social networks tend to associate with people who are similar to themselves in terms of age, political views etc. Work has also been completed on the behaviours of users within a social network and the ways in which interactions can spread behaviour across networks of people represented as graphs. It has been suggested that this can be explained using a virus like model \cite{centola2010spread} in which users pass between susceptible, infected and recovered states, analogous to a computer-virus or a real virus.
+
+\subsubsection{Detection of clustering}
+Detecting features of social networks that are not immediately apparent is also extremely important. We can see that algorithms have been developed that aim to detect communities, related to clustered sections of graph representations of these networks \cite{newman2004fast}. These algorithms can be applied to real world networks with a good degree of success reported in identifying the same communities that the users themselves identify with.
+
+\section{Design}
+
+\subsection{Requirements}
+
+\begin{table}[htb]
+\centering
+\caption{Requirements}
+\vspace*{6pt}
+\label{units}
+\begin{tabular}{ccc}\hline\hline
+Symbol & Quantity & Conversion from Gaussian \\ \hline
+\end{tabular}
+\end{table}
+
+\subsection{References}
+
+\bibliography{projectpaper}
+
+
+\end{document}

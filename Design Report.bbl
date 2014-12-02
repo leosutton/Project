@@ -1,0 +1,80 @@
+\begin{thebibliography}{xx}
+
+\harvarditem[Adamic et~al.]{Adamic, Buyukkokten \harvardand\
+  Adar}{2003}{adamic2003social}
+Adamic, L., Buyukkokten, O. \harvardand\ Adar, E.  \harvardyearleft
+  2003\harvardyearright , `A social network caught in the web', {\em First
+  Monday} {\bf 8}(6).
+
+\harvarditem{Barnes \harvardand\ Hut}{1986}{barnes1986hierarchical}
+Barnes, J. \harvardand\ Hut, P.  \harvardyearleft 1986\harvardyearright , `A
+  hierarchical o (n log n) force-calculation algorithm'.
+
+\harvarditem{Becker \harvardand\ Mark}{2002}{becker2002social}
+Becker, B. \harvardand\ Mark, G.  \harvardyearleft 2002\harvardyearright ,
+  Social conventions in computermediated communication: A comparison of three
+  online shared virtual environments, {\em in} `The social life of avatars',
+  Springer, pp.~19--39.
+
+\harvarditem{Carpendale \harvardand\ Montagnese}{2001}{carpendale2001framework}
+Carpendale, M. S.~T. \harvardand\ Montagnese, C.  \harvardyearleft
+  2001\harvardyearright , A framework for unifying presentation space, {\em in}
+  `Proceedings of the 14th annual ACM symposium on User interface software and
+  technology', ACM, pp.~61--70.
+
+\harvarditem{Centola}{2010}{centola2010spread}
+Centola, D.  \harvardyearleft 2010\harvardyearright , `The spread of behavior
+  in an online social network experiment', {\em science} {\bf
+  329}(5996),~1194--1197.
+
+\harvarditem{Fisher \harvardand\ Dourish}{2004}{fisher2004social}
+Fisher, D. \harvardand\ Dourish, P.  \harvardyearleft 2004\harvardyearright ,
+  Social and temporal structures in everyday collaboration, {\em in}
+  `Proceedings of the SIGCHI conference on Human factors in computing systems',
+  ACM, pp.~551--558.
+
+\harvarditem{Fruchterman \harvardand\ Reingold}{1991}{fruchterman1991graph}
+Fruchterman, T.~M. \harvardand\ Reingold, E.~M.  \harvardyearleft
+  1991\harvardyearright , `Graph drawing by force-directed placement', {\em
+  Software: Practice and experience} {\bf 21}(11),~1129--1164.
+
+\harvarditem[Heer et~al.]{Heer, Card \harvardand\
+  Landay}{2005}{heer2005prefuse}
+Heer, J., Card, S.~K. \harvardand\ Landay, J.~A.  \harvardyearleft
+  2005\harvardyearright , Prefuse: a toolkit for interactive information
+  visualization, {\em in} `Proceedings of the SIGCHI conference on Human
+  factors in computing systems', ACM, pp.~421--430.
+
+\harvarditem{Leung \harvardand\ Apperley}{1994}{leung1994review}
+Leung, Y.~K. \harvardand\ Apperley, M.~D.  \harvardyearleft
+  1994\harvardyearright , `A review and taxonomy of distortion-oriented
+  presentation techniques', {\em ACM Transactions on Computer-Human Interaction
+  (TOCHI)} {\bf 1}(2),~126--160.
+
+\harvarditem{Manninen}{2000}{manninen2000interaction}
+Manninen, T.  \harvardyearleft 2000\harvardyearright , Interaction in networked
+  virtual environments as communicative action: Social theory and multi-player
+  games, {\em in} `Groupware, 2000. CRIWG 2000. Proceedings. Sixth
+  International Workshop on', IEEE, pp.~154--157.
+
+\harvarditem{Mutton}{2004}{mutton2004inferring}
+Mutton, P.  \harvardyearleft 2004\harvardyearright , Inferring and visualizing
+  social networks on internet relay chat, {\em in} `Information Visualisation,
+  2004. IV 2004. Proceedings. Eighth International Conference on', IEEE,
+  pp.~35--43.
+
+\harvarditem{Newman}{2004}{newman2004fast}
+Newman, M.~E.  \harvardyearleft 2004\harvardyearright , `Fast algorithm for
+  detecting community structure in networks', {\em Physical review E} {\bf
+  69}(6),~066133.
+
+\harvarditem{Schneier}{2010}{schneier2010taxonomy}
+Schneier, B.  \harvardyearleft 2010\harvardyearright , `A taxonomy of social
+  networking data', {\em Security \& Privacy, IEEE} {\bf 8}(4),~88--88.
+
+\harvarditem{Shneiderman}{1996}{shneiderman1996eyes}
+Shneiderman, B.  \harvardyearleft 1996\harvardyearright , The eyes have it: A
+  task by data type taxonomy for information visualizations, {\em in} `Visual
+  Languages, 1996. Proceedings., IEEE Symposium on', IEEE, pp.~336--343.
+
+\end{thebibliography}
