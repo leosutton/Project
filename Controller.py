@@ -1,14 +1,17 @@
 import math
 import sys
+
 import pygame
 from pygame.constants import QUIT, MOUSEMOTION
+
 from MainController import loop, surface, WINDOWWIDTH, WINDOWHEIGHT, people, gaussian, SIGMA, get_pos, rectangle, \
     can_see
+
 
 __author__ = 'Leo'
 
 
-class Controller:
+class Controller(object):
     def __init__(self):
         pass
 

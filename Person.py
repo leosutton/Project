@@ -1,32 +1,21 @@
 import math
-import random
+
 from Wall import photo, status
 
 
-class Person:
-    def __init__(self, x, y, direction):
-        self.x = x
-        self.y = y
+class Person(object):
+    def __init__(self, draw_x, draw_y, env_x, env_y, direction, views):
+        self.draw_x = draw_x
+        self.draw_y = draw_y
+        self.env_x = env_x
+        self.env_y = env_y
         self.direction = direction
         self.wall = []
-        self.friends = []
-        self.views = random.random()
+        self.views = views
 
-    def view(node):
-        newsfeed = []
-        for neighbor in friends:
-            if (len(neighbor.wall) > 0):
-                for post in neighbor.wall:
-                    newsfeed.append(post)
-        for post in newsfeed:
-            if isinstance(post, photo):
-                pass
-            elif isinstance(post, status):
-                if math.fabs(post.views - g.node[node]['views'] > 20):
-                    current_weight = g.edge[node][post.poster]['weight']
-                    g.edge[node][post.poster]['weight'] = current_weight - 0.5
-                    actions.append(('status', pos[post.poster], pos[node], 0))
-                else:
-                    current_weight = g.edge[node][post.poster]['weight']
-                    g.edge[node][post.poster]['weight'] = current_weight - 0.5
-                    actions.append(('status', pos[post.poster], pos[node], 1))
+class Relationship(object):
+    def __init__(self, first, second, strength):
+        self.between = (first, second)
+        self.strength = strength
+
+    pass

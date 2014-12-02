@@ -1,14 +1,14 @@
 __author__ = 'Leo'
 
 
-class photo:
+class photo(object):
     def __init__(self, poster):
         self.poster = poster
         tagged = []
         likes = []
 
 
-class status:
+class status(object):
     def __init__(self, poster, views):
         self.poster = poster
         self.views = views

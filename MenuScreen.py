@@ -1,22 +1,24 @@
 __author__ = 'Leo'
 import pygame
-from Drawing import DrawController
+
+from Drawing import Drawing
 
 
-class MenuScreen(DrawController):
-    def __init__(self, width, height):
+class MenuScreen(Drawing):
+    menu_items = []
 
+    def __init__(self):
+        Drawing.__init__(self)
         while True:
-            pygame.init()
-            self.surface = pygame.display.set_mode((width, height))
             pygame.display.set_caption('Menu')
             self.surface.fill((255, 255, 255))
+            text = self.menu()
+            self.surface.blit(text, (0, 0))
             pygame.display.update()
-            self.draw_menu()
+            Drawing.process_events(self)
 
-    def draw_menu(self):
-        while True:
-            self.font = pygame.font.Font(None, 50)
-            self.text = self.font.render("Interaction visulisation", 1, (0, 0, 0))
-            self.surface.blit(self.text, (0, 0))
-            menu items
+    def menu_item(self, y, text):
+        font = pygame.font.Font(None, 10)
+        text = font.render("Interaction visulisation", 1, (0, 0, 0))
+        centre = Drawing.centre(self, Drawing.screenWidth, Drawing.screenHeight)
+        return text

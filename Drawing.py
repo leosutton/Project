@@ -1,11 +1,11 @@
 __author__ = 'Leo'
-import pygame
-from MenuScreen import MenuScreen
-from pygame.locals import *
 import sys
 
+import pygame
+from pygame.locals import *
 
-class DrawController:
+
+class Drawing(object):
     screenHeight = 0
     screenWidth = 0
     mousex = 0
@@ -14,11 +14,10 @@ class DrawController:
     def __init__(self):
         pygame.init()
         video_info = pygame.display.Info()
-        self.screenHeight = video_info.current_h
-        self.screenWidth = video_info.current_w
-
-    def menu_screen(self):
-        menu = MenuScreen(self.screenHeight, self.screenWidth)
+        self.screenHeight = video_info.current_h / 2
+        self.screenWidth = video_info.current_w / 2
+        self.surface = pygame.Surface((800, 600))
+        print 'init'
 
     def get_width(self, surface):
         return surface.get_width()
@@ -29,4 +28,20 @@ class DrawController:
                 pygame.quit()
                 sys.exit()
             if event.type == MOUSEMOTION:
-                mousex, mousey = event.pos
+                self.mousex, self.mousey = event.pos
+
+    def centre(self, window_width, surface_width):
+        margin = window_width - surface_width
+        return margin
+
+    def getx(self, x):
+        return int(round(x * self.screenWidth))
+
+    def gety(self, y):
+        return int(round(y * self.screenHeight))
+
+    def getMousexPos(self):
+        return self.mousex
+
+    def getMouseyPos(self):
+        return self.mousey
