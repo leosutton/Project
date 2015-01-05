@@ -2,6 +2,7 @@
 \usepackage{times}
 \usepackage{durhampaper}
 \usepackage{harvard}
+\usepackage{graphicx}
 
 \citationmode{abbr}
 \bibliographystyle{agsm}
@@ -37,7 +38,7 @@ An application that will visualise and model user interactions of many different
 user interaction; virtual environment
 \end{keywords}
 
-\section{Literature Review}
+\section{Introduction}
 
 \subsection{Current Work}
 
@@ -65,19 +66,127 @@ Detecting features of social networks that are not immediately apparent is also 
 
 \section{Design}
 
-\subsection{Requirements}
+\subsection{Functional Requirements}
 
 \begin{table}[htb]
 \centering
-\caption{Requirements}
+\caption{Functional Requirements}
 \vspace*{6pt}
-\label{units}
-\begin{tabular}{ccc}\hline\hline
-Symbol & Quantity & Conversion from Gaussian \\ \hline
+\label{tab:requirements}
+\begin{tabular}{c p{11cm}}\hline\hline
+Requirement Number & Description \\ \hline
+1 & Implement a basic system for modelling simple user interactions in a virtual environment \\
+2 & Implement a visual output for this model \\
+3 & Expand the implementation to cover multiple modes of interaction \\
+4 & Implement an evolution of the model over time with the ability to quantify the evolution \\
+5 & Implement a grouping/clustering of users in the virtual environment based on their interactions \\
+6 & Implement visualisation of the clustering of users \\
+7 & Implement  a way of outputting data that can be shown to have real-world applications
 \end{tabular}
 \end{table}
 
-\subsection{References}
+\subsubsection{Requirement 1}
+I developed my initial model in Python. I chose Python because of the familiarity that I already had with programming in the language and in the hope that the language would allow me to focus on the modelling as I didn't anticipate the model becoming complex enough that this would slow down significantly any simulation.
+
+\subsubsection{Requirement 2}
+The visual output that I used was constructed through the PyGame. I chose this method for several reasons, first I believed that it would allow for faster development and simpler code than producing my graphical output in OpenGL, second the library allows for easy use of multiple CPUs and uses optimised C and Assembly code for core functions, meaning that despite running in Python I hope that the visualisation would still run at a rate suitable for interactivity and smooth animation.
+
+\begin{figure}[htb]
+\begin{center}
+\caption{An example visualisation}
+\label{fig:visualexample}
+\includegraphics[width=6in]{screen}
+\end{center}
+\end{figure}
+
+An example of the current visualisation can be seen in Figure \ref{fig:visualexample}. Here on the left we can see a representation of the people in their 3d environment and on the right we see a representation of the relationships between the people .
+
+\subsubsection{Requirement 3}
+\begin{figure}[htb]
+\begin{center}
+\caption{Interaction Types}
+\label{fig:types}
+\includegraphics[width=6in]{InteractionTypes}
+\end{center}
+\end{figure}
+
+\begin{figure}[htb]
+\begin{center}
+\caption{Interaction Modes}
+\label{fig:modes}
+\includegraphics[width=6in]{CategorisationsInteractions}
+\end{center}
+\end{figure}
+
+When considering multiple modes of interaction I found that there was little current literature linking interaction modes with categorisations. This lead me to then design two hierarchies. The first in order to categorise what different interactions were possible within the virtual environments I was considering, the second to categorise them in terms of how they could be represented.
+
+Initially I produced Figure \ref{fig:types} in order to categorise the types of interactions that were possible. These came largely from personal experience and I produced this in order to help me consider what categories of interactions it would be necessary to visualise.
+
+This lead me to Figure \ref{fig:modes}, which are the modes of interaction that I will be visualising. 
+
+\subsubsection{Requirement 4}
+The model will evolve in three ways, firstly the people will move around in their 3D environment. They have random motion around the environment and aren't allowed to move out of its bounds.
+
+The second way that the model will evolve is in the change in relationship strength between the pairs of people. This will be affected by the interactions between the users of the relationships being affected and will also be affected by time as people who don't interact lose relationship strength.
+
+\subsubsection{Requirement 5}
+
+\subsubsection{Requirement 6}
+
+\subsubsection{Requirement 7}
+
+\subsection{Architecture}
+\begin{figure}[htb]
+\begin{center}
+\caption{Class Diagram}
+\label{fig:class}
+\includegraphics[width=6in]{ClassDiagram}
+\end{center}
+\end{figure}
+
+\subsubsection{MainController}
+The MainController class is the one that coordinates the setup and initialisation of the program along with choosing what interactions will be represented. This also coordinates the synchronisation of frames between the two Drawing objects in order to draw them together.
+
+\subsubsection{Graph}
+The Graph object contains a list of Person objects (people) and a list of Relationship objects (connections). This stores all of the people that are being considered in the virtual environment and the relationships between them. This object also handles the initial generation of people through the generatePeople() method which randomly generates a predetermined number of people with random attributes. the generateFriendships() method the determines a predetermined number of relationship objects between the people with random strength.
+
+The decay method if called will iterate through the relationships and modify them all by a set amount. This is called in order to simulate the decay of relationships over time between pairs of people who do not interact. The check() method will again iterate through all relationships and check that they are all legal. That two relationships haven't been created between the same pair, it will also remove relationships once they fall below a certain level.
+
+\subsubsection{Person}
+A Person class represents a person in the virtual environment and forms part of the graph. The person object contains all the attributes of the person including the draw\_x and draw\_y fields which represent the point at which this person is being represented in the graph view and the env\_x and env\_y fields at which this person currently is in the 3 dimensional environment. The direction field then applies to the direction in which this person is looking in the 3D environment.
+
+For the social side of the virtual environment, the person object includes a wall, which functions in the same way as a wall in Facebook with the photos and statuses being modelled on the wall. Finally for the social network each person has a field which I have called views. This represents the persons social or political views that other people might agree/disagree with and are represented in social network statuses
+
+\subsubsection{Relationship}
+A Relationship object represents the relationship between two Person objects. The between field contains a tuple representing the people the Relatinonship is between and the strength field indicates the strength of the feeling between the two people
+
+\subsubsection{Status}
+A status is simply an object that can be posted on a wall. It contains as the poster field a reference to the Person object who posted it on the wall. The views field 
+represents the views of the poster which the person who looks at it might either agree or disagree with and finally the likes[] field contains references to the Person objects who have interacted with the status by liking it.
+
+\subsubsection{Photo}
+Similar to a status the Photo object again represents something posted on a wall. The only difference this time is that it contains in its tagged[] field a list of the people who are tagged in the photo, changing their relationship with the tagger, the poster and the person on who's wall the photo was posted.
+
+\subsubsection{Drawing}
+The drawing object contains the methods and fields that are common between the two types of drawing in the representation. The constructor fills the screenHeight and screenWidth fields and then every time a drawing calls the process\_events() method the object checks if it should close the window and exit of if a key has been pressed changing the representation of and then updates the mousex and mousey fields with the current mouse position
+
+\subsubsection{GraphDrawerer}
+This inherits from the Drawing object and draws a graph of nodes and edges representing all of the people currently being considered int he virtual environment and the relationships between them. It constructs the layout of this graph by means of a force directed drawing algorithm to place the nodes in the clearest possibly arrangement in a reasonable amount of time. It does this by assuming that there is an attractive force of $x^2/k$ along each of the edges where $x$ is the distance and $k$ is a constant and a repulsive force of $k^2/x$ between each of the pairs of nodes. Several iterations of this are taken as each node is moved by the resultant 'force' on it, changing position less each time until a local minimum has been reached. The make\_frame() function then produces the next frame of the visualisation that can be rendered with others.
+
+\subsubsection{Lens}
+The lens object contains one method associated with the drawing of the graph as distorted by an imaginary lens. It calculates the result of a gaussian function based on the distance between two poiwnts. The function used is
+\begin{equation}
+f(x)=(1/(\sigma\sqrt(2*\pi))(-(x-b)^2/(2c^2)).
+\end{equation}
+This can then be used to separate points for closer inspection.
+
+\subsubsection{Environment}
+This class is responsible for drawing a representation of the characters in the 3D environment. it takes the env\_x and env\_y fields from the Person class and uses this and the direction to draw the people at these points. Calling the make\_frame() then produces the next frame of the visualisation to be rendered alongside another.
+
+\section{Evaluation}
+
+
+\section{References}
 
 \bibliography{projectpaper}
 

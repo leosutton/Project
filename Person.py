@@ -17,5 +17,3 @@ class Relationship(object):
     def __init__(self, first, second, strength):
         self.between = (first, second)
         self.strength = strength
-
-    pass

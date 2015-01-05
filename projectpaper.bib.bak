@@ -1,0 +1,165 @@
+% This file was created with JabRef 2.10.
+% Encoding: Cp1252
+
+@PREAMBLE{\usepackage{url}}
+
+
+@Article{adamic2003social,
+  Title                    = {A social network caught in the web},
+  Author                   = {Adamic, Lada and Buyukkokten, Orkut and Adar, Eytan},
+  Journal                  = {First Monday},
+  Year                     = {2003},
+  Number                   = {6},
+  Volume                   = {8}
+}
+
+@Article{barnes1986hierarchical,
+  Title                    = {A hierarchical O (N log N) force-calculation algorithm},
+  Author                   = {Barnes, Josh and Hut, Piet},
+  Year                     = {1986},
+
+  Publisher                = {Nature Publishing Group}
+}
+
+@InCollection{becker2002social,
+  Title                    = {Social conventions in computermediated communication: A comparison of three online shared virtual environments},
+  Author                   = {Becker, Barbara and Mark, Gloria},
+  Booktitle                = {The social life of avatars},
+  Publisher                = {Springer},
+  Year                     = {2002},
+  Pages                    = {19--39}
+}
+
+@Article{borgatti2002ucinet,
+  Title                    = {Ucinet for Windows: Software for Social Network Analysis},
+  Author                   = {Borgatti, S.P., Everett, M.G. and Freeman, L.C.},
+  Journal                  = {Analytic Technologies},
+  Year                     = {2002},
+
+  Owner                    = {Leo},
+  Timestamp                = {2014.11.23}
+}
+
+@InProceedings{carpendale2001framework,
+  Title                    = {A framework for unifying presentation space},
+  Author                   = {Carpendale, M Sheelagh T and Montagnese, Catherine},
+  Booktitle                = {Proceedings of the 14th annual ACM symposium on User interface software and technology},
+  Year                     = {2001},
+  Organization             = {ACM},
+  Pages                    = {61--70}
+}
+
+@Article{centola2010spread,
+  Title                    = {The spread of behavior in an online social network experiment},
+  Author                   = {Centola, Damon},
+  Journal                  = {science},
+  Year                     = {2010},
+  Number                   = {5996},
+  Pages                    = {1194--1197},
+  Volume                   = {329},
+
+  Publisher                = {American Association for the Advancement of Science}
+}
+
+@InProceedings{fisher2004social,
+  Title                    = {Social and temporal structures in everyday collaboration},
+  Author                   = {Fisher, Danyel and Dourish, Paul},
+  Booktitle                = {Proceedings of the SIGCHI conference on Human factors in computing systems},
+  Year                     = {2004},
+  Organization             = {ACM},
+  Pages                    = {551--558}
+}
+
+@Article{fruchterman1991graph,
+  Title                    = {Graph drawing by force-directed placement},
+  Author                   = {Fruchterman, Thomas MJ and Reingold, Edward M},
+  Journal                  = {Software: Practice and experience},
+  Year                     = {1991},
+  Number                   = {11},
+  Pages                    = {1129--1164},
+  Volume                   = {21},
+
+  Publisher                = {Wiley Online Library}
+}
+
+@InProceedings{heer2005vizster,
+  Title                    = {Vizster: Visualizing online social networks},
+  Author                   = {Heer, Jeffrey and Boyd, Danah},
+  Booktitle                = {Information Visualization, 2005. INFOVIS 2005. IEEE Symposium on},
+  Year                     = {2005},
+  Organization             = {IEEE},
+  Pages                    = {32--39}
+}
+
+@InProceedings{heer2005prefuse,
+  Title                    = {Prefuse: a toolkit for interactive information visualization},
+  Author                   = {Heer, Jeffrey and Card, Stuart K and Landay, James A},
+  Booktitle                = {Proceedings of the SIGCHI conference on Human factors in computing systems},
+  Year                     = {2005},
+  Organization             = {ACM},
+  Pages                    = {421--430}
+}
+
+@Article{leung1994review,
+  Title                    = {A review and taxonomy of distortion-oriented presentation techniques},
+  Author                   = {Leung, Ying K and Apperley, Mark D},
+  Journal                  = {ACM Transactions on Computer-Human Interaction (TOCHI)},
+  Year                     = {1994},
+  Number                   = {2},
+  Pages                    = {126--160},
+  Volume                   = {1},
+
+  Publisher                = {ACM}
+}
+
+@InProceedings{manninen2000interaction,
+  Title                    = {Interaction in networked virtual environments as communicative action: Social theory and multi-player games},
+  Author                   = {Manninen, Tony},
+  Booktitle                = {Groupware, 2000. CRIWG 2000. Proceedings. Sixth International Workshop on},
+  Year                     = {2000},
+  Organization             = {IEEE},
+  Pages                    = {154--157}
+}
+
+@InProceedings{mutton2004inferring,
+  Title                    = {Inferring and visualizing social networks on internet relay chat},
+  Author                   = {Mutton, Paul},
+  Booktitle                = {Information Visualisation, 2004. IV 2004. Proceedings. Eighth International Conference on},
+  Year                     = {2004},
+  Organization             = {IEEE},
+  Pages                    = {35--43}
+}
+
+@Article{newman2004fast,
+  Title                    = {Fast algorithm for detecting community structure in networks},
+  Author                   = {Newman, Mark EJ},
+  Journal                  = {Physical review E},
+  Year                     = {2004},
+  Number                   = {6},
+  Pages                    = {066133},
+  Volume                   = {69},
+
+  Publisher                = {APS}
+}
+
+@Article{schneier2010taxonomy,
+  Title                    = {A taxonomy of social networking data},
+  Author                   = {Schneier, Bruce},
+  Journal                  = {Security \& Privacy, IEEE},
+  Year                     = {2010},
+  Number                   = {4},
+  Pages                    = {88--88},
+  Volume                   = {8},
+
+  Publisher                = {IEEE}
+}
+
+@InProceedings{shneiderman1996eyes,
+  Title                    = {The eyes have it: A task by data type taxonomy for information visualizations},
+  Author                   = {Shneiderman, Ben},
+  Booktitle                = {Visual Languages, 1996. Proceedings., IEEE Symposium on},
+  Year                     = {1996},
+  Organization             = {IEEE},
+  Pages                    = {336--343}
+}
+
