@@ -1,62 +1,63 @@
 __author__ = 'Leo'
-from Tkinter import *
-import ttk
+from tkinter import *
+from tkinter import ttk
+import pygame
+from Graph import Graph
+from Environment import Environment
+from GraphDrawrer import GraphDrawrer
 
 
 class Menu:
     def __init__(self):
-        # root = Tk()
-        #
-        # content = ttk.Frame(root, padding=(3,3,12,12))
-        # frame = ttk.Frame(content, borderwidth=5, relief="sunken", width=200, height=100)
-        # namelbl = ttk.Label(content, text="Name")
-        # name = ttk.Entry(content)
-        #
-        # onevar = BooleanVar()
-        # twovar = BooleanVar()
-        # threevar = BooleanVar()
-        #
-        # onevar.set(True)
-        # twovar.set(False)
-        # threevar.set(True)
-        #
-        # one = ttk.Checkbutton(content, text="One", variable=onevar, onvalue=True)
-        # two = ttk.Checkbutton(content, text="Two", variable=twovar, onvalue=True)
-        # three = ttk.Checkbutton(content, text="Three", variable=threevar, onvalue=True)
-        # ok = ttk.Button(content, text="Okay")
-        # cancel = ttk.Button(content, text="Cancel")
-        #
-        # content.grid(column=0, row=0, sticky=(N, S, E, W))
-        # frame.grid(column=0, row=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
-        # namelbl.grid(column=3, row=0, columnspan=2, sticky=(N, W), padx=5)
-        # name.grid(column=3, row=1, columnspan=2, sticky=(N, E, W), pady=5, padx=5)
-        # one.grid(column=0, row=3)
-        # two.grid(column=1, row=3)
-        # three.grid(column=2, row=3)
-        # ok.grid(column=3, row=3)
-        # cancel.grid(column=4, row=3)
-        #
-        # root.columnconfigure(0, weight=1)
-        # root.rowconfigure(0, weight=1)
-        # content.columnconfigure(0, weight=3)
-        # content.columnconfigure(1, weight=3)
-        # content.columnconfigure(2, weight=3)
-        # content.columnconfigure(3, weight=1)
-        # content.columnconfigure(4, weight=1)
-        # content.rowconfigure(1, weight=1)
-        #
-        # root.mainloop()
-        root = Tk()
-        root.title = "Configuration"
-        content = ttk.Frame(root, padding =(3,3,12,12))
-        title = ttk.Label(root, text="Configuration")
+        self.root = Tk()
+        self.root.title = "Configuration"
+
+        def start():
+            self.start()
+        left = StringVar()
+        right = StringVar()
+
+        content = ttk.Frame(self.root, padding =(3,3,12,12))
+        title = ttk.Label(content, text="Configuration")
+        start = ttk.Button(content, text="start", command=start)
+        displays = ['Virtual', 'Actual', 'None']
+        for option in displays:
+            list1 = ttk.Radiobutton(content, text=option, variable=left, value=option)
+            list1.grid(column=0, row=2+displays.index(option), sticky=(N), pady=5)
+
+        for option in displays:
+            list2 = ttk.Radiobutton(content, text=option, variable=right, value=option)
+            list2.grid(column=1, row=2+displays.index(option), sticky=(N), pady=5)
 
         content.grid(column=0, row=0, sticky=(N,S,E,W))
-        title.grid(column=0, row=0, sticky=(N), pady=5)
+        title.grid(column=0, row=0, columnspan=2, sticky=(N), pady=5)
+        start.grid(column=0, row=1, columnspan=2, sticky=(N), pady=5)
 
-        root.columnconfigure(0, weight=1)
-        root.rowconfigure(0, weight=1)
+
+
+        self.root.columnconfigure(0, weight=1)
+        self.root.rowconfigure(0, weight=1)
         content.columnconfigure(0, weight=1)
         content.rowconfigure(0, weight=1)
 
-        root.mainloop()
+        self.root.mainloop()
+
+    def start(self):
+        print ('start')
+        self.root.destroy()
+        self.setup()
+
+    def setup(self):
+        graph = Graph()
+        environment = Environment(graph)
+        graphDrawrer = GraphDrawrer(graph)
+
+        pygame.init()
+        surface = pygame.display.set_mode((1600, 600))
+
+        while True:
+            surface.blit(environment.make_frame(), (0,0))
+            surface.blit(graphDrawrer.make_frame(), (800,0))
+            pygame.display.update()
+            clock = pygame.time.Clock()
+            clock.tick(60)
