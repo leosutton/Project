@@ -21,16 +21,16 @@
 \begin{abstract}
 
 {\bf Context/Background}
-In this project I have taken user interaction to mean any process that happens between two users that changes their relationship in some way. Virtual environments I have taken to mean any computer based environment in which these interactions are possible, this includes social networks, VoIP, interactions with avatars in 3D environments and others.
+Virtual environments have become a particularly relevant area of computer science in recent years with the rise of social networks such as Facebook, online games, for example World of Warcraft and online means of social interaction, like email. All of these together have enabled many different modes of interactions between users in complex ways which it is important to be able to discover and visualise.
 
 {\bf Aims}
 The aim of the project is firstly to produce an effective way of modelling and visualising these interactions, then to use this model and visualisation to discover clustering of these interactions, and the evolution of the model over time with a view to applying the data to draw real-world conclusions.
 
 {\bf Method}
-A system for visualising multiple modes of interaction will be implemented in Python and a an underlying model will be developed based on available literature. The system will then be developed so that it can identify clustering within the network according to their interaction before giving a quantification of this clustering that can be seen changing over time.
+Available literature will be studied in order to see what what current research has been done on data presentation, particularly of networks and also what models are available for the evolution of networks like the ones I will be looking at over time. I will then write an application that implements these as well as allowing me to experiment with alternative visualisations
 
 {\bf Proposed Solution}
-An application that will visualise and model user interactions of many different types and allow their visualisation. It will also allow visualisation of the clustering of users according to their interaction and provide a numerical output that can provide meaningful insight into real-world scenarios
+A system for visualising multiple modes of interaction will be implemented in Python and a an underlying model will be developed based on available literature. The system will then be developed so that it can identify clustering within the network according to their interaction before giving a quantification of this clustering that can be seen changing over time.
 
 \end{abstract}
 
@@ -40,11 +40,21 @@ user interaction; virtual environment
 
 \section{Introduction}
 
+\subsection{Project Description and Purpose}
+In this project I have taken virtual environments to mean any environment in which users will interact in a virtual network. This broad definition will include everything from online games in which users interact in a three dimensional virtual world and can interact with each other in multiple complex ways to emails within an organisation which may simply include information being disseminated from a central source.
+
+This wide variety of environments provide many different ways in which users can interact which I have called modes. These modes can then be categorised, for example, if they represent a single or an ongoing interaction, or depending on whether the interaction is one to one, many to one or many to many.
+
+I can then use properties of my visualisation such as the colour or size of nodes in a graph or their distance or by introducing some graphic link between them to visualise these different modes.
+
+\subsection{Project Deliverables}
+Firstly, my project will deliver a system that is able to visualise the interactions between users in real time. It will contain visualisations that distinguish between different modes of interaction, with configuration that allows the user to change which modes of interaction are represented. The system will also be able to model a time evolution caused by the interactions between the users. It will then also be possible to visualise this time evolution as well as quantify this evolution in useful metrics. Finally the system will allow visualisation of clustering of the user according to the interactions that they make, and will allow visualisation of the changes in clustering over time that result from the evolution of the system.
+
 \subsection{Current Work}
 
 \subsubsection{Social Network Visualisation}
 %There has already been much work carried out on the visualisation of the relationships and interaction within virtual networks. Previously, low level visualisation tools have been developed specifically for the purpose of visualisation of data within a network \cite{heer2005prefuse}. These have been designed so that they have the flexibility to accommodate a range of presentation techniques. The these tools have been use to build fully functional tools designed to be used by users with little technical experience. For example an application has been made that visualizes data from the 'Friendster' social network and allows this data to be viewed in different ways to facilitate discovery of previously unknown information\cite{heer2005vizster}. They allow the user to modify the layout themselves by simply intuitive controls and use colour and position to make the visualisation more clear. There have also been tools developed that, as well as visualising the data provide tools for detailed statistical analysis providing numerical data on graph clustering and community identification\cite{borgatti2002ucinet}. However, these tools have focused on the analysis and visualisation of snapshots of data remaining static, rather than data sets that evolve over time.
-Network visualisation is already a science with a long history, especially since being able to use computers to position and draw the output. There are currently low-level tools that exist with the intention that they have the necessary flexibility to accommodate a wide variety of visualisation styles and techniques \cite{heer2005prefuse}. As well as this, there are tools that exist to provide numerical analysis
+Network visualisation is already a science with a long history, especially since being able to use computers to position and draw the output. There are currently low-level tools that exist with the intention that they have the necessary flexibility to accommodate a wide variety of visualisation styles and techniques \cite{heer2005prefuse}. As well as this, there are tools that exist to provide numerical analysis \cite{borgatti2002ucinet}. However, these tools have focused on the analysis and visualisation of snapshots of data remaining static, rather than data sets that evolve over time. These have also previously been used to build ways of visualising social network data from Friendster \cite{heer2005vizster} in order to facilitate discovery of more information than would be apparent from other ways of looking the data, as I hope to.
 
 \subsubsection{Information Presentation}
 There is also a wide variety of information on the presentation of data on computer screens. One particularly popular model can be summed up as 'Overview, Zoom, Filter' \cite{shneiderman1996eyes}. In this it is suggested that the initial view of the data should be a movable field of view with emphasis on allowing the user to gain an 'overview' of relevant data and identify areas which will be of interest. Specific areas of interest can then be zoomed in on preserving the context of the overall picture before extra information of areas of interest can be viewed possibly by clicking on them. This paper also talks about things such as the importance of smooth display updates and responsiveness to user input. This is built upon by the ideas of making information more clear by distorting the 'presentation space' \cite{carpendale2001framework}. This is the method used in Vizster and can be seen in common usage in many different data visualisation applications. It imagines that the virtual space in which the data is presented is a real material that can be stretched and viewed through a movable lens as necessary to make the relevant areas of the information more clear. These ideas area also expanded on further to see what kinds of lenses are suitable for which purposes, and suggests a mathematical framework for implementing such a lens \cite{leung1994review}. Contained in all of these articles on visualisation are also many suggestions for evaluation of data presentation on computers for example by the ability to maintain context between switching between the three areas on the 'Overview, Zoom, Filter' model and the responsiveness to user input that is possible.
@@ -86,11 +96,10 @@ Requirement Number & Description \\ \hline
 \end{table}
 
 \subsubsection{Requirement 1}
-I developed my initial model in Python. I chose Python because of the familiarity that I already had with programming in the language and in the hope that the language would allow me to focus on the modelling as I didn't anticipate the model becoming complex enough that this would slow down significantly any simulation.
+The system should be able to model basic user interactions for example writing on walls of a social network. It should do this by forming a graph in which the users are represented by nodes and the relationships between them by edges. Interactions will then take place between nodes connected by edges which are then remembered by each node.
 
 \subsubsection{Requirement 2}
-The visual output that I used was constructed through the PyGame. I chose this method for several reasons, first I believed that it would allow for faster development and simpler code than producing my graphical output in OpenGL, second the library allows for easy use of multiple CPUs and uses optimised C and Assembly code for core functions, meaning that despite running in Python I hope that the visualisation would still run at a rate suitable for interactivity and smooth animation.
-
+The system will provide a visual output that represents the interactions, users and relationships from the model in requirement 1. This will be done by drawing a graph with the users represented by nodes and the relationships between them by edges with different features of each being represented by the properties of these. For example, relationship strength could be shown by edge length or age by node colour.
 \begin{figure}[htb]
 \begin{center}
 \caption{An example visualisation}
@@ -99,7 +108,7 @@ The visual output that I used was constructed through the PyGame. I chose this m
 \end{center}
 \end{figure}
 
-An example of the current visualisation can be seen in Figure \ref{fig:visualexample}. Here on the left we can see a representation of the people in their 3d environment and on the right we see a representation of the relationships between the people .
+An example of visualisation from a mock-up can be seen Figure \ref{fig:visualexample}. This also includes on the left a view of users within a three dimensional environment that might be implemented in requirement 3.
 
 \subsubsection{Requirement 3}
 \begin{figure}[htb]
@@ -107,8 +116,7 @@ An example of the current visualisation can be seen in Figure \ref{fig:visualexa
 \caption{Interaction Types}
 \label{fig:types}
 \includegraphics[width=6in]{InteractionTypes}
-\end{center}
-\end{figure}
+\end{center}\end{figure}
 
 \begin{figure}[htb]
 \begin{center}
@@ -122,7 +130,7 @@ When considering multiple modes of interaction I found that there was little cur
 
 Initially I produced Figure \ref{fig:types} in order to categorise the types of interactions that were possible. These came largely from personal experience and I produced this in order to help me consider what categories of interactions it would be necessary to visualise.
 
-This lead me to Figure \ref{fig:modes}, which are the modes of interaction that I will be visualising. 
+This lead me to Figure \ref{fig:modes}, which are the modes of interaction that I will be visualising. The model will then be expanded to cover as many of these as possible, allowing experimentation both with how these might affect the evolution of the model over time.
 
 \subsubsection{Requirement 4}
 The model will evolve in three ways, firstly the people will move around in their 3D environment. They have random motion around the environment and aren't allowed to move out of its bounds.
@@ -130,22 +138,29 @@ The model will evolve in three ways, firstly the people will move around in thei
 The second way that the model will evolve is in the change in relationship strength between the pairs of people. This will be affected by the interactions between the users of the relationships being affected and will also be affected by time as people who don't interact lose relationship strength.
 
 \subsubsection{Requirement 5}
+The model will be designed in such a way that the interactions over time will cause relationships between the users to change. This will in turn mean that the users cluster themselves according to their interactions and their starting states.
 
 \subsubsection{Requirement 6}
+The system will enable a visualisation of the clustering of users and the way that this clustering changes over time. This should be able to be configured by the user to allow clustering according to different metrics. This visualisation should also allow the user to see how clustering has changed over time as the model evolves.
 
 \subsubsection{Requirement 7}
+The system should output quantitative data about the clustering and evolution of the model over time which can be given real-world applications. Algorithms must be found which can represent the system at different times.
 
 \subsection{Architecture}
+
 \begin{figure}[htb]
 \begin{center}
 \caption{Class Diagram}
 \label{fig:class}
-\includegraphics[width=6in]{ClassDiagram}
+\includegraphics[width=6in]{Classpng}
 \end{center}
 \end{figure}
 
-\subsubsection{MainController}
+\subsubsection{Main}
 The MainController class is the one that coordinates the setup and initialisation of the program along with choosing what interactions will be represented. This also coordinates the synchronisation of frames between the two Drawing objects in order to draw them together.
+
+\subsubsection{MenuScreen}
+The MenuScreen allows the user to configure the visual output in different ways. For example, they can change the colour or map different aspects of the model or affect which aspects of the user or relationship between users is represented by which aspect of the visual output. For example the size of a node could represent a user's age, or the number of posts on their wall. The menu is implemented using the Tkinter toolkit for python which is a common and popular way of adding forms to python applications. The MenuScreen passes the selected options back to Main which then creates the visual output with the selected options.
 
 \subsubsection{Graph}
 The Graph object contains a list of Person objects (people) and a list of Relationship objects (connections). This stores all of the people that are being considered in the virtual environment and the relationships between them. This object also handles the initial generation of people through the generatePeople() method which randomly generates a predetermined number of people with random attributes. the generateFriendships() method the determines a predetermined number of relationship objects between the people with random strength.
@@ -183,8 +198,19 @@ This can then be used to separate points for closer inspection.
 \subsubsection{Environment}
 This class is responsible for drawing a representation of the characters in the 3D environment. it takes the env\_x and env\_y fields from the Person class and uses this and the direction to draw the people at these points. Calling the make\_frame() then produces the next frame of the visualisation to be rendered alongside another.
 
-\section{Evaluation}
+\subsection{Tools Used}
+This project was built using Python 3.4. I chose to use python because it was a language with which I was already familiar and I felt that it would enable to me to quickly develop the necessary model and visualisation. I also believed that the speed of languages such as Java was unnecessary as I planned to produce only two dimensional graphics as output and there was no major computation required for the evolution of the model. The development in python was conducted using the PyCharm IDE which again I was already familiar with and was sell suited to my project.
 
+The graphical output was produced using the PyGame. This was used because it would be easier to use than OpenGL to quickly experiment with different graphical outputs and because it makes used of optimised C code this means that the speed of the graphical output shouldn't slow down any of the computation relating to the model.
+
+Finally I also made use of Numpy. This was used for easier handling of arrays, particularly when calculating positions for layouts of nodes within the graphical output.
+
+\section{Evaluation}
+The system will be evaluated in two ways, first against the requirements that I have listed here and second it will be compared to systems that already exist in order to see if it can offer any benefits over those systems or falls short of them.
+
+First I will evaluate the finished system according to each of the functional requirements I have listed here individually. I will compare my final application to the requirement listed and check to make sure that all of the criteria have been met or whether it has been necessary to compromise and I have failed to meet the requirements. This will also allow me to see how well my I formed my requirements initially, and evaluate how my plan changed over time.
+
+Secondly, I will spend time comparing my system to other systems that are already available. There are many of these that apply specifically to social networks such as Vizster as I have previously mentioned but there are many other tools available for free online which offer visualisation of social network graph data. I will take a selection of these tools and, compared to my own application, see how well they fulfil the aims of my project. This will allow me to determine where my application could have been improved in order to better meet its aims and also compare it to alternative approaches where these are taken.
 
 \section{References}
 

@@ -5,35 +5,58 @@ import pygame
 from Graph import Graph
 from Environment import Environment
 from GraphDrawrer import GraphDrawrer
+from DrawingController import DrawingController
+from EnvMenu import EnvMenu
+from graphMenu import GraphMenu
 
 
 class Menu:
     def __init__(self):
         self.root = Tk()
-        self.root.title = "Configuration"
+        self.root.title("Configuration")
 
         def start():
             self.start()
+
+        def graphConfig():
+            graphConfig = GraphMenu(self.root)
+            graphConfigOutput = graphConfig.menu
+            print (graphConfigOutput)
+
+        def envConfig():
+            envConfig = EnvMenu(self.root)
+
+        self.secondScreen = BooleanVar()
+
         left = StringVar()
         right = StringVar()
 
-        content = ttk.Frame(self.root, padding =(3,3,12,12))
+        content = ttk.Frame(self.root, padding=(3, 3, 12, 12))
         title = ttk.Label(content, text="Configuration")
         start = ttk.Button(content, text="start", command=start)
+        second = ttk.Checkbutton(content, text="Second screen", variable=self.secondScreen)
+        leftHeading = ttk.Label(content, text="First Screen")
+        rightHeading = ttk.Label(content, text="Second Screen")
+        envMenu = ttk.Button(content, text="Environment Configure", command=envConfig)
+        graphMenu = ttk.Button(content, text="Graph Configure", command=graphConfig)
+
         displays = ['Virtual', 'Actual', 'None']
         for option in displays:
             list1 = ttk.Radiobutton(content, text=option, variable=left, value=option)
-            list1.grid(column=0, row=2+displays.index(option), sticky=(N), pady=5)
+            list1.grid(column=0, row=4 + displays.index(option), sticky=(N), pady=5)
 
         for option in displays:
             list2 = ttk.Radiobutton(content, text=option, variable=right, value=option)
-            list2.grid(column=1, row=2+displays.index(option), sticky=(N), pady=5)
+            list2.grid(column=1, row=4 + displays.index(option), sticky=(N), pady=5)
 
-        content.grid(column=0, row=0, sticky=(N,S,E,W))
+        content.grid(column=0, row=0, sticky=(N, S, E, W))
         title.grid(column=0, row=0, columnspan=2, sticky=(N), pady=5)
-        start.grid(column=0, row=1, columnspan=2, sticky=(N), pady=5)
-
-
+        second.grid(column=0, row=1, columnspan=2, sticky=(N), pady=5)
+        start.grid(column=0, row=2, columnspan=2, sticky=(N), pady=5)
+        leftHeading.grid(column=0, row=3, sticky=(N), pady=5)
+        rightHeading.grid(column=1, row=3, sticky=(N), pady=5)
+        envMenu.grid(column=0, row=7, sticky=(N), pady=5)
+        graphMenu.grid(column=1, row=7, sticky=(N), pady=5)
 
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
@@ -43,21 +66,22 @@ class Menu:
         self.root.mainloop()
 
     def start(self):
-        print ('start')
+        print('start')
         self.root.destroy()
-        self.setup()
+        self.setup(1, 2)
 
-    def setup(self):
-        graph = Graph()
-        environment = Environment(graph)
-        graphDrawrer = GraphDrawrer(graph)
+    def setup(self, left, right):
+        drawingController = DrawingController(1, 2)
 
-        pygame.init()
-        surface = pygame.display.set_mode((1600, 600))
+    def screensChanged(self):
+        pass
 
-        while True:
-            surface.blit(environment.make_frame(), (0,0))
-            surface.blit(graphDrawrer.make_frame(), (800,0))
-            pygame.display.update()
-            clock = pygame.time.Clock()
-            clock.tick(60)
+
+class graphConfiguration(object):
+    def __init__(self):
+        self.test = 1
+
+
+class envConfiguration(object):
+    def __init__(self):
+        self.test = 1

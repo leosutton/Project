@@ -4,4 +4,4 @@ from Environment import Environment
 import pygame
 from MenuScreen import Menu
 
-menu = Menu()
+choices = Menu()

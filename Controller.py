@@ -4,7 +4,7 @@ import sys
 import pygame
 from pygame.constants import QUIT, MOUSEMOTION
 
-from MainController import loop, surface, WINDOWWIDTH, WINDOWHEIGHT, people, gaussian, SIGMA, get_pos, rectangle, \
+from Main import loop, surface, WINDOWWIDTH, WINDOWHEIGHT, people, gaussian, SIGMA, get_pos, rectangle, \
     can_see
 
 
