@@ -11,20 +11,21 @@ from graphMenu import GraphMenu
 
 
 class Menu:
-    def __init__(self):
+    def __init__(self, main):
         self.root = Tk()
         self.root.title("Configuration")
+        self.main = main
 
         def start():
             self.start()
 
         def graphConfig():
-            graphConfig = GraphMenu(self.root)
-            graphConfigOutput = graphConfig.menu
-            print (graphConfigOutput)
+            graphConfig = GraphMenu(self.root, self.main)
+            graphConfig.menu()
 
         def envConfig():
-            envConfig = EnvMenu(self.root)
+            envConfig = EnvMenu(self.root, self.main)
+            envConfig.menu()
 
         self.secondScreen = BooleanVar()
 
@@ -66,22 +67,4 @@ class Menu:
         self.root.mainloop()
 
     def start(self):
-        print('start')
         self.root.destroy()
-        self.setup(1, 2)
-
-    def setup(self, left, right):
-        drawingController = DrawingController(1, 2)
-
-    def screensChanged(self):
-        pass
-
-
-class graphConfiguration(object):
-    def __init__(self):
-        self.test = 1
-
-
-class envConfiguration(object):
-    def __init__(self):
-        self.test = 1

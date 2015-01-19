@@ -4,10 +4,10 @@ from tkinter import ttk
 
 
 class GraphMenu(object):
-    def __init__(self, master):
+    def __init__(self, master, app):
         self.root = Toplevel(master)
+        self.app = app
 
-    @property
     def menu(self):
         self.root.title("Graph Configuration")
 
@@ -31,15 +31,16 @@ class GraphMenu(object):
 
         sizeVar = StringVar()
         size = ttk.Combobox(self.root, textvariable=sizeVar)
-        size['values']=('age', 'number of connected nodes')
+        size['values'] = ('age', 'number of connected nodes')
         size.grid(column=0, row=8)
 
         self.root.mainloop()
 
-        return [self.colour, sizeVar]
-
-    def destroy(self):
-        self.root.destroy()
-
     def save(self):
         self.root.destroy()
+        self.app.GraphMenuReturn = graphConfiguration()
+
+
+class graphConfiguration(object):
+    def __init__(self):
+        self.test = 1

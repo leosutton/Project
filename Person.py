@@ -13,6 +13,7 @@ class Person(object):
         self.wall = []
         self.views = views
 
+
 class Relationship(object):
     def __init__(self, first, second, strength):
         self.between = (first, second)

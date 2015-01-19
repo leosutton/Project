@@ -42,19 +42,22 @@ class GraphDrawrer(Drawing):
         for person in self.graph.people:
             pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                10, 0)
-            box = pygame.Rect(int(self.getx(person.drawx))-5, int(self.gety(person.drawy))-5,10, 10)
-            pygame.draw.arc(self.surface, (0,0,0), box, 0, person.views*2*math.pi)
+            box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
+            pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
         for connection in self.graph.connections:
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
             destination = (int(self.getx(connection.between[1].drawx)), int(self.gety(connection.between[1].drawy)))
             pygame.draw.line(self.surface, (0, 255, 0), source, destination)
         for transition in self.transitions:
-            direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x, transition.person_to.draw_y - transition.person_to.draw_y])
-            location = np.array([transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step
-            pygame.draw.circle(self.surface, (0,0,0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3, 0)
+            direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x,
+                                  transition.person_to.draw_y - transition.person_to.draw_y])
+            location = np.array(
+                [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step
+            pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
+                               0)
         pygame.display.update()
         self.process_events()
-        #if random.random() < 0.1:
+        # if random.random() < 0.1:
         #    self.transitions.append(Transition(random.choice(self.graph.people), random.choice(self.graph.people)))
 
     def drawLoop(self):
@@ -64,7 +67,7 @@ class GraphDrawrer(Drawing):
     def force_directed(self):
         k = 0.3 * math.sqrt(1.0 / len(self.graph.people))
         t = 0.01
-        for i in range (0,10):
+        for i in range(0, 10):
             for person in self.graph.people:
                 person.displacement = [0, 0]
                 for other in self.graph.people:
@@ -111,6 +114,7 @@ class Lens:
         coefficient = 1.0 / (float(self.sigma) * math.sqrt(2 * math.pi))
         exponential = math.exp(-((float(distance) - float(self.sigma)) ** 2) / (2 * (float(self.sigma) ** 2)))
         return coefficient * exponential
+
 
 class Transition:
     def __init__(self, person_from, person_to):
