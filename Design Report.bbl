@@ -1,14 +1,15 @@
 \begin{thebibliography}{xx}
 
+\harvarditem{Adamic \harvardand\ Adar}{2003}{adamic2003friends}
+Adamic, L.~A. \harvardand\ Adar, E.  \harvardyearleft 2003\harvardyearright ,
+  `Friends and neighbors on the web', {\em Social networks} {\bf
+  25}(3),~211--230.
+
 \harvarditem[Adamic et~al.]{Adamic, Buyukkokten \harvardand\
-  Adar}{2003}{adamic2003social}
+  Adar}{2003}{borgatti2002ucinet}
 Adamic, L., Buyukkokten, O. \harvardand\ Adar, E.  \harvardyearleft
   2003\harvardyearright , `A social network caught in the web', {\em First
   Monday} {\bf 8}(6).
-
-\harvarditem{Barnes \harvardand\ Hut}{1986}{barnes1986hierarchical}
-Barnes, J. \harvardand\ Hut, P.  \harvardyearleft 1986\harvardyearright , `A
-  hierarchical o (n log n) force-calculation algorithm'.
 
 \harvarditem{Becker \harvardand\ Mark}{2002}{becker2002social}
 Becker, B. \harvardand\ Mark, G.  \harvardyearleft 2002\harvardyearright ,
@@ -37,6 +38,11 @@ Fisher, D. \harvardand\ Dourish, P.  \harvardyearleft 2004\harvardyearright ,
 Fruchterman, T.~M. \harvardand\ Reingold, E.~M.  \harvardyearleft
   1991\harvardyearright , `Graph drawing by force-directed placement', {\em
   Software: Practice and experience} {\bf 21}(11),~1129--1164.
+
+\harvarditem{Heer \harvardand\ Boyd}{2005}{heer2005vizster}
+Heer, J. \harvardand\ Boyd, D.  \harvardyearleft 2005\harvardyearright ,
+  Vizster: Visualizing online social networks, {\em in} `Information
+  Visualization, 2005. INFOVIS 2005. IEEE Symposium on', IEEE, pp.~32--39.
 
 \harvarditem[Heer et~al.]{Heer, Card \harvardand\
   Landay}{2005}{heer2005prefuse}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.1.12)  12 JAN 2015 13:02
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.1.12)  23 JAN 2015 13:13
 entering extended mode
 **Design*Report.tex
 ("C:\Users\Leo\Documents\GitHub\Project\Design Report.tex"
@@ -259,87 +259,92 @@ LaTeX Font Info:    Font shape `OT1/ptm/bx/it' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/it' tried instead on input line 37.
  [1
 
-{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
-
-LaTeX Warning: Citation 'borgatti2002ucinet' on page 2 undefined on input line 
-57.
-
-
-LaTeX Warning: Citation 'heer2005vizster' on page 2 undefined on input line 57.
-
-
+{C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}] [2] [3]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 63.
+(Font)              <12> on input line 128.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 63.
+(Font)              <8> on input line 128.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 63.
-[2] [3] <screen.png, id=161, 1203.7472pt x 449.42906pt>
-File: screen.png Graphic file (type png)
- <use screen.png>
-Package pdftex.def Info: screen.png used on input line 107.
-(pdftex.def)             Requested size: 433.62pt x 161.89719pt.
-
-[4] <InteractionTypes.pdf, id=168, 845.07718pt x 597.55246pt>
+(Font)              <6> on input line 128.
+ [4]
+<InteractionTypes.pdf, id=136, 720.81796pt x 486.46744pt>
 File: InteractionTypes.pdf Graphic file (type pdf)
 
 <use InteractionTypes.pdf>
-Package pdftex.def Info: InteractionTypes.pdf used on input line 118.
-(pdftex.def)             Requested size: 433.62pt x 306.60777pt.
+Package pdftex.def Info: InteractionTypes.pdf used on input line 154.
+(pdftex.def)             Requested size: 433.62pt x 292.63985pt.
 
-<CategorisationsInteractions.pdf, id=169, 845.07718pt x 597.55246pt>
+<CategorisationsInteractions.pdf, id=137, 546.88066pt x 484.209pt>
 File: CategorisationsInteractions.pdf Graphic file (type pdf)
 
 <use CategorisationsInteractions.pdf>
-Package pdftex.def Info: CategorisationsInteractions.pdf used on input line 125
+Package pdftex.def Info: CategorisationsInteractions.pdf used on input line 161
 .
-(pdftex.def)             Requested size: 433.62pt x 306.60777pt.
- [5 <C:/Users/Leo/Documents/GitHub/Project/screen.png>] <Classpng.png, id=180, 
-380.92313pt x 337.26pt>
-File: Classpng.png Graphic file (type png)
+(pdftex.def)             Requested size: 289.07999pt x 255.9498pt.
+ [5 <C:/Users/Leo/Documents/GitHub/Project/InteractionTypes.pdf>] [6 <C:/Users/
+Leo/Documents/GitHub/Project/CategorisationsInteractions.pdf>] <MVC.pdf, id=165
+, 963.6pt x 542.025pt>
+File: MVC.pdf Graphic file (type pdf)
+ <use MVC.pdf>
+Package pdftex.def Info: MVC.pdf used on input line 194.
+(pdftex.def)             Requested size: 433.62pt x 243.90898pt.
 
-<use Classpng.png>
-Package pdftex.def Info: Classpng.png used on input line 155.
-(pdftex.def)             Requested size: 433.62pt x 383.92975pt.
- [6 <C:/Users/Leo/Documents/GitHub/Project/InteractionTypes.pdf>] [7 <C:/Users/
-Leo/Documents/GitHub/Project/CategorisationsInteractions.pdf>] [8 <C:/Users/Leo
-/Documents/GitHub/Project/Classpng.png>] [9] [10]
+[7] <screen.png, id=173, 1203.7472pt x 449.42906pt>
+File: screen.png Graphic file (type png)
+ <use screen.png>
+Package pdftex.def Info: screen.png used on input line 214.
+(pdftex.def)             Requested size: 433.62pt x 161.89719pt.
+ [8 <C:/Users/Leo/Documents/GitHub/Project/MVC.pdf> <C:/Users/Leo/Documents/Git
+Hub/Project/screen.png>] <Config.png, id=199, 605.26125pt x 435.6275pt>
+File: Config.png Graphic file (type png)
+ <use Config.png>
+Package pdftex.def Info: Config.png used on input line 233.
+(pdftex.def)             Requested size: 289.07999pt x 208.06187pt.
+
+[9 <C:/Users/Leo/Documents/GitHub/Project/Config.png (PNG copy)>] [10]
+Overfull \hbox (6.96947pt too wide) in paragraph at lines 265--266
+\OT1/ptm/m/n/12 a Friend-ster net-work. Avail-able from http://homes.cs.washing
+ton.edu/ jheer/projects/vizster/ 
+ []
+
 ("C:\Users\Leo\Documents\GitHub\Project\Design Report.bbl" [11])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 220.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 276.
  [12]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 220.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 276.
 
 ("C:\Users\Leo\Documents\GitHub\Project\Design Report.aux")
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 220.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 220.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 276.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 276.
 Package rerunfilecheck Info: File `Design*Report.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
 
 
 LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 220.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 276.
  ) 
 Here is how much of TeX's memory you used:
- 5612 strings out of 493921
- 83164 string characters out of 3147288
- 160509 words of memory out of 3000000
- 8802 multiletter control sequences out of 15000+200000
+ 5617 strings out of 493921
+ 82965 string characters out of 3147288
+ 160625 words of memory out of 3000000
+ 8798 multiletter control sequences out of 15000+200000
  19325 words of font info for 39 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 44i,9n,28p,1734b,415s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 44i,9n,28p,1705b,458s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}<C:/Program File
-s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX
- 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/
-public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/ams
-fonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.p
-fb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program F
-iles/MiKTeX 2.9/fonts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/f
-onts/type1/urw/times/utmri8a.pfb>
-Output written on "Design Report.pdf" (12 pages, 273926 bytes).
+s/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/MiKTeX
+ 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/font
+s/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
+ublic/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsf
+onts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/
+cmsy6.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb
+><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/times/utmb8a.pfb><C:/Program File
+s/MiKTeX 2.9/fonts/type1/urw/times/utmbi8a.pfb><C:/Program Files/MiKTeX 2.9/fon
+ts/type1/urw/times/utmr8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/time
+s/utmri8a.pfb>
+Output written on "Design Report.pdf" (12 pages, 352753 bytes).
 PDF statistics:
- 295 PDF objects out of 1000 (max. 8388607)
- 69 named destinations out of 1000 (max. 500000)
- 301 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 302 PDF objects out of 1000 (max. 8388607)
+ 77 named destinations out of 1000 (max. 500000)
+ 226 words of extra memory for PDF output out of 10000 (max. 10000000)
 

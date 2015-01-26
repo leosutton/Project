@@ -10,9 +10,10 @@ from Drawing import Drawing
 
 
 class Environment(Drawing):
-    def __init__(self, graph):
+    def __init__(self, graph, config):
         Drawing.__init__(self)
         self.graph = graph
+        self.config = config
 
     def make_frame(self):
         self.draw(self.graph)
@@ -23,17 +24,17 @@ class Environment(Drawing):
     def draw(self, graph):
         self.surface.fill((255, 255, 255))
         for person in self.graph.people:
-            pygame.draw.circle(self.surface, (255, 0, 0),
+            pygame.draw.circle(self.surface, self.colour(person),
                                (int(self.getx(person.env_x)), int(self.gety(person.env_y))), 10, 0)
             diameter = 100
             show = self.keycheck()
-            if show == True:
+            if show == True or self.config.facing == True:
                 box = pygame.Rect(self.getx(person.env_x) - diameter / 2.0, self.gety(person.env_y) - diameter / 2.0,
                                   diameter, diameter)
                 halfbox = pygame.Rect(self.getx(person.env_x) - diameter / 4.0,
                                       self.gety(person.env_y) - diameter / 4.0, diameter / 2.0, diameter / 2.0)
                 pygame.draw.arc(self.surface, (0, 255, 0), halfbox, person.direction - math.pi / 4,
-                                person.direction + math.pi / 4, diameter / 4)
+                                person.direction + math.pi / 4)
                 pygame.draw.arc(self.surface, (0, 0, 0), box, person.direction - math.pi / 4,
                                 person.direction + math.pi / 4)
         pygame.display.update()
@@ -41,6 +42,15 @@ class Environment(Drawing):
 
     def draw_angle(self, x):
         return (math.pi * 2) - x
+
+    def colour(self, person):
+        if self.config.colour == "None":
+            return (255,0,0)
+        if self.config.colour == "Friends":
+            return (255,0,0)
+        if self.config.colour == "Height":
+            number = person.env_y*255
+            return (number, 0, 0)
 
     def move(self, graph):
         for person in self.graph.people:
@@ -62,17 +72,15 @@ class Environment(Drawing):
                 person.turn = 'l'
             else:
                 person.turn = 'r'
-            if self.see(50, person):
-                pygame.draw.circle(self.surface, (0, 0, 255),
-                                   (int(self.getx(person.env_x)), int(self.gety(person.env_y))), 10, 0)
+            if self.config.seen == True:
+                if self.see(50, person):
+                    pygame.draw.circle(self.surface, (0, 0, 255),
+                                       (int(self.getx(person.env_x)), int(self.gety(person.env_y))), 10, 0)
             pygame.display.update()
 
     def keycheck(self):
         keys = pygame.key.get_pressed()
-        if keys[pygame.K_SPACE] == True:
-            return True
-        else:
-            return False
+        return keys[pygame.K_SPACE]
 
     def see(self, d, person):
         for other in self.graph.people:

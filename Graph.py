@@ -6,12 +6,9 @@ from Person import Person, Relationship
 
 
 class Graph:
-    people = []
-    connections = []
-
     def __init__(self):
-        self.generatePeople(50)
-        self.generateFriendships(50)
+        self.people = []
+        self.connections = []
 
     def generatePeople(self, number_of_nodes):
         for n in range(0, number_of_nodes):
@@ -21,7 +18,11 @@ class Graph:
             env_y = random.random()
             direction = random.random() * 2 * math.pi
             views = random.random()
-            self.people.append(Person(draw_x, draw_y, env_x, env_y, direction, views))
+            if random.random <0.5:
+                sex = 'm'
+            else:
+                sex = 'f'
+            self.people.append(Person(draw_x, draw_y, env_x, env_y, direction, views, sex))
 
     def generateFriendships(self, number_of_connections):
         for n in range(0, number_of_connections):
@@ -40,3 +41,9 @@ class Graph:
         for connection in self.connections:
             if connection.strength < 1:
                 connection.strength = 1
+
+    def trim(self, number):
+        self.people = self.people[:number]
+        for connection in self.connections:
+            if (not (connection.between[0] in self.people)) or (not (connection.between[1] in self.people)):
+                self.connections.remove(connection)
