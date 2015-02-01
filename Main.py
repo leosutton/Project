@@ -8,17 +8,16 @@ from EnvMenu import envConfiguration
 from graphMenu import graphConfiguration
 import cProfile
 from Loader import Loader
+from Clustering import Clustering
 
 
 class Main(object):
     def run(self):
         loader = Loader()
         graph = loader.load()
-        print(len(graph.people))
-        print(len(graph.connections))
-        graph.trim(50)
-        print(len(graph.people))
-        print(len(graph.connections))
+        #graph.trim(50)
+        cluster = Clustering(graph)
+        print(cluster.findTriangles())
 
         self.GraphMenuReturn = graphConfiguration("None", "None", 0)
         self.EnvMenuReturn = envConfiguration("None", True, True)

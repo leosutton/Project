@@ -107,7 +107,7 @@ class GraphDrawrer(Drawing):
             delta)) * self.attraction(k, self.distance(delta))
 
     def force_directed(self):
-        k = 1 * math.sqrt(1.0 / len(self.graph.people))
+        k = 0.3 * math.sqrt(1.0 / len(self.graph.people))
         t = 0.01
         for x in range (0,2):
             def repel(k, person):
