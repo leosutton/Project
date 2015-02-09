@@ -19,7 +19,6 @@ class Clustering(object):
                 if connection.between[0] in connected:
                     if connection.between[1] in connected:
                         trianglesHere += 1
-                        print(trianglesHere)
             triangles += trianglesHere/2
         print(str(triplets) + " triplets")
         print(str(triangles) + " triangles")

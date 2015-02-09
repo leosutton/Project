@@ -37,6 +37,7 @@ class GraphMenu(object):
         weightLabel = ttk.Label(self.root, text="Closeness weight on edges")
         weightLabel.grid(row=5)
         self.weightVar = StringVar()
+        self.weightVar.set("1")
         weightEntry = ttk.Entry(self.root, textvariable=self.weightVar)
         weightEntry.insert(0, "0")
         weightEntry.grid(row=6)

@@ -48,11 +48,6 @@ class GraphDrawrer(Drawing):
             for person in self.graph.people:
                 person.drawx = person.draw_x
                 person.drawy = person.draw_y
-        for person in self.graph.people:
-            pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                               10, 0)
-            box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-            pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
         if self.config == 0:
             self.width = 1
         else:
@@ -67,7 +62,7 @@ class GraphDrawrer(Drawing):
                 continue
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
             destination = (int(self.getx(connection.between[1].drawx)), int(self.gety(connection.between[1].drawy)))
-            pygame.draw.line(self.surface, (0, 255, 0), source, destination, self.width)
+            pygame.draw.line(self.surface, (0, 0, 0), source, destination, self.width)
         for transition in self.transitions:
             direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x,
                                   transition.person_to.draw_y - transition.person_to.draw_y])
@@ -75,6 +70,28 @@ class GraphDrawrer(Drawing):
                 [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step
             pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
                                0)
+        for person in self.graph.people:
+            if not hasattr(person, "participated") or person.participated == "0":
+                pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
+                                   10, 0)
+                box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
+                pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+            elif person.participated == "n":
+                pygame.draw.circle(self.surface, (0, 0, 255), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
+                                   10, 0)
+                box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
+                pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+            elif person.participated == "e":
+                pygame.draw.circle(self.surface, (0, 255, 255), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
+                                   10, 0)
+                box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
+                pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+            elif person.participated == "1":
+                pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
+                                   10, 0)
+                box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
+                pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+
         pygame.display.update()
         self.process_events()
 
@@ -107,7 +124,7 @@ class GraphDrawrer(Drawing):
             delta)) * self.attraction(k, self.distance(delta))
 
     def force_directed(self):
-        k = 0.3 * math.sqrt(1.0 / len(self.graph.people))
+        k = 0.5 * math.sqrt(1.0 / len(self.graph.people))
         t = 0.01
         for x in range (0,2):
             def repel(k, person):
@@ -122,7 +139,7 @@ class GraphDrawrer(Drawing):
                 self.displace(person, t)
 
     def attraction(self, k, x):
-        return (x ** 2) / k
+        return (x ** 2) / (2*k)
 
     def repulsion(self, k, x):
         if (x == 0):
