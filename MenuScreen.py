@@ -27,7 +27,22 @@ class Menu:
             envConfig = EnvMenu(self.root, self.main)
             envConfig.menu()
 
+        def advertConfig():
+            advertConfig = AdvertMenu(self.root, self.main)
+            advertConfig.menu()
+
+        def influenceConfig():
+            influenceConfig = InfluenceMenu(self.root, self.menu)
+            influenceConfig.menu()
+
+        def recommendationConfig():
+            recommendationConfig = RecommendationMenu(self.root, self.menu)
+            recommendationConfig.menu()
+
         self.secondScreen = BooleanVar()
+        self.advertActivate = BooleanVar()
+        self.influenceActivate = BooleanVar()
+        self.recommendationActivate = BooleanVar()
 
         left = StringVar()
         right = StringVar()
@@ -40,6 +55,13 @@ class Menu:
         rightHeading = ttk.Label(content, text="Second Screen")
         envMenu = ttk.Button(content, text="Environment Configure", command=envConfig)
         graphMenu = ttk.Button(content, text="Graph Configure", command=graphConfig)
+        advertActivate = ttk.Checkbutton(content, text="Activate Adverts", variable=self.advertActivate)
+        advertConfig = ttk.Button(content, text="Configure Adverts", command=advertConfig)
+        influenceActivate = ttk.Checkbutton(content, text="Activate Influence", variable=self.influenceActivate)
+        influenceConfig = ttk.Button(content, text="Configure Influence", command=influenceConfig)
+        recommendationActivate = ttk.Checkbutton(content, text="Activate Recommendation", variable=self.recommendationActivate)
+        recommendationConfig = ttk.Button(content, text="Configure Recommendation", command=recommendationConfig)
+
 
         displays = ['Virtual', 'Actual', 'None']
         for option in displays:
@@ -58,6 +80,12 @@ class Menu:
         rightHeading.grid(column=1, row=3, sticky=(N), pady=5)
         envMenu.grid(column=0, row=7, sticky=(N), pady=5)
         graphMenu.grid(column=1, row=7, sticky=(N), pady=5)
+        advertActivate.grid(column=0, row=8, sticky=(N), pady=5)
+        advertConfig.grid(column=1, row=8, sticky=(N), pady=5)
+        influenceActivate.grid(column=0, row=9, sticky=(N), pady=5)
+        influenceConfig.grid(column=1, row=9, sticky=(N), pady=5)
+        recommendationActivate.grid(column=0, row=10, sticky=(N), pady=5)
+        recommendationConfig.grid(column=1, row=10, sticky=(N), pady=5)
 
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
@@ -68,3 +96,15 @@ class Menu:
 
     def start(self):
         self.root.destroy()
+
+class AdvertMenu(object):
+    def __init__(self):
+        pass
+
+class InfluenceMenu(object):
+    def __init__(self):
+        pass
+
+class RecommendationMenu(object):
+    def __init__(self):
+        pass
