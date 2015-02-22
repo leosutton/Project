@@ -9,7 +9,6 @@ from DrawingController import DrawingController
 from EnvMenu import EnvMenu
 from graphMenu import GraphMenu
 
-
 class Menu:
     def __init__(self, main):
         self.root = Tk()
@@ -98,13 +97,141 @@ class Menu:
         self.root.destroy()
 
 class AdvertMenu(object):
-    def __init__(self):
-        pass
+    def menu(self):
+        self.root.title("Advert Configuration")
 
-class InfluenceMenu(object):
-    def __init__(self):
-        pass
+        def save():
+            self.save()
+
+        submit = ttk.Button(self.root, text="save", command=save)
+        submit.grid(column=0, row=1)
+
+        seedLabel = ttk.Label(self.root, text="Seed Number")
+        seedLabel.grid(column = 0, row=2)
+        self.seedVar = StringVar()
+        self.seedVar.set(10)
+        seedEntry = ttk.Entry(self.root, textvariable = self.seedVar)
+        seedEntry.grid(column = 1, row = 2)
+
+        emailLabel = ttk.Label(self.root, text="Email Number")
+        emailLabel.grid(column = 0, row=3)
+        self.emailVar = StringVar()
+        self.emailVar.set(10)
+        emailEntry = ttk.Entry(self.root, textvariable = self.emailVar)
+        emailEntry.grid(column = 1, row = 3)
+
+        adLabel = ttk.Label(self.root, text="Ad Number")
+        adLabel.grid(column = 0, row=4)
+        self.adVar = StringVar()
+        self.adVar.set(10)
+        adEntry = ttk.Entry(self.root, textvariable = self.adVar)
+        adEntry.grid(column = 1, row = 4)
+
+        muLabel = ttk.Label(self.root, text="Mu Number")
+        muLabel.grid(column = 0, row=5)
+        self.muVar = StringVar()
+        self.muVar.set(10)
+        muEntry = ttk.Entry(self.root, textvariable = self.muVar)
+        muEntry.grid(column = 1, row = 5)
+
+        sigmaLabel = ttk.Label(self.root, text="Sigma Number")
+        sigmaLabel.grid(column = 0, row=6)
+        self.sigmaVar = StringVar()
+        self.sigmaVar.set(10)
+        sigmaEntry = ttk.Entry(self.root, textvariable = self.sigmaVar)
+        sigmaEntry.grid(column = 1, row = 6)
+
+        self.root.mainloop()
+
+    def __init__(self, master, app):
+        self.root = Toplevel(master)
+        self.app = app
+
+    def save(self):
+        self.root.destroy()
+        self.app.AdMenuReturn = advertConfiguration(self.seedVar.get(), self.emailVar.get(), self.adVar.get(), self.muVar.get(), self.sigmaVar.get())
+
+class envConfiguration(object):
+    def __init__(self, colour, facing, seen):
+        self.colour = colour
+        self.facing = facing
+        self.seen = seen
+
+class advertConfiguration(object):
+    def __init__(self, seed, email, ad, mu, sigma):
+        self.seed = seed
+        self.email = email
+        self.ad = ad
+        self.mu = mu
+        self.sigma = sigma
+
+class influenceMenu(object):
+    def menu(self):
+        self.root.title("Advert Configuration")
+
+        def save():
+            self.save()
+
+        submit = ttk.Button(self.root, text="save", command=save)
+        submit.grid(column=0, row=1)
+
+        seedLabel = ttk.Label(self.root, text="Seed Number")
+        seedLabel.grid(column = 0, row=2)
+        self.seedVar = StringVar()
+        self.seedVar.set(10)
+        seedEntry = ttk.Entry(self.root, textvariable = self.seedVar)
+        seedEntry.grid(column = 1, row = 2)
+
+        modelVar = StringVar()
+        select1 = ttk.Radiobutton(self.root, text = "Influence model 1", variable = modelVar, value = "1")
+        select1.grid(column = 0, row = 3)
+        select2 = ttk.Radiobutton(self.root, text = "Influence model 2", variable = modelVar, value = "2")
+        select2.grid(column = 0, row = 4)
+
+        self.root.mainloop()
+
+    def __init__(self, master, app):
+        self.root = Toplevel(master)
+        self.app = app
+
+    def save(self):
+        self.root.destroy()
+        self.app.influenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
+
+class influenceConfiguration(object):
+    def __init__(self, seed, type):
+        self.seed = seed
+        self.type = type
 
 class RecommendationMenu(object):
-    def __init__(self):
-        pass
+    def menu(self):
+        self.root.title("Recommendation Configuration")
+
+        def save():
+            self.save()
+
+        submit = ttk.Button(self.root, text="save", command=save)
+        submit.grid(column=0, row=1)
+
+        seedLabel = ttk.Label(self.root, text="Seed Number")
+        seedLabel.grid(column = 0, row=2)
+        self.seedVar = StringVar()
+        self.seedVar.set(10)
+        seedEntry = ttk.Entry(self.root, textvariable = self.seedVar)
+        seedEntry.grid(column = 1, row = 2)
+
+        modelVar = StringVar()
+        select1 = ttk.Radiobutton(self.root, text = "Influence model 1", variable = modelVar, value = "1")
+        select1.grid(column = 0, row = 3)
+        select2 = ttk.Radiobutton(self.root, text = "Influence model 2", variable = modelVar, value = "2")
+        select2.grid(column = 0, row = 4)
+
+        self.root.mainloop()
+
+    def __init__(self, master, app):
+        self.root = Toplevel(master)
+        self.app = app
+
+    def save(self):
+        self.root.destroy()
+        self.app.influenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
