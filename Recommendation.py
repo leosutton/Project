@@ -9,7 +9,6 @@ class Recommendation(object):
         self.items = ["item1", "item2", "item3", "item4"]
 
     def intialise(self, number):
-        print("init")
         for person in self.graph.people:
             person.ratings = []
         for n in range (0,number):
@@ -40,12 +39,24 @@ class Recommendation(object):
         for thing in opinions:
             average += thing
         if len(opinions) > 0:
-            average /= len(opinions)
+            average = len(opinions)
+        person.opinion = Opinion(item, average)
         return average
 
+    def newGraph(self, item):
+        people = self.graph.people
+        connections = self.graph.connections
+        for connection in connections:
+            connection.strength = 1/(connection.between[0].opinion.opinion-connection.between[1].opinion.opinion)^2
 
 class Rating(object):
 
     def __init__(self, item, rating):
         self.item = item
         self.rating = rating
+
+class Opinion(object):
+
+    def __init__(self, item, opinion):
+        self.item = item
+        self.opinion = opinion

@@ -12,7 +12,7 @@ from Recommendation import Recommendation
 
 
 class DrawingController(object):
-    def __init__(self, main, influence, ad, recommendation, input, graph, env, people):
+    def __init__(self, main, ad, influence, recommendation, input, graph, env, people):
         self.mainConfig = main
         self.influenceConfig = influence
         self.adConfig = ad
@@ -30,46 +30,47 @@ class DrawingController(object):
         counter = 0
         record = {}
         if self.mainConfig.influence and self.influenceConfig.type == "1":
-            influence = Influence1(graph)
+            influence = Influence1(self.graph)
             influence.initialiseGraph()
-            influence.startingNodes(self.influenceConfig.seed)
+            influence.startingNodes(int(self.influenceConfig.seed))
 
         if self.mainConfig.influence and self.influenceConfig.type == "2":
-            influence = Influence2(graph)
+            influence = Influence2(self.graph)
             influence.initialiseGraph()
-            influence.startingNodes(self.influenceConfig.seed)
+            influence.startingNodes(int(self.influenceConfig.seed))
 
         if self.mainConfig.recommendation:
-            recommendation = Recommendation(graph)
+            recommendation = Recommendation(self.graph)
             recommendation.intialise(self.recommendationConfig.seed)
-            for person in graph.people:
+            for person in self.graph.people:
                 person.item1 = recommendation.getRecommendation(person, "item1")
-            for person in graph.people:
+            for person in self.graph.people:
                 person.item2 = recommendation.getRecommendation(person, "item2")
-            for person in graph.people:
+            for person in self.graph.people:
                 person.item3 = recommendation.getRecommendation(person, "item3")
 
         for n in range(0, 20):
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
+            self.graphDrawrer.force_directed()
             pygame.display.update()
             clock.tick(60)
 
         if self.mainConfig.advert:
-            viral = Viral(graph, self.adConfig.seed, self.adConfig.email, self.adConfig.ad, self.adConfig.mu, self.adConfig.sigma)
-            viral.seedEmail(graph, 5)
-            viral.seedAdvert(graph, 0.1)
-            record[counter] = viral.record(graph)
-        for n in range(0, 1000):
+            viral = Viral(self.graph, float(self.adConfig.seed), float(self.adConfig.email), float(self.adConfig.ad), float(self.adConfig.mu), float(self.adConfig.sigma))
+            viral.seedEmail(self.graph, 5)
+            viral.seedAdvert(self.graph, 0.1)
+            record[counter] = viral.record(self.graph)
+
+        while self.graphDrawrer.go:
             counter += 1
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             pygame.display.update()
             clock.tick(60)
             if counter % 5 == 0:
-                if self.mainConfig.advert == '1':
-                    viral.checkEmail(graph)
-                    record[counter] = viral.record(graph)
-                if self.mainConfig == '1':
+                if self.mainConfig.advert:
+                    viral.checkEmail(self.graph)
+                    record[counter] = viral.record(self.graph)
+                if self.mainConfig.influence:
                     influence.process()
 
-        if self.mainConfig == '1':
-            Plotter(record)
+        Plotter(record)

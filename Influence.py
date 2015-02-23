@@ -17,7 +17,6 @@ class Influence1(object):
             person.adopted = True
 
     def process(self):
-        print('processing')
         for person in self.graph.people:
             neighbors = []
             weights = []
@@ -36,7 +35,6 @@ class Influence1(object):
                     person.influence += weights[n]
             if person.influence > person.adoption:
                 person.adopted = True
-            print(weight)
 
 class Influence2(object):
     def __init__(self, graph, chance = 1):
@@ -51,14 +49,11 @@ class Influence2(object):
         for n in range(0, number):
             person = random.choice(self.graph.people)
             person.adopted = True
-            print('adopted')
 
 
     def process(self):
-        print('processing')
         for person in self.graph.people:
             if person.adopted:
-                print('found adopted')
                 neighbors = []
                 strengths = []
                 adopted = []
@@ -69,6 +64,5 @@ class Influence2(object):
                 for n in range (0, len(neighbors)):
                     if random.random()*self.chance < strengths[n]:
                         adopted.append(neighbors[n])
-                        print(strengths[n])
                 for neighbor in adopted:
                     neighbor.adopted = True

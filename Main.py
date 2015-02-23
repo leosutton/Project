@@ -38,6 +38,7 @@ class Main(object):
 
         Menu(self)
 
+        print(self.MainMenuReturn)
         self.makeGraph()
 
         drawing = DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)

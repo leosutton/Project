@@ -21,13 +21,6 @@ class Plotter(object):
             participateds.append(record[key].participated)
             rejecteds.append(record[key].rejected)
 
-        print(times)
-        print(nothings)
-        print(seedEmails)
-        print(otherEmails)
-        print(participateds)
-        print(rejecteds)
-
         plt.plot(times, nothings, 'r')
         plt.plot(times, seedEmails, 'b')
         plt.plot(times, otherEmails, 'c')

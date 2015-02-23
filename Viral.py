@@ -12,7 +12,7 @@ class Viral(object):
         self.mu = mu
         self.sigma = sigma
         for person in graph.people:
-            person.participated="0"
+            person.participated = "0"
 
     def seedAdvert(self, graph, proportion):
         for person in graph.people:
@@ -20,23 +20,18 @@ class Viral(object):
                 person.participated = "a"
                 if random.random() < self.fromAd:
                     self.participate(person, graph)
-                    print("seeded advert " + str(person))
-
 
     def seedEmail(self, graph, number):
         for n in range(0,number):
             person = random.choice(graph.people)
             if person.participated == "0":
                 person.participated = "s"
-                print("seeded email " + str(person))
             else:
                 number += 1
-                print("seed failed")
 
     def checkEmail(self, graph):
         toParticipate = []
         for person in graph.people:
-            print("check email " + str(person))
             if person.participated == "s":
                 if random.random()<self.fromSeed:
                     toParticipate.append(person)
@@ -51,7 +46,6 @@ class Viral(object):
             self.participate(person, graph)
 
     def participate(self, person, graph):
-        print("participated " + str(person))
         person.participated = "1"
         connections = []
         invites = max(0, math.trunc(random.normalvariate(self.mu, self.sigma)))
@@ -66,7 +60,6 @@ class Viral(object):
                     invitee.participated = "e"
 
     def record(self, graph):
-        print("recording")
         nothing = 0
         seedEmail = 0
         otherEmail = 0

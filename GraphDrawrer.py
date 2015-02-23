@@ -19,10 +19,10 @@ class GraphDrawrer(Drawing):
         self.graphConfig = graph
         self.envConfig = env
         self.transitions = []
+        self.go = True
 
 
     def make_frame(self):
-        self.force_directed()
         self.draw_graph()
         return self.surface
 
@@ -59,6 +59,8 @@ class GraphDrawrer(Drawing):
             self.key = 3
         if keys[K_4]:
             self.key = 4
+        if keys[K_ESCAPE]:
+            self.go = False
 
         for connection in self.graph.connections:
             if not (connection.between[0] in self.graph.people):
@@ -78,7 +80,8 @@ class GraphDrawrer(Drawing):
             pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
                                0)
         for person in self.graph.people:
-            if self.mainConfig.advert == "1":
+            if self.mainConfig.advert:
+                print("ad")
                 if not hasattr(person, "participated") or person.participated == "0":
                     pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        10, 0)
@@ -91,14 +94,16 @@ class GraphDrawrer(Drawing):
                 elif person.participated == "1":
                     pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        10, 0)
-            if self.mainConfig.influence == "1":
+            if self.mainConfig.influence:
+                print('influence')
                 if person.adopted:
                     pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        15, 5)
                 else:
                     pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        15, 5)
-            if self.mainConfig.recommendation == "1":
+            if self.mainConfig.recommendation:
+                print('recommend')
                 item = ""
                 opinion = 0
                 knows = False
@@ -116,16 +121,16 @@ class GraphDrawrer(Drawing):
                         opinion = rating.rating
                 if knows:
                     pygame.draw.circle(self.surface, (255*opinion, 0,255), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, width = 5)
+                                       10, 5)
                 elif item == "item1":
                     pygame.draw.circle(self.surface, (0, min(10*255*person.item1, 255), 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, width=5)
+                                       10, 5)
                 elif item == "item2":
                     pygame.draw.circle(self.surface, (0, min(10*255*person.item2, 255), 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, width=5)
+                                       10, 5)
                 elif item == "item3":
                     pygame.draw.circle(self.surface, (0, min(10*255*person.item3, 255), 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, width=5)
+                                       10, 5)
                 elif item == "max":
                     maximum = max([person.item1, person.item2, person.item3])
                     index = [person.item1, person.item2, person.item3].index(maximum)
@@ -171,7 +176,7 @@ class GraphDrawrer(Drawing):
             delta)) * self.attraction(k, self.distance(delta)) * connection.strength
 
     def force_directed(self):
-        k = 0.5 * math.sqrt(1.0 / len(self.graph.people))
+        k = 0.7 * math.sqrt(1.0 / len(self.graph.people))
         t = 0.01
         for x in range (0,2):
             def repel(k, person):
