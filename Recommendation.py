@@ -40,7 +40,7 @@ class Recommendation(object):
         for thing in opinions:
             average += thing
         if len(opinions) > 0:
-            average = average/len(opinions)
+            average /= len(opinions)
         return average
 
 

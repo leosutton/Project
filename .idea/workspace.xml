@@ -2,35 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2e872859-7864-438c-bfad-444be325ad1d" name="Default" comment="">
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\CategorisationsInteractions.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\CategorisationsInteractions1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Class Diagram.vpp" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Class Diagram.vpp.bak" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Class Diagram.vpp~1" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\ClassDiagram.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Classpng.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Config.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.aux" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.bbl" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.blg" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.dvi" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.log" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.out" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.synctex.gz" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Design Report.tex" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\Interaction types.pptx" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\InteractionTypes.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\InteractionTypes1.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\MVC.pdf" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\MVC.pptx" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\durhampaper.sty" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\program.prof" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\projectpaper.bib" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\projectpaper.bib.bak" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\screen.png" afterPath="" />
-      <change type="DELETED" beforePath="C:\Users\Leo\Documents\GitHub\Project\texput.log" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Clustering.py" afterPath="$PROJECT_DIR$/Clustering.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/DrawingController.py" afterPath="$PROJECT_DIR$/DrawingController.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Environment.py" afterPath="$PROJECT_DIR$/Environment.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/MenuScreen.py" afterPath="$PROJECT_DIR$/MenuScreen.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Recommendation.py" afterPath="$PROJECT_DIR$/Recommendation.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Project.iws" />
@@ -58,8 +34,8 @@
       <file leaf-file-name="Main.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-              <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="765">
+              <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -70,34 +46,8 @@
       <file leaf-file-name="MenuScreen.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/MenuScreen.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.33146068" vertical-offset="521" max-vertical-offset="1411">
-              <caret line="207" column="39" selection-start-line="207" selection-start-column="39" selection-end-line="207" selection-end-column="39" />
-              <folding>
-                <element signature="e#302#4204#0" expanded="false" />
-                <element signature="e#4236#6169#0" expanded="false" />
-                <element signature="e#6207#6331#0" expanded="false" />
-                <element signature="e#6372#6540#0" expanded="false" />
-                <element signature="e#7723#7804#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Influence.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Influence.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1343">
-              <caret line="29" column="40" selection-start-line="29" selection-start-column="40" selection-end-line="29" selection-end-column="40" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="graphMenu.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/graphMenu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="697" max-vertical-offset="1207">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+            <state vertical-scroll-proportion="0.8890098" vertical-offset="4351" max-vertical-offset="5270">
+              <caret line="304" column="32" selection-start-line="304" selection-start-column="32" selection-end-line="304" selection-end-column="32" />
               <folding>
                 <element signature="e#19#40#0" expanded="true" />
               </folding>
@@ -105,11 +55,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Viral.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Viral.py">
+      <file leaf-file-name="Graph.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Graph.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1377" max-vertical-offset="1649">
-              <caret line="83" column="44" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="867">
+              <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Environment.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Environment.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="1564">
+              <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -118,8 +78,8 @@
       <file leaf-file-name="Recommendation.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Recommendation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="952">
-              <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding>
                 <element signature="e#19#42#0" expanded="true" />
               </folding>
@@ -127,21 +87,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="EnvMenu.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/EnvMenu.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="68" max-vertical-offset="901">
-              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="48" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="GraphDrawrer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GraphDrawrer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="2374" max-vertical-offset="4216">
-              <caret line="147" column="37" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="3254" max-vertical-offset="4216">
+              <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
               <folding>
                 <element signature="e#20#31#0" expanded="true" />
               </folding>
@@ -152,8 +102,8 @@
       <file leaf-file-name="DrawingController.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/DrawingController.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1598">
-              <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="908" max-vertical-offset="1615">
+              <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
               <folding>
                 <element signature="e#19#42#0" expanded="true" />
               </folding>
@@ -161,11 +111,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Person.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Person.py">
+      <file leaf-file-name="Clustering.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Clustering.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="374">
-              <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="527">
+              <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="EnvMenu.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/EnvMenu.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="901">
+              <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Controller.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Controller.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1003">
+              <caret line="48" column="82" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
               <folding />
             </state>
           </provider>
@@ -185,27 +155,27 @@
         <option value="$PROJECT_DIR$/Menu Screen.py" />
         <option value="$USER_HOME$/Desktop/Interactions.py" />
         <option value="$PROJECT_DIR$/DrawController.py" />
-        <option value="$PROJECT_DIR$/Controller.py" />
         <option value="$PROJECT_DIR$/Wall.py" />
         <option value="$PROJECT_DIR$/DrawGraph.py" />
         <option value="$PROJECT_DIR$/MainController.py" />
         <option value="$PROJECT_DIR$/TkinterTest.py" />
         <option value="$PROJECT_DIR$/EnvMenu.py" />
         <option value="$PROJECT_DIR$/Drawing.py" />
-        <option value="$PROJECT_DIR$/Environment.py" />
         <option value="$PROJECT_DIR$/Person.py" />
         <option value="$PROJECT_DIR$/Loader.py" />
         <option value="$PROJECT_DIR$/Graph.py" />
-        <option value="$PROJECT_DIR$/Clustering.py" />
         <option value="$PROJECT_DIR$/graphMenu.py" />
         <option value="$PROJECT_DIR$/Plotter.py" />
         <option value="$PROJECT_DIR$/Viral.py" />
         <option value="$PROJECT_DIR$/Influence.py" />
         <option value="$PROJECT_DIR$/Reccomendation.py" />
-        <option value="$PROJECT_DIR$/Recommendation.py" />
-        <option value="$PROJECT_DIR$/DrawingController.py" />
-        <option value="$PROJECT_DIR$/GraphDrawrer.py" />
         <option value="$PROJECT_DIR$/Main.py" />
+        <option value="$PROJECT_DIR$/Recommendation.py" />
+        <option value="$PROJECT_DIR$/GraphDrawrer.py" />
+        <option value="$PROJECT_DIR$/Clustering.py" />
+        <option value="$PROJECT_DIR$/Controller.py" />
+        <option value="$PROJECT_DIR$/DrawingController.py" />
+        <option value="$PROJECT_DIR$/Environment.py" />
         <option value="$PROJECT_DIR$/MenuScreen.py" />
       </list>
     </option>
@@ -258,6 +228,7 @@
       <sortByType />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -278,7 +249,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -572,28 +542,28 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="false" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16770834" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16770834" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.52164733" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32819384" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32946146" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.250264" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2494577" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39742213" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.250264" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.39915523" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32867885" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.39742213" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -614,13 +584,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/MenuScreen.py</url>
-          <line>1</line>
-          <option name="timeStamp" value="27" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="python-exception">
           <properties notifyOnTerminate="true" exception="BaseException">
@@ -869,13 +832,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Controller.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="464" max-vertical-offset="1071">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Wall.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="340">
@@ -904,20 +860,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Environment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="204" max-vertical-offset="1564">
-          <caret line="82" column="35" selection-start-line="82" selection-start-column="35" selection-end-line="82" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Clustering.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="340" max-vertical-offset="510">
-          <caret line="20" column="42" selection-start-line="20" selection-start-column="42" selection-end-line="20" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Plotter.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="714">
@@ -925,59 +867,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Graph.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
-          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
-          <folding>
-            <element signature="e#19#32#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Person.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="374">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GraphDrawrer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="2374" max-vertical-offset="4216">
-          <caret line="147" column="37" selection-start-line="147" selection-start-column="37" selection-end-line="147" selection-end-column="37" />
-          <folding>
-            <element signature="e#20#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DrawingController.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="512" max-vertical-offset="1598">
-          <caret line="50" column="40" selection-start-line="50" selection-start-column="40" selection-end-line="50" selection-end-column="40" />
-          <folding>
-            <element signature="e#19#42#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/EnvMenu.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="901">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="48" selection-end-column="24" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Recommendation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="33" max-vertical-offset="952">
-          <caret line="27" column="51" selection-start-line="27" selection-start-column="51" selection-end-line="27" selection-end-column="51" />
-          <folding>
-            <element signature="e#19#42#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -985,7 +878,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1411" max-vertical-offset="1683">
           <caret line="83" column="44" selection-start-line="83" selection-start-column="44" selection-end-line="83" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -993,19 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="177" max-vertical-offset="1207">
           <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding>
-            <element signature="e#19#40#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="765">
-          <caret line="30" column="0" selection-start-line="30" selection-start-column="0" selection-end-line="30" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1017,16 +896,92 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Recommendation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="952">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#19#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/EnvMenu.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="279" max-vertical-offset="901">
+          <caret line="28" column="8" selection-start-line="28" selection-start-column="8" selection-end-line="28" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/GraphDrawrer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="3254" max-vertical-offset="4216">
+          <caret line="211" column="4" selection-start-line="211" selection-start-column="4" selection-end-line="211" selection-end-column="4" />
+          <folding>
+            <element signature="e#20#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Clustering.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="527">
+          <caret line="12" column="28" selection-start-line="12" selection-start-column="28" selection-end-line="12" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/DrawingController.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="908" max-vertical-offset="1615">
+          <caret line="64" column="12" selection-start-line="64" selection-start-column="12" selection-end-line="64" selection-end-column="12" />
+          <folding>
+            <element signature="e#19#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Environment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="517" max-vertical-offset="1564">
+          <caret line="47" column="23" selection-start-line="47" selection-start-column="23" selection-end-line="47" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Controller.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="105" max-vertical-offset="1003">
+          <caret line="48" column="82" selection-start-line="48" selection-start-column="82" selection-end-line="48" selection-end-column="82" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="153" max-vertical-offset="765">
+          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Graph.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <caret line="8" column="23" selection-start-line="8" selection-start-column="23" selection-end-line="8" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/MenuScreen.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33146068" vertical-offset="521" max-vertical-offset="1411">
-          <caret line="207" column="39" selection-start-line="207" selection-start-column="39" selection-end-line="207" selection-end-column="39" />
+        <state vertical-scroll-proportion="0.8890098" vertical-offset="4351" max-vertical-offset="5270">
+          <caret line="304" column="32" selection-start-line="304" selection-start-column="32" selection-end-line="304" selection-end-column="32" />
           <folding>
-            <element signature="e#302#4204#0" expanded="false" />
-            <element signature="e#4236#6169#0" expanded="false" />
-            <element signature="e#6207#6331#0" expanded="false" />
-            <element signature="e#6372#6540#0" expanded="false" />
-            <element signature="e#7723#7804#0" expanded="false" />
+            <element signature="e#19#40#0" expanded="true" />
           </folding>
         </state>
       </provider>

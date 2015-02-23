@@ -13,8 +13,9 @@ from Plotter import Plotter
 from Influence import Influence1, Influence2
 from Recommendation import Recommendation
 
+
 class DrawingController(object):
-    def __init__(self, left, right, graph, mode = "recommendation"):
+    def __init__(self, left, right, graph, mode="recommendation"):
         self.mode = mode
         print(mode)
         pygame.init()
@@ -22,13 +23,13 @@ class DrawingController(object):
             self.left = GraphDrawrer(graph, left, self.mode)
         else:
             self.left = Environment(graph, left)
-            print (type(left))
+            print(type(left))
 
         if isinstance(right, envConfiguration):
             self.right = Environment(graph, right)
         else:
             self.right = GraphDrawrer(graph, right, self.mode)
-            print (type(right))
+            print(type(right))
 
         surface = pygame.display.set_mode((800, 600))
         clock = pygame.time.Clock()
@@ -61,7 +62,7 @@ class DrawingController(object):
 
         for n in range(0, 20):
             surface.blit(self.left.make_frame(), (0, 0))
-            #surface.blit(self.right.make_frame(), (800, 0))
+            # surface.blit(self.right.make_frame(), (800, 0))
             pygame.display.update()
             clock.tick(60)
 
@@ -73,7 +74,7 @@ class DrawingController(object):
         for n in range(0, 1000):
             counter += 1
             surface.blit(self.left.make_frame(), (0, 0))
-            #surface.blit(self.right.make_frame(), (800, 0))
+            # surface.blit(self.right.make_frame(), (800, 0))
             pygame.display.update()
             clock.tick(60)
             if counter % 5 == 0:

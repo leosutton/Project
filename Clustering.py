@@ -1,6 +1,7 @@
 __author__ = 'Leo'
 from scipy.special import binom
 
+
 class Clustering(object):
     def __init__(self, graph):
         self.graph = graph
@@ -9,7 +10,7 @@ class Clustering(object):
         triplets = 0
         triangles = 0
         for node in self.graph.people:
-            trianglesHere =0
+            trianglesHere = 0
             connected = []
             for connection in self.graph.connections:
                 if connection.between[0] is node:
@@ -19,7 +20,7 @@ class Clustering(object):
                 if connection.between[0] in connected:
                     if connection.between[1] in connected:
                         trianglesHere += 1
-            triangles += trianglesHere/2
+            triangles += trianglesHere / 2
         print(str(triplets) + " triplets")
         print(str(triangles) + " triangles")
-        return triangles/triplets
+        return triangles / triplets

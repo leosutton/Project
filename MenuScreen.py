@@ -1,13 +1,10 @@
 __author__ = 'Leo'
 from tkinter import *
+from tkinter import filedialog
 from tkinter import ttk
-import pygame
-from Graph import Graph
-from Environment import Environment
-from GraphDrawrer import GraphDrawrer
-from DrawingController import DrawingController
 from EnvMenu import EnvMenu
 from graphMenu import GraphMenu
+
 
 class Menu:
     def __init__(self, main):
@@ -31,11 +28,11 @@ class Menu:
             advertConfig.menu()
 
         def influenceConfig():
-            influenceConfig = InfluenceMenu(self.root, self.menu)
+            influenceConfig = influenceMenu(self.root, self.main)
             influenceConfig.menu()
 
         def recommendationConfig():
-            recommendationConfig = RecommendationMenu(self.root, self.menu)
+            recommendationConfig = RecommendationMenu(self.root, self.main)
             recommendationConfig.menu()
 
         self.secondScreen = BooleanVar()
@@ -52,15 +49,16 @@ class Menu:
         second = ttk.Checkbutton(content, text="Second screen", variable=self.secondScreen)
         leftHeading = ttk.Label(content, text="First Screen")
         rightHeading = ttk.Label(content, text="Second Screen")
+        inputMenu = ttk.Button(content, text="Configure Input")
         envMenu = ttk.Button(content, text="Environment Configure", command=envConfig)
         graphMenu = ttk.Button(content, text="Graph Configure", command=graphConfig)
         advertActivate = ttk.Checkbutton(content, text="Activate Adverts", variable=self.advertActivate)
         advertConfig = ttk.Button(content, text="Configure Adverts", command=advertConfig)
         influenceActivate = ttk.Checkbutton(content, text="Activate Influence", variable=self.influenceActivate)
         influenceConfig = ttk.Button(content, text="Configure Influence", command=influenceConfig)
-        recommendationActivate = ttk.Checkbutton(content, text="Activate Recommendation", variable=self.recommendationActivate)
+        recommendationActivate = ttk.Checkbutton(content, text="Activate Recommendation",
+                                                 variable=self.recommendationActivate)
         recommendationConfig = ttk.Button(content, text="Configure Recommendation", command=recommendationConfig)
-
 
         displays = ['Virtual', 'Actual', 'None']
         for option in displays:
@@ -77,14 +75,15 @@ class Menu:
         start.grid(column=0, row=2, columnspan=2, sticky=(N), pady=5)
         leftHeading.grid(column=0, row=3, sticky=(N), pady=5)
         rightHeading.grid(column=1, row=3, sticky=(N), pady=5)
-        envMenu.grid(column=0, row=7, sticky=(N), pady=5)
-        graphMenu.grid(column=1, row=7, sticky=(N), pady=5)
-        advertActivate.grid(column=0, row=8, sticky=(N), pady=5)
-        advertConfig.grid(column=1, row=8, sticky=(N), pady=5)
-        influenceActivate.grid(column=0, row=9, sticky=(N), pady=5)
-        influenceConfig.grid(column=1, row=9, sticky=(N), pady=5)
-        recommendationActivate.grid(column=0, row=10, sticky=(N), pady=5)
-        recommendationConfig.grid(column=1, row=10, sticky=(N), pady=5)
+        inputMenu.grid(column=0, row = 4)
+        envMenu.grid(column=0, row=8, sticky=(N), pady=5)
+        graphMenu.grid(column=1, row=8, sticky=(N), pady=5)
+        advertActivate.grid(column=0, row=9, sticky=(N), pady=5)
+        advertConfig.grid(column=1, row=9, sticky=(N), pady=5)
+        influenceActivate.grid(column=0, row=10, sticky=(N), pady=5)
+        influenceConfig.grid(column=1, row=10, sticky=(N), pady=5)
+        recommendationActivate.grid(column=0, row=11, sticky=(N), pady=5)
+        recommendationConfig.grid(column=1, row=11, sticky=(N), pady=5)
 
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
@@ -96,8 +95,10 @@ class Menu:
     def start(self):
         self.root.destroy()
 
+
 class AdvertMenu(object):
     def menu(self):
+        print("advert menu")
         self.root.title("Advert Configuration")
 
         def save():
@@ -107,55 +108,59 @@ class AdvertMenu(object):
         submit.grid(column=0, row=1)
 
         seedLabel = ttk.Label(self.root, text="Seed Number")
-        seedLabel.grid(column = 0, row=2)
+        seedLabel.grid(column=0, row=2)
         self.seedVar = StringVar()
         self.seedVar.set(10)
-        seedEntry = ttk.Entry(self.root, textvariable = self.seedVar)
-        seedEntry.grid(column = 1, row = 2)
+        seedEntry = ttk.Entry(self.root, textvariable=self.seedVar)
+        seedEntry.grid(column=1, row=2)
 
         emailLabel = ttk.Label(self.root, text="Email Number")
-        emailLabel.grid(column = 0, row=3)
+        emailLabel.grid(column=0, row=3)
         self.emailVar = StringVar()
         self.emailVar.set(10)
-        emailEntry = ttk.Entry(self.root, textvariable = self.emailVar)
-        emailEntry.grid(column = 1, row = 3)
+        emailEntry = ttk.Entry(self.root, textvariable=self.emailVar)
+        emailEntry.grid(column=1, row=3)
 
         adLabel = ttk.Label(self.root, text="Ad Number")
-        adLabel.grid(column = 0, row=4)
+        adLabel.grid(column=0, row=4)
         self.adVar = StringVar()
         self.adVar.set(10)
-        adEntry = ttk.Entry(self.root, textvariable = self.adVar)
-        adEntry.grid(column = 1, row = 4)
+        adEntry = ttk.Entry(self.root, textvariable=self.adVar)
+        adEntry.grid(column=1, row=4)
 
         muLabel = ttk.Label(self.root, text="Mu Number")
-        muLabel.grid(column = 0, row=5)
+        muLabel.grid(column=0, row=5)
         self.muVar = StringVar()
         self.muVar.set(10)
-        muEntry = ttk.Entry(self.root, textvariable = self.muVar)
-        muEntry.grid(column = 1, row = 5)
+        muEntry = ttk.Entry(self.root, textvariable=self.muVar)
+        muEntry.grid(column=1, row=5)
 
         sigmaLabel = ttk.Label(self.root, text="Sigma Number")
-        sigmaLabel.grid(column = 0, row=6)
+        sigmaLabel.grid(column=0, row=6)
         self.sigmaVar = StringVar()
         self.sigmaVar.set(10)
-        sigmaEntry = ttk.Entry(self.root, textvariable = self.sigmaVar)
-        sigmaEntry.grid(column = 1, row = 6)
+        sigmaEntry = ttk.Entry(self.root, textvariable=self.sigmaVar)
+        sigmaEntry.grid(column=1, row=6)
 
         self.root.mainloop()
 
     def __init__(self, master, app):
+        print("init advert")
         self.root = Toplevel(master)
         self.app = app
 
     def save(self):
         self.root.destroy()
-        self.app.AdMenuReturn = advertConfiguration(self.seedVar.get(), self.emailVar.get(), self.adVar.get(), self.muVar.get(), self.sigmaVar.get())
+        self.app.AdMenuReturn = advertConfiguration(self.seedVar.get(), self.emailVar.get(), self.adVar.get(),
+                                                    self.muVar.get(), self.sigmaVar.get())
+
 
 class envConfiguration(object):
     def __init__(self, colour, facing, seen):
         self.colour = colour
         self.facing = facing
         self.seen = seen
+
 
 class advertConfiguration(object):
     def __init__(self, seed, email, ad, mu, sigma):
@@ -164,6 +169,7 @@ class advertConfiguration(object):
         self.ad = ad
         self.mu = mu
         self.sigma = sigma
+
 
 class influenceMenu(object):
     def menu(self):
@@ -176,17 +182,18 @@ class influenceMenu(object):
         submit.grid(column=0, row=1)
 
         seedLabel = ttk.Label(self.root, text="Seed Number")
-        seedLabel.grid(column = 0, row=2)
+        seedLabel.grid(column=0, row=2)
         self.seedVar = StringVar()
         self.seedVar.set(10)
-        seedEntry = ttk.Entry(self.root, textvariable = self.seedVar)
-        seedEntry.grid(column = 1, row = 2)
+        seedEntry = ttk.Entry(self.root, textvariable=self.seedVar)
+        seedEntry.grid(column=1, row=2)
 
         modelVar = StringVar()
-        select1 = ttk.Radiobutton(self.root, text = "Influence model 1", variable = modelVar, value = "1")
-        select1.grid(column = 0, row = 3)
-        select2 = ttk.Radiobutton(self.root, text = "Influence model 2", variable = modelVar, value = "2")
-        select2.grid(column = 0, row = 4)
+        select1 = ttk.Radiobutton(self.root, text="Influence model 1", variable=modelVar, value="1")
+        select1.grid(column=0, row=3)
+        select2 = ttk.Radiobutton(self.root, text="Influence model 2", variable=modelVar, value="2")
+        select2.grid(column=0, row=4)
+        self.modelVar = modelVar
 
         self.root.mainloop()
 
@@ -198,10 +205,12 @@ class influenceMenu(object):
         self.root.destroy()
         self.app.influenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
 
+
 class influenceConfiguration(object):
     def __init__(self, seed, type):
         self.seed = seed
         self.type = type
+
 
 class RecommendationMenu(object):
     def menu(self):
@@ -214,17 +223,11 @@ class RecommendationMenu(object):
         submit.grid(column=0, row=1)
 
         seedLabel = ttk.Label(self.root, text="Seed Number")
-        seedLabel.grid(column = 0, row=2)
+        seedLabel.grid(column=0, row=2)
         self.seedVar = StringVar()
         self.seedVar.set(10)
-        seedEntry = ttk.Entry(self.root, textvariable = self.seedVar)
-        seedEntry.grid(column = 1, row = 2)
-
-        modelVar = StringVar()
-        select1 = ttk.Radiobutton(self.root, text = "Influence model 1", variable = modelVar, value = "1")
-        select1.grid(column = 0, row = 3)
-        select2 = ttk.Radiobutton(self.root, text = "Influence model 2", variable = modelVar, value = "2")
-        select2.grid(column = 0, row = 4)
+        seedEntry = ttk.Entry(self.root, textvariable=self.seedVar)
+        seedEntry.grid(column=1, row=2)
 
         self.root.mainloop()
 
@@ -234,4 +237,69 @@ class RecommendationMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.influenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
+        self.app.influenceMenuReturn = recommendationConfiguration(self.seedVar.get())
+
+
+class recommendationConfiguration(object):
+    def __init__(self, seed):
+        self.seed = seed
+
+class inputMenu(object):
+    def menu(self):
+        self.root.title("Input Configuration")
+
+        def save():
+            self.save()
+
+        def askopenfile(self):
+            self.input = filedialog.askopenfile(mode='r')
+
+        submit = ttk.Button(self.root, text="save", command=save)
+        submit.grid(column=0, row=1)
+
+        loadVar = StringVar()
+        select1 = ttk.Radiobutton(self.root, text="Load input", variable=loadVar, value="1")
+        select1.grid(column=0, row=3)
+        select2 = ttk.Radiobutton(self.root, text="Generate input", variable=loadVar, value="0")
+        select2.grid(column=0, row=4)
+        self.loadVar = loadVar
+
+        filePick = ttk.Button(self.root, text="Choose input file", command=askopenfile)
+        filePick.grid(column=0, row=5)
+
+        cullLabel = ttk.Label(self.root, text="How many vertices to import")
+        cullLabel.grid(column=0, row=6)
+        cullVariable = StringVar()
+        cullInput = ttk.Entry(self.root, textvariable=cullVariable)
+        cullInput.grid(column=1, row=6)
+
+        randomPeopleLabel = ttk.Label(self.root, text="How many people to randomly generate")
+        randomPeopleLabel.grid(column=0, row=7)
+        randomPeopleVariable = StringVar()
+        randomPeopleInput = ttk.Entry(self.root, textvariable=randomPeopleVariable)
+        randomPeopleInput.grid(column=2, row=6)
+
+        randomConnectionsLabel = ttk.Label(self.root, text="How many connections to randomly generate")
+        randomConnectionsLabel.grid(column=0, row=7)
+        randomConnectionsVariable = StringVar()
+        randomConnectionsInput = ttk.Entry(self.root, textvariable=randomConnectionsVariable)
+        randomConnectionsInput.grid(column=2, row=6)
+
+        self.root.mainloop()
+
+    def __init__(self, master, app):
+        self.root = Toplevel(master)
+        self.app = app
+
+    def save(self):
+        self.root.destroy()
+        self.app.influenceMenuReturn = recommendationConfiguration(self.seedVar.get())
+
+
+class inputConfiguration(object):
+    def __init__(self, load, file="", cull="", people="", connections=""):
+        self.load = load
+        self.file = file
+        self.cull = cull
+        self.people = people
+        self.connections = connections

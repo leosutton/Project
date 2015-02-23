@@ -45,11 +45,11 @@ class Environment(Drawing):
 
     def colour(self, person):
         if self.config.colour == "None":
-            return (255,0,0)
+            return (255, 0, 0)
         if self.config.colour == "Friends":
-            return (255,0,0)
+            return (255, 0, 0)
         if self.config.colour == "Height":
-            number = person.env_y*255
+            number = person.env_y * 255
             return (number, 0, 0)
 
     def move(self, graph):
@@ -63,16 +63,16 @@ class Environment(Drawing):
                 if person.turn == 'l':
                     if random.random() < 0.005:
                         person.turn = 'r'
-                    person.direction = person.direction + random.random() / 100
+                    person.direction += random.random() / 100
                 if person.turn == 'r':
                     if random.random() < 0.005:
                         person.turn = 'l'
-                    person.direction = person.direction - random.random() / 30
+                    person.direction -= random.random() / 30
             elif random.random() > 0.5:
                 person.turn = 'l'
             else:
                 person.turn = 'r'
-            if self.config.seen == True:
+            if self.config.seen:
                 if self.see(50, person):
                     pygame.draw.circle(self.surface, (0, 0, 255),
                                        (int(self.getx(person.env_x)), int(self.gety(person.env_y))), 10, 0)
