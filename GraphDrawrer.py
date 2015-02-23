@@ -4,22 +4,22 @@ import math
 
 import pygame
 import numpy as np
-import random
-from Drawing import Drawing
-from Graph import Graph
-import threading
 from pygame.locals import *
-from Recommendation import Recommendation
+from Drawing import Drawing
 
 
 class GraphDrawrer(Drawing):
-    def __init__(self, graph, config, mode='recommendation'):
+    def __init__(self, people, main, influence, ad, recommendation, graph, env):
         Drawing.__init__(self)
-        np.seterr(all='raise')
-        self.graph = graph
+        self.graph = people
+        self.mainConfig = main
+        self.influenceConfig = influence
+        self.adConfig = ad
+        self.recommendationConfig = recommendation
+        self.graphConfig = graph
+        self.envConfig = env
         self.transitions = []
-        self.config = config
-        self.mode = mode
+
 
     def make_frame(self):
         self.force_directed()
@@ -59,10 +59,6 @@ class GraphDrawrer(Drawing):
             self.key = 3
         if keys[K_4]:
             self.key = 4
-        if self.config == 0:
-            self.width = 1
-        else:
-            self.width = int(self.config.weight)
 
         for connection in self.graph.connections:
             if not (connection.between[0] in self.graph.people):
@@ -73,7 +69,7 @@ class GraphDrawrer(Drawing):
                 continue
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
             destination = (int(self.getx(connection.between[1].drawx)), int(self.gety(connection.between[1].drawy)))
-            pygame.draw.line(self.surface, (0, 0, 0), source, destination, self.width)
+            pygame.draw.line(self.surface, (0, 0, 0), source, destination, int(self.graphConfig.weight))
         for transition in self.transitions:
             direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x,
                                   transition.person_to.draw_y - transition.person_to.draw_y])
@@ -82,39 +78,27 @@ class GraphDrawrer(Drawing):
             pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
                                0)
         for person in self.graph.people:
-            if self.mode == "viral":
+            if self.mainConfig.advert == "1":
                 if not hasattr(person, "participated") or person.participated == "0":
                     pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
                 elif person.participated == "n":
                     pygame.draw.circle(self.surface, (0, 0, 255), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
                 elif person.participated == "e":
                     pygame.draw.circle(self.surface, (0, 255, 255), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
                 elif person.participated == "1":
                     pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
                                        10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
-            if self.mode == "influence1" or self.mode == "influence2":
+            if self.mainConfig.influence == "1":
                 if person.adopted:
                     pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+                                       15, 5)
                 else:
                     pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
-            if self.mode == "recommendation":
+                                       15, 5)
+            if self.mainConfig.recommendation == "1":
                 item = ""
                 opinion = 0
                 knows = False
@@ -132,24 +116,16 @@ class GraphDrawrer(Drawing):
                         opinion = rating.rating
                 if knows:
                     pygame.draw.circle(self.surface, (255*opinion, 0,255), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+                                       10, width = 5)
                 elif item == "item1":
                     pygame.draw.circle(self.surface, (0, min(10*255*person.item1, 255), 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+                                       10, width=5)
                 elif item == "item2":
                     pygame.draw.circle(self.surface, (0, min(10*255*person.item2, 255), 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+                                       10, width=5)
                 elif item == "item3":
                     pygame.draw.circle(self.surface, (0, min(10*255*person.item3, 255), 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
-                    box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
-                    pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+                                       10, width=5)
                 elif item == "max":
                     maximum = max([person.item1, person.item2, person.item3])
                     index = [person.item1, person.item2, person.item3].index(maximum)

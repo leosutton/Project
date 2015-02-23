@@ -1,7 +1,7 @@
 from Graph import Graph
 
 from DrawingController import DrawingController
-from MenuScreen import Menu
+from MenuScreen import Menu, advertConfiguration, influenceConfiguration, recommendationConfiguration, inputConfiguration, mainConfiguration
 from EnvMenu import envConfiguration
 from graphMenu import graphConfiguration
 import cProfile
@@ -11,27 +11,36 @@ from Viral import Viral
 
 
 class Main(object):
+
+    def makeGraph(self):
+        if self.InputMenuReturn.load == "1":
+            self.graph = Loader().load(self.InputMenuReturn.file)
+            if not self.InputMenuReturn.cull == "0":
+                self.graph.trim(int(self.InputMenuReturn.cull))
+        else:
+            self.graph = Graph()
+            self.graph.generatePeople(self.InputMenuReturn.people)
+            self.graph.generateFriendships(self.InputMenuReturn.connections)
+
+
     def run(self):
-        loader = Loader()
-        graph = loader.load()
-        graph.trim(100)
-        cluster = Clustering(graph)
-        print("clustering " + str(cluster.findTriangles()))
+        # cluster = Clustering(graph)
+        # print("clustering " + str(cluster.findTriangles()))
 
-        for connection in graph.connections:
-            if not (connection.between[0] in graph.people):
-                graph.connections.remove(connection)
-                continue
-            if not (connection.between[1] in graph.people):
-                graph.connections.remove(connection)
-                continue
-
-        self.GraphMenuReturn = graphConfiguration("None", "None", 0)
+        self.MainMenuReturn = mainConfiguration(False, True, True, True)
+        self.AdMenuReturn = advertConfiguration('0.2', '0.2', '0.7', '7', '2')
+        self.InfluenceMenuReturn = influenceConfiguration('10', '1')
+        self.RecommendationMenuReturn = recommendationConfiguration(5)
+        f = open("graph.gml")
+        self.InputMenuReturn = inputConfiguration("1", f.read(), "100", "100", "100")
+        self.GraphMenuReturn = graphConfiguration("None", "None", '1')
         self.EnvMenuReturn = envConfiguration("None", True, True)
 
-        choices = Menu(self)
+        Menu(self)
 
-        drawing = DrawingController(self.GraphMenuReturn, self.EnvMenuReturn, graph)
+        self.makeGraph()
+
+        drawing = DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)
 
         print("return")
 

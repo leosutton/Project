@@ -8,9 +8,8 @@ class Loader(object):
     def __init__(self):
         self.graph = Graph()
 
-    def load(self):
-        print('loading graph')
-        file = open('graph.gml', 'r')
+    def load(self, input):
+        file = input.split("\n")
         self.id = 0
         self.label = ""
         self.sex = ""

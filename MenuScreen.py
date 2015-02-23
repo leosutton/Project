@@ -35,13 +35,14 @@ class Menu:
             recommendationConfig = RecommendationMenu(self.root, self.main)
             recommendationConfig.menu()
 
+        def inputConfig():
+            inputConfig = InputMenu(self.root, self.main)
+            inputConfig.menu()
+
         self.secondScreen = BooleanVar()
         self.advertActivate = BooleanVar()
         self.influenceActivate = BooleanVar()
         self.recommendationActivate = BooleanVar()
-
-        left = StringVar()
-        right = StringVar()
 
         content = ttk.Frame(self.root, padding=(3, 3, 12, 12))
         title = ttk.Label(content, text="Configuration")
@@ -49,7 +50,7 @@ class Menu:
         second = ttk.Checkbutton(content, text="Second screen", variable=self.secondScreen)
         leftHeading = ttk.Label(content, text="First Screen")
         rightHeading = ttk.Label(content, text="Second Screen")
-        inputMenu = ttk.Button(content, text="Configure Input")
+        inputMenu = ttk.Button(content, text="Configure Input", command=inputConfig)
         envMenu = ttk.Button(content, text="Environment Configure", command=envConfig)
         graphMenu = ttk.Button(content, text="Graph Configure", command=graphConfig)
         advertActivate = ttk.Checkbutton(content, text="Activate Adverts", variable=self.advertActivate)
@@ -60,22 +61,13 @@ class Menu:
                                                  variable=self.recommendationActivate)
         recommendationConfig = ttk.Button(content, text="Configure Recommendation", command=recommendationConfig)
 
-        displays = ['Virtual', 'Actual', 'None']
-        for option in displays:
-            list1 = ttk.Radiobutton(content, text=option, variable=left, value=option)
-            list1.grid(column=0, row=4 + displays.index(option), sticky=(N), pady=5)
-
-        for option in displays:
-            list2 = ttk.Radiobutton(content, text=option, variable=right, value=option)
-            list2.grid(column=1, row=4 + displays.index(option), sticky=(N), pady=5)
-
         content.grid(column=0, row=0, sticky=(N, S, E, W))
         title.grid(column=0, row=0, columnspan=2, sticky=(N), pady=5)
         second.grid(column=0, row=1, columnspan=2, sticky=(N), pady=5)
         start.grid(column=0, row=2, columnspan=2, sticky=(N), pady=5)
         leftHeading.grid(column=0, row=3, sticky=(N), pady=5)
         rightHeading.grid(column=1, row=3, sticky=(N), pady=5)
-        inputMenu.grid(column=0, row = 4)
+        inputMenu.grid(column=0, row=4)
         envMenu.grid(column=0, row=8, sticky=(N), pady=5)
         graphMenu.grid(column=1, row=8, sticky=(N), pady=5)
         advertActivate.grid(column=0, row=9, sticky=(N), pady=5)
@@ -94,7 +86,14 @@ class Menu:
 
     def start(self):
         self.root.destroy()
+        self.main.MainMenuReturn = mainConfiguration(self.secondScreen.get(), self.advertActivate.get(), self.influenceActivate.get(), self.recommendationActivate.get())
 
+class mainConfiguration(object):
+    def __init__(self, second, advert, influence, recommendation):
+        self.second = second
+        self.advert = advert
+        self.influence = influence
+        self.recommendation = recommendation
 
 class AdvertMenu(object):
     def menu(self):
@@ -203,7 +202,7 @@ class influenceMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.influenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
+        self.app.InfluenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
 
 
 class influenceConfiguration(object):
@@ -237,21 +236,23 @@ class RecommendationMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.influenceMenuReturn = recommendationConfiguration(self.seedVar.get())
+        self.app.RecommendationMenuReturn = recommendationConfiguration(self.seedVar.get())
 
 
 class recommendationConfiguration(object):
     def __init__(self, seed):
         self.seed = seed
 
-class inputMenu(object):
+class InputMenu(object):
     def menu(self):
         self.root.title("Input Configuration")
 
         def save():
+            if not hasattr(self, "input"):
+                self.input = ""
             self.save()
 
-        def askopenfile(self):
+        def askopenfile():
             self.input = filedialog.askopenfile(mode='r')
 
         submit = ttk.Button(self.root, text="save", command=save)
@@ -269,21 +270,21 @@ class inputMenu(object):
 
         cullLabel = ttk.Label(self.root, text="How many vertices to import")
         cullLabel.grid(column=0, row=6)
-        cullVariable = StringVar()
-        cullInput = ttk.Entry(self.root, textvariable=cullVariable)
+        self.cullVariable = StringVar()
+        cullInput = ttk.Entry(self.root, textvariable=self.cullVariable)
         cullInput.grid(column=1, row=6)
 
         randomPeopleLabel = ttk.Label(self.root, text="How many people to randomly generate")
         randomPeopleLabel.grid(column=0, row=7)
-        randomPeopleVariable = StringVar()
-        randomPeopleInput = ttk.Entry(self.root, textvariable=randomPeopleVariable)
-        randomPeopleInput.grid(column=2, row=6)
+        self.randomPeopleVariable = StringVar()
+        randomPeopleInput = ttk.Entry(self.root, textvariable=self.randomPeopleVariable)
+        randomPeopleInput.grid(column=1, row=7)
 
         randomConnectionsLabel = ttk.Label(self.root, text="How many connections to randomly generate")
-        randomConnectionsLabel.grid(column=0, row=7)
-        randomConnectionsVariable = StringVar()
-        randomConnectionsInput = ttk.Entry(self.root, textvariable=randomConnectionsVariable)
-        randomConnectionsInput.grid(column=2, row=6)
+        randomConnectionsLabel.grid(column=0, row=8)
+        self.randomConnectionsVariable = StringVar()
+        randomConnectionsInput = ttk.Entry(self.root, textvariable=self.randomConnectionsVariable)
+        randomConnectionsInput.grid(column=1, row=8)
 
         self.root.mainloop()
 
@@ -293,7 +294,7 @@ class inputMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.influenceMenuReturn = recommendationConfiguration(self.seedVar.get())
+        self.app.InputMenuReturn = inputConfiguration(self.loadVar.get(), self.input.get(), self.cullVariable.get(), self.randomPeopleVariable.get(), self.randomConnectionsVariable.get())
 
 
 class inputConfiguration(object):
