@@ -43,7 +43,8 @@ class Graph:
                 connection.strength = 1
 
     def trim(self, number):
-        self.people = self.people[:number]
-        for connection in self.connections:
-            if (not (connection.between[0] in self.people)) or (not (connection.between[1] in self.people)):
-                self.connections.remove(connection)
+        if number < len(self.people):
+            self.people = self.people[:number]
+            for connection in self.connections:
+                if (not (connection.between[0] in self.people)) or (not (connection.between[1] in self.people)):
+                    self.connections.remove(connection)

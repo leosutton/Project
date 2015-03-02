@@ -15,7 +15,7 @@ class Drawing(object):
         video_info = pygame.display.Info()
         self.screenHeight = video_info.current_h
         self.screenWidth = video_info.current_w
-        self.surface = pygame.Surface((800, 600))
+        self.surface = pygame.Surface((1920, 1080))
 
     def get_width(self, surface):
         return surface.get_width()

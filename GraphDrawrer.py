@@ -204,7 +204,7 @@ class GraphDrawrer(Drawing):
         if not dis == 0:
             return dis
         else:
-            return 0.0001
+            return 0.00001
 
 
 class Lens:

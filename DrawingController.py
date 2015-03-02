@@ -22,7 +22,7 @@ class DrawingController(object):
         self.envConfig = env
         self.graph = people
         pygame.init()
-        surface = pygame.display.set_mode((800, 600))
+        surface = pygame.display.set_mode((1920, 1080))
         clock = pygame.time.Clock()
 
         self.graphDrawrer = GraphDrawrer(self.graph, self.mainConfig, self.influenceConfig, self.adConfig, self.recommendationConfig, self.graphConfig, self.envConfig)
@@ -49,7 +49,7 @@ class DrawingController(object):
             for person in self.graph.people:
                 person.item3 = recommendation.getRecommendation(person, "item3")
 
-        for n in range(0, 20):
+        for n in range(0, 50):
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             self.graphDrawrer.force_directed()
             pygame.display.update()

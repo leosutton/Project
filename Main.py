@@ -32,13 +32,12 @@ class Main(object):
         self.InfluenceMenuReturn = influenceConfiguration('10', '1')
         self.RecommendationMenuReturn = recommendationConfiguration(5)
         f = open("graph.gml")
-        self.InputMenuReturn = inputConfiguration("1", f.read(), "100", "100", "100")
+        self.InputMenuReturn = inputConfiguration("1", f.read(), "1000", "100", "100")
         self.GraphMenuReturn = graphConfiguration("None", "None", '1')
         self.EnvMenuReturn = envConfiguration("None", True, True)
 
         Menu(self)
 
-        print(self.MainMenuReturn)
         self.makeGraph()
 
         drawing = DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)
