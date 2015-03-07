@@ -9,8 +9,8 @@ from Drawing import Drawing
 
 
 class GraphDrawrer(Drawing):
-    def __init__(self, people, main, influence, ad, recommendation, graph, env):
-        Drawing.__init__(self)
+    def __init__(self, people, main, influence, ad, recommendation, graph, env, res=(1920, 1080)):
+        Drawing.__init__(self, res)
         self.graph = people
         self.mainConfig = main
         self.influenceConfig = influence

@@ -45,5 +45,5 @@ class Main(object):
         print("return")
 
 if __name__ == '__main__':
-    #cProfile.run('Main().run()')
-    Main().run()
+    cProfile.run('Main().run()')
+    #Main().run()

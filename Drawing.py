@@ -11,11 +11,11 @@ class Drawing(object):
     mousex = 0
     mousey = 0
 
-    def __init__(self):
+    def __init__(self, res):
         video_info = pygame.display.Info()
         self.screenHeight = video_info.current_h
         self.screenWidth = video_info.current_w
-        self.surface = pygame.Surface((1920, 1080))
+        self.surface = pygame.Surface(res)
 
     def get_width(self, surface):
         return surface.get_width()
