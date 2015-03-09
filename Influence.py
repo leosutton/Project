@@ -7,7 +7,7 @@ class Influence1(object):
 
     def initialiseGraph(self):
         for person in self.graph.people:
-            person.adoption = random.random()
+            person.adoption = random.random() + 1
             person.adopted = False
             person.influence = 0
 
@@ -16,25 +16,24 @@ class Influence1(object):
             person = random.choice(self.graph.people)
             person.adopted = True
 
-    def process(self):
+    def process(self, count):
         for person in self.graph.people:
             neighbors = []
             weights = []
             weight = 0
-            normalisation = 1
             for connection in self.graph.connections:
                 if connection.between[0] == person:
                     neighbors.append(connection)
                     weights.append(connection.strength)
             for connection in neighbors:
                 weight += connection.strength
-            if weight > 1:
-                normalisation = 1/weight
             for n in range (0, len(neighbors)):
                 if neighbors[n].between[1].adopted:
                     person.influence += weights[n]
-            if person.influence > person.adoption:
-                person.adopted = True
+            if not weight == 0:
+                if person.influence/weight > person.adoption:
+                    person.adopted = True
+                    person.adoptedOn = count
 
 class Influence2(object):
     def __init__(self, graph, chance = 1):
@@ -51,7 +50,7 @@ class Influence2(object):
             person.adopted = True
 
 
-    def process(self):
+    def process(self, count):
         for person in self.graph.people:
             if person.adopted:
                 neighbors = []
@@ -66,3 +65,4 @@ class Influence2(object):
                         adopted.append(neighbors[n])
                 for neighbor in adopted:
                     neighbor.adopted = True
+                    neighbor.adoptedOn = count

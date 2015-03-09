@@ -97,7 +97,6 @@ class mainConfiguration(object):
 
 class AdvertMenu(object):
     def menu(self):
-        print("advert menu")
         self.root.title("Advert Configuration")
 
         def save():
@@ -147,6 +146,10 @@ class AdvertMenu(object):
         print("init advert")
         self.root = Toplevel(master)
         self.app = app
+
+    def __init__(self, app):
+        self.app = app
+        self.root = Tk()
 
     def save(self):
         self.root.destroy()

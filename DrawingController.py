@@ -2,7 +2,7 @@ __author__ = 'Leo'
 import pygame
 
 from Environment import Environment
-from GraphDrawrer import GraphDrawrer
+from GraphDrawrer import GraphDrawrer, Layout
 from EnvMenu import envConfiguration
 from graphMenu import graphConfiguration
 from Viral import Viral
@@ -51,7 +51,7 @@ class DrawingController(object):
 
         for n in range(0, 50):
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
-            self.graphDrawrer.force_directed()
+            Layout(self.graph).force_directed()
             pygame.display.update()
             clock.tick(60)
 

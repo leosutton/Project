@@ -16,6 +16,7 @@ class Drawing(object):
         self.screenHeight = video_info.current_h
         self.screenWidth = video_info.current_w
         self.surface = pygame.Surface(res)
+        self.res = res
 
     def get_width(self, surface):
         return surface.get_width()
@@ -33,10 +34,10 @@ class Drawing(object):
         return margin
 
     def getx(self, x):
-        return int(round(x * self.screenWidth))
+        return int(x * self.res[0])
 
     def gety(self, y):
-        return int(round(y * self.screenHeight))
+        return int(y * self.res[1])
 
     def getMousexPos(self):
         return self.mousex
