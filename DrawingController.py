@@ -9,6 +9,8 @@ from Viral import Viral
 from Plotter import Plotter
 from Influence import Influence1, Influence2
 from Recommendation import Recommendation
+from Social import Social
+import random
 
 
 class DrawingController(object):
@@ -49,6 +51,17 @@ class DrawingController(object):
             for person in self.graph.people:
                 person.item3 = recommendation.getRecommendation(person, "item3")
 
+        if self.mainConfig.social:
+            social = Social(self.graph, self.graphDrawrer)
+
+        for connection in self.graph.connections:
+            if not (connection.between[0] in self.graph.people):
+                self.graph.connections.remove(connection)
+                continue
+            if not (connection.between[1] in self.graph.people):
+                self.graph.connections.remove(connection)
+                continue
+
         for n in range(0, 50):
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             Layout(self.graph).force_directed()
@@ -63,6 +76,13 @@ class DrawingController(object):
 
         while self.graphDrawrer.go:
             counter += 1
+            print(counter)
+            for person in self.graph.people:
+                social.checkWall(person)
+                if random.random() < 0.2:
+                    social.postPhoto(person)
+                if random.random() < 0.2:
+                    social.postStatus(person)
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             pygame.display.update()
             clock.tick(60)

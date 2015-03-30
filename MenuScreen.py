@@ -39,10 +39,15 @@ class Menu:
             inputConfig = InputMenu(self.root, self.main)
             inputConfig.menu()
 
+        def socialConfig():
+            socialConfig = SocialMenu(self.root, self.main)
+            socialConfig.menu()
+
         self.secondScreen = BooleanVar()
         self.advertActivate = BooleanVar()
         self.influenceActivate = BooleanVar()
         self.recommendationActivate = BooleanVar()
+        self.socialActiavate = BooleanVar()
 
         content = ttk.Frame(self.root, padding=(3, 3, 12, 12))
         title = ttk.Label(content, text="Configuration")
@@ -60,6 +65,8 @@ class Menu:
         recommendationActivate = ttk.Checkbutton(content, text="Activate Recommendation",
                                                  variable=self.recommendationActivate)
         recommendationConfig = ttk.Button(content, text="Configure Recommendation", command=recommendationConfig)
+        socialActivate = ttk.Checkbutton(content, text="Activate Social", variable=self.socialActiavate)
+        socialConfig = ttk.Button(content, text="Configure Social", command=socialConfig)
 
         content.grid(column=0, row=0, sticky=(N, S, E, W))
         title.grid(column=0, row=0, columnspan=2, sticky=(N), pady=5)
@@ -76,6 +83,9 @@ class Menu:
         influenceConfig.grid(column=1, row=10, sticky=(N), pady=5)
         recommendationActivate.grid(column=0, row=11, sticky=(N), pady=5)
         recommendationConfig.grid(column=1, row=11, sticky=(N), pady=5)
+        socialActivate.grid(column=0, row=12, sticky=(N), pady=5)
+        socialConfig.grid(column=1, row=12, sticky=(N), pady=5)
+
 
         self.root.columnconfigure(0, weight=1)
         self.root.rowconfigure(0, weight=1)
@@ -86,14 +96,15 @@ class Menu:
 
     def start(self):
         self.root.destroy()
-        self.main.MainMenuReturn = mainConfiguration(self.secondScreen.get(), self.advertActivate.get(), self.influenceActivate.get(), self.recommendationActivate.get())
+        self.main.MainMenuReturn = mainConfiguration(self.secondScreen.get(), self.advertActivate.get(), self.influenceActivate.get(), self.recommendationActivate.get(), self.socialActiavate.get())
 
 class mainConfiguration(object):
-    def __init__(self, second, advert, influence, recommendation):
+    def __init__(self, second, advert, influence, recommendation, social):
         self.second = second
         self.advert = advert
         self.influence = influence
         self.recommendation = recommendation
+        self.social = social
 
 class AdvertMenu(object):
     def menu(self):
@@ -307,3 +318,28 @@ class inputConfiguration(object):
         self.cull = cull
         self.people = people
         self.connections = connections
+
+class SocialMenu(object):
+    def menu(self):
+        self.root.title("Social Configuration")
+
+        def save():
+            self.save()
+
+        submit = ttk.Button(self.root, text="save", command=save)
+        submit.grid(column=0, row=1)
+
+        self.root.mainloop()
+
+    def __init__(self, master, app):
+        self.root = Toplevel(master)
+        self.app = app
+
+    def save(self):
+        self.root.destroy()
+        self.app.InputMenuReturn = socialConfiguration()
+
+
+class socialConfiguration(object):
+    def __init__(self):
+        pass

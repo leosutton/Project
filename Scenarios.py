@@ -188,10 +188,19 @@ class RecommendationScen(object):
             person.ratings = []
         self.preparePeople(self.main.graph)
         for person in self.main.graph.people:
+            for rating in person.ratings:
+                if rating.item == "item1":
+                    person.item1 = rating.rating
             person.item1 = Recommendation(self.main.graph).getRecommendation(person, 'item1')
         for person in self.main.graph.people:
+            for rating in person.ratings:
+                if rating.item == "item2":
+                    person.item2 = rating.rating
             person.item2 = Recommendation(self.main.graph).getRecommendation(person, 'item2')
         for person in self.main.graph.people:
+            for rating in person.ratings:
+                if rating.item == "item3":
+                    person.item3 = rating.rating
             person.item3 = Recommendation(self.main.graph).getRecommendation(person, 'item3')
         pygame.init()
         surface = pygame.display.set_mode((1920, 1080))
@@ -215,25 +224,19 @@ class RecommendationScen(object):
         self.graphDrawrerBL = GraphDrawrer(self.graphBL, self.main.MainMenuReturn, self.main.InfluenceMenuReturn, self.main.AdMenuReturn, self.main.RecommendationMenuReturn, self.main.GraphMenuReturn, self.main.EnvMenuReturn, (960,540))
         self.graphDrawrerBR = GraphDrawrer(self.graphBR, self.main.MainMenuReturn, self.main.InfluenceMenuReturn, self.main.AdMenuReturn, self.main.RecommendationMenuReturn, self.main.GraphMenuReturn, self.main.EnvMenuReturn, (960,540))
         for n in range(0,20):
-            surface.blit(self.graphDrawrerTL.make_frame(), (0, 0), (0, 0, 960, 540))
-            surface.blit(self.graphDrawrerTR.make_frame(), (960, 0), (960, 0, 960, 540))
-            surface.blit(self.graphDrawrerBL.make_frame(), (0, 540), (0, 540, 960, 540))
-            surface.blit(self.graphDrawrerBR.make_frame(), (960, 540), (960, 540, 960, 540))
+            surface.blit(self.graphDrawrerTL.make_frame(), (0, 0))
+            surface.blit(self.graphDrawrerTR.make_frame(), (960, 0))
+            surface.blit(self.graphDrawrerBL.make_frame(), (0, 540))
+            surface.blit(self.graphDrawrerBR.make_frame(), (960, 540))
             Layout(self.graphTL).force_directed()
-            for person in self.graphTL.people:
-                for rating in person.ratings:
-                    if rating.item == "item1":
-                        person.draw_x += (rating.rating)-0.5
+            for person in self.graphTR.people:
+                person.draw_x = person.item1
             Layout(self.graphTR).force_directed()
-            for person in self.graphTL.people:
-                for rating in person.ratings:
-                    if rating.item == "item2":
-                        person.draw_x += (rating.rating)-0.5
+            for person in self.graphBL.people:
+                person.draw_x = person.item2
             Layout(self.graphBL).force_directed()
-            for person in self.graphTL.people:
-                for rating in person.ratings:
-                    if rating.item == "item3":
-                        person.draw_x += (rating.rating)-0.5
+            for person in self.graphBR.people:
+                person.draw_x = person.item3
             Layout(self.graphBR).force_directed()
             pygame.display.update()
             clock.tick(60)

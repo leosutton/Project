@@ -9,7 +9,7 @@ from Drawing import Drawing
 
 
 class GraphDrawrer(Drawing):
-    def __init__(self, people, main, influence, ad, recommendation, graph, env, res, current = 0):
+    def __init__(self, people, main, influence, ad, recommendation, graph, env, res = (1920,1080), current = 0):
         Drawing.__init__(self, res)
         self.graph = people
         self.mainConfig = main
@@ -24,20 +24,18 @@ class GraphDrawrer(Drawing):
 
     def drawConnections(self):
         for connection in self.graph.connections:
-            if not (connection.between[0] in self.graph.people):
-                self.graph.connections.remove(connection)
-                continue
-            if not (connection.between[1] in self.graph.people):
-                self.graph.connections.remove(connection)
-                continue
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
             destination = (int(self.getx(connection.between[1].drawx)), int(self.gety(connection.between[1].drawy)))
-            pygame.draw.line(self.surface, (0, 0, 0), source, destination, int(self.graphConfig.weight))
+            if self.mainConfig.social:
+                pygame.draw.line(self.surface, (0, 0, 0), source, destination, int(connection.strength*5))
+            else:
+                pygame.draw.line(self.surface, (0, 0, 0), source, destination, int(self.graphConfig.weight))
         for transition in self.transitions:
             direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x,
                                   transition.person_to.draw_y - transition.person_to.draw_y])
             location = np.array(
                 [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step
+#            print("drawing circle from " + str(transition.person_from) + " to " + str(transition.person_to))
             pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
                                0)
 
@@ -214,7 +212,6 @@ class Layout(object):
 
     def distance(self, delta):
         return math.sqrt(delta[0] ** 2 + delta[1] ** 2) + 0.001
-
 
 class Lens:
     def __init__(self, sigma):

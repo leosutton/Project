@@ -31,20 +31,16 @@ class Graph:
             strength = random.random()
             self.connections.append(Relationship(first, to, strength))
 
-    def decay(self, x):
-        for connection in self.connections:
-            connection.strength -= x
-            if connection.strength < 0:
-                self.connections.remove(connection)
-
-    def check(self):
-        for connection in self.connections:
-            if connection.strength < 1:
-                connection.strength = 1
-
     def trim(self, number):
         if number < len(self.people):
             self.people = self.people[:number]
             for connection in self.connections:
                 if (not (connection.between[0] in self.people)) or (not (connection.between[1] in self.people)):
                     self.connections.remove(connection)
+
+    def getNeighbors(self, person):
+        neighbors = []
+        for connection in self.connections:
+            if connection.between[0] == person:
+                neighbors.append(connection.between[1])
+        return neighbors

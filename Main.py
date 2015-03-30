@@ -1,7 +1,7 @@
 from Graph import Graph
 
 from DrawingController import DrawingController
-from MenuScreen import Menu, advertConfiguration, influenceConfiguration, recommendationConfiguration, inputConfiguration, mainConfiguration
+from MenuScreen import Menu, advertConfiguration, influenceConfiguration, recommendationConfiguration, inputConfiguration, mainConfiguration, socialConfiguration
 from EnvMenu import envConfiguration
 from graphMenu import graphConfiguration
 import cProfile
@@ -24,10 +24,7 @@ class Main(object):
 
 
     def run(self):
-        # cluster = Clustering(graph)
-        # print("clustering " + str(cluster.findTriangles()))
-
-        self.MainMenuReturn = mainConfiguration(False, True, True, True)
+        self.MainMenuReturn = mainConfiguration(False, True, True, True, True)
         self.AdMenuReturn = advertConfiguration('0.2', '0.2', '0.7', '7', '2')
         self.InfluenceMenuReturn = influenceConfiguration('10', '1')
         self.RecommendationMenuReturn = recommendationConfiguration(5)
@@ -35,10 +32,14 @@ class Main(object):
         self.InputMenuReturn = inputConfiguration("1", f.read(), "1000", "100", "100")
         self.GraphMenuReturn = graphConfiguration("None", "None", '1')
         self.EnvMenuReturn = envConfiguration("None", True, True)
+        self.SocialMenuReturn = socialConfiguration()
 
         Menu(self)
 
         self.makeGraph()
+
+        cluster = Clustering(self.graph)
+        print("clustering " + str(cluster.findTriangles()))
 
         drawing = DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)
 
