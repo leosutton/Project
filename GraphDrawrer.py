@@ -35,7 +35,7 @@ class GraphDrawrer(Drawing):
                                   transition.person_to.draw_y - transition.person_to.draw_y])
             location = np.array(
                 [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step
-#            print("drawing circle from " + str(transition.person_from) + " to " + str(transition.person_to))
+            print("drawing circle from " + str(transition.person_from) + " to " + str(transition.person_to))
             pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
                                0)
 

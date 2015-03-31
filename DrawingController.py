@@ -79,9 +79,9 @@ class DrawingController(object):
             print(counter)
             for person in self.graph.people:
                 social.checkWall(person)
-                if random.random() < 0.2:
+                if random.random() < 0.1:
                     social.postPhoto(person)
-                if random.random() < 0.2:
+                if random.random() < 0.1:
                     social.postStatus(person)
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             pygame.display.update()

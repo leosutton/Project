@@ -14,8 +14,7 @@ class Social(object):
             pass
 
     def changeRelationship(self, personFrom, personTo, amount):
-        relation = next(relation for relation in self.graph.connections if relation.between[0] == personFrom and relation.between[1] == personTo)
-        relation.strength += amount
+        next(relation for relation in self.graph.connections if relation.between[0] == personFrom and relation.between[1] == personTo).strength += amount
 
     def checkWall(self, person):
         neighbors = []
