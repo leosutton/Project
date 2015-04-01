@@ -1,7 +1,50 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: projectpaper.aux
+This is BibTeX, Version 0.99d (TeX Live 2014/Debian)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: projectpaper.aux
 The style file: agsm.bst
 Database file #1: projectpaper.bib
 Warning--I didn't find a database entry for "budgen"
 Warning--I didn't find a database entry for "euther"
 Warning--I didn't find a database entry for "futher"
+You've used 1 entry,
+            2909 wiz_defined-function locations,
+            645 strings with 4855 characters,
+and the built_in function-call counts, 2198 in all, are:
+= -- 335
+> -- 24
+< -- 0
++ -- 147
+- -- 7
+* -- 174
+:= -- 490
+add.period$ -- 1
+call.type$ -- 1
+change.case$ -- 14
+chr.to.int$ -- 1
+cite$ -- 1
+duplicate$ -- 16
+empty$ -- 31
+format.name$ -- 9
+if$ -- 381
+int.to.chr$ -- 5
+int.to.str$ -- 0
+missing$ -- 1
+newline$ -- 6
+num.names$ -- 10
+pop$ -- 3
+preamble$ -- 1
+purify$ -- 15
+quote$ -- 0
+skip$ -- 14
+stack$ -- 0
+substring$ -- 454
+swap$ -- 3
+text.length$ -- 14
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 4
+warning$ -- 0
+while$ -- 22
+width$ -- 0
+write$ -- 14
 (There were 3 warnings)
