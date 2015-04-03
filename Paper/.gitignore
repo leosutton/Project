@@ -2,3 +2,5 @@
 *.bbl
 *.bib~
 *.log
+*.dvi
+*.aux

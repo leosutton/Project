@@ -1,1 +1,4 @@
 *.aux
+/Design Report.synctex.gz
+*.blg
+*.log
