@@ -5,3 +5,5 @@
 *.dvi
 *.aux
 /pygame window_002.png
+/pygame window_001.png
+/.~lock.ArchitectureDiagram.odg#
