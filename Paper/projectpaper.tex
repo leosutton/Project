@@ -2,6 +2,9 @@
 \usepackage{times}
 \usepackage{durhampaper}
 \usepackage{harvard}
+\usepackage{graphicx}
+\usepackage{algpseudocode}
+\usepackage{algorithm}
 
 \citationmode{abbr}
 \bibliographystyle{agsm}
@@ -11,7 +14,7 @@
 \supervisor{W. Li}
 \degree{BSc. Natural Sciences}
 
-\date{}
+\date{\today}
 
 \begin{document}
 
@@ -82,7 +85,120 @@ Detecting features of social networks that are not immediately apparent is also 
 
 \section{Solution}
 
+My solution focuses on flexibility and allows the user to enable and disable as well as configure many different elements. These various elements are described below.
+
+\begin{figure}[htb]
+\begin{center}
+\caption{Architectural diagram of solution}
+\label{fig:diagram}
+\includegraphics[scale=0.75]{ArchitectureDiagram.pdf}
+\end{center}
+\end{figure}
+
+The implementation roughly followed a model, view, controller design pattern in order to ensure that the elements remained as separate as possible
+
 \subsection{Graph Layout}
+
+This element of my solution is always enabled and allows the system to draw its main view which is a representation of the relationships between the people interacting at that moment. The system that I have used to lay out my graph has been taken form \cite{fruchterman1991graph}.
+
+Current data visualisations make almost exclusive use of a force-directed spring layout for graph drawing. This method models a graph as a set of springs along each edge joined at each node. These springs, as in my case, need not respond to force in the same way as a real, physical spring but can instead have whatever response gives the best layout for the graph.
+
+The algorithm can then use an iterative approach in order to find a local point of least tension on the springs as a collection. 
+
+\begin{algorithm}[htb]
+\caption{Graph sprint-directed layout algorithm}
+\label{alg:graph}
+\begin{algorithmic}
+\State $graph \gets (V, E)$ \Comment{Graph represented as a collection of vertices and edges}
+\State $k \gets \sqrt{1/|V|}$
+\State $t \gets 0.05$
+\ForAll{Vertex in V}
+	\State $Vertex.displacement \gets (0,0)$
+	\ForAll{Other in V \textbackslash Vertex}
+		\State $dist \gets distance(Vertex, Other)$ \Comment{$distance$ gets Euclidean distance}
+		\State $diff \gets (Vertex.x-Other.x, Vertex.y-Other.y)$
+		\State $Vertex.displacement \gets Vertex.displacement + diff \times (k^{2}/dist)$
+	\EndFor
+\EndFor
+\ForAll{Edge in E} \Comment{Edge between two vertices, $V_{1}$ and $V_{2}$}
+	\State $dist \gets distance(V_{1}, V_{2})$
+	\State $diff \gets (V_{1}.x-V_{2}.x, V_{1}.y-V_{2}.y)$
+	\State $V_{0}.displacement \gets V_{0}.displacement - diff \times (dist^{2}/2k)$
+	\State $V_{1}.displacement \gets V_{1}.displacement + diff \times (dist^{2}/2k)$
+\EndFor
+\ForAll{Vertex in V}
+	\State $(Vertex.x, Vertex.y) \gets (Vertex.x, Vertex.y) + (Vertex.displacement/distance(Vertex.displacement)) \times (min(distance(Vertex.displacement), t))$ \Comment{$min$ gives minimum of two elements}
+	\State $(Vertex.x, Vertex.y) \gets min(0.95, max((Vertex.x, Vertex.y), 0.05))$ \Comment{$max$ gives maximum of two elements}
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+\begin{figure}[htb]
+\caption{Graph Layout}
+\label{fig:layout}
+\begin{center}
+\includegraphics[scale=0.12]{Pygame.png}
+\end{center}
+\end{figure}
+
+I have detailed the algorithm that I used in Algorithm \ref{alg:graph}. This is split into three main parts after the set up. Initially the value of $k$ is set to the value suggested in the above paper and $t$ is set to a value which was determined through testing to be the best.
+
+Ever vertex starts with 0 displacement. The first part of the algorithm then calculates the repulsion between every pair of vertices and updates its displacement an amount proportional to the inverse of the distance. The second part of the algorithm then calculates the attraction along every edge and updates the displacement of each vertices in this edge proportionally to the square of the distance. Finally, each vertex is moved either its displacement or t, a pre-determined distance, whichever is smaller, then the algorithm checks that none of the points have been moved outside the boundary of the screen.
+
+In my implementation, the input graph is initially laid out totally at random. We can then see an example of an application of this algorithm over a number of iterations in figure \ref{fig:layout}. It can be seen how the points are taken from a random layout to a layout in which it is easy to see the structure of the graph.
+
+\subsection{Lens}
+
+Many of these layouts, especially since they include a large number of points in a small area can become hidden. After experimentation it was decided that a Gaussian lens would be best suited for this. This was mainly because of the gentle falloff and smooth transition through the point of maximum focus that made the interaction natural as the user moved the 'lens' around the visualisation.
+
+\begin{equation}
+\label{eq:Guass}
+f(x,\mu,\sigma)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{(x-\mu)^{2}}{2\sigma^{2}}}
+\end{equation}
+
+A Gaussian distribution is given by equation \ref{eq:Guass}. In my solution $f(x, \mu, \sigma)$ represents the distance that the point will be displaced away form the cursor. In my implementation $x-\mu$ is the initial distance between the vertex and the cursor and $\sigma$ is a value that was determined by experiment in order to give the best result. I settled on 0.1, meaning that vertices over 20\% of the width or height of the screen away would no longer be significantly affected.
+
+\begin{figure}[htb]
+\caption{Example of lens}
+\label{fig:lens}
+\begin{center}
+\includegraphics[scale=0.12]{Gaussian.png}
+\end{center}
+\end{figure}
+
+It can be seen in figure \ref{fig:lens} that the lens allows the interactions surrounding the cursor (highlighted by a black ring) to be viewed much more effectively.
+
+\subsection{Demonstration Models}
+
+In my implementation I included a set of demonstrations in order to show off the usefulness and effectiveness of my implementation as applied to real-world scenarios.
+
+\subsubsection{Influence}
+
+I implemented the two models of influence spreading through a social network according to \cite{kempe2003maximizing}. In their paper they consider two models. One simple model 
+
+\subsubsection{Advertising}
+
+\subsubsection{Recommendation}
+
+\subsubsection{Social}
+
+\subsubsection{Tools Used}
+
+The solution is entirely written using a combination of Python 3.4 and various libraries. I used a 64 bit binary of version 3.4.2 of CPython as my interpreter, downloaded from www.python.org. This was chosen as at the time of writing it was the latest version of the most popular Python interpreter. I used a 64 bit edition so that if it became necessary I would be able to make use of all available memory of my computer and python 3 was chosen rather than python 2 so that I was able to make use of recent performance optimisations.
+
+Visualisations were produced using the PyGame library. I obtained this by building the source available from https://bitbucket.org/pygame/pygame on my system at the time of writing with CPython as mentioned above. PyGame was chosen because if its ease of use over OpenGL allowing for rapid prototyping. Additionally its use of optimised C code would ensure that the visualisations would not interfere with time required for other computations.
+
+Menus were implemented in the solution using the Python package Tkinter. This was obtained from my system's package repository (http://archive.ubuntu.com/ubuntu/dists/utopic/). I chose to use this as it would provide easy implementation of menus in my solution while not distracting from the models being used.
+
+\subsection{Verification and Validation}
+
+Software verification was undertaken at all stages of the implementation. This was primarily achieved with reference to my Design Report, in which I had given thought to the design and architecture necessary in order to achieve the objectives set out at the beginning of the project.
+
+Software validation was made in reference to the objectives and functional requirements set out in my Design Report which were designed to allow me to meet the objectives of the project in several layered steps. This was also helped by the project supervisor who advised on direction at all stages and ensured that focus was maintained on the areas in which it was most needed.
+
+\subsection{Testing}
+
+As I prototyped my implementation, I undertook both static and dynamic testing to ensure that my project was both valid and verified 
 
 \section{Results}
 
