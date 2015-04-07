@@ -194,7 +194,7 @@ class Layout(object):
         connection.between[1].displacement[1] += delta[1] * difference
 
     def force_directed(self):
-        k = 0.7 * math.sqrt(1.0 / len(self.graph.people))
+        k = 1 * math.sqrt(1.0 / len(self.graph.people))
         t = 0.05
         for x in range(0, 2):
             for person in self.graph.people:
@@ -205,7 +205,7 @@ class Layout(object):
                 self.displace(person, t)
 
     def attraction(self, k, x):
-        return (x ** 2) / (k * 2)
+        return (x ** 2) / (k * 1)
 
     def repulsion(self, k, x):
         return (k ** 2) / x

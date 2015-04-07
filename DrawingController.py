@@ -77,12 +77,13 @@ class DrawingController(object):
         while self.graphDrawrer.go:
             counter += 1
             print(counter)
-            for person in self.graph.people:
-                social.checkWall(person)
-                if random.random() < 0.1:
-                    social.postPhoto(person)
-                if random.random() < 0.1:
-                    social.postStatus(person)
+            if self.mainConfig.social:
+                for person in self.graph.people:
+                    social.checkWall(person)
+                    if random.random() < 0.1:
+                        social.postPhoto(person)
+                    if random.random() < 0.1:
+                        social.postStatus(person)
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             pygame.display.update()
             clock.tick(60)
