@@ -19,14 +19,14 @@ class Loader(object):
             if line[2:4] == 'id':
                 self.id = int(line[5:])
             if line[2:7] == 'label':
-                self.label = line[9:-2]
+                self.label = line[9:-1]
             if line[2:5] == 'sex':
                 if line[7:13] == 'female':
                     self.sex = 'f'
                 else:
                     self.sex = 'm'
             if line[2:11] == 'wallcount':
-                self.graph.people.append(Person(random.random(), random.random(), random.random(), random.random(), random.random()*2*math.pi, random.random(), self.sex))
+                self.graph.people.append(Person(random.random(), random.random(), random.random(), random.random(), random.random()*2*math.pi, random.random(), self.sex, self.label))
             if line[2:8] == 'source':
                 self.source = int(line[9:])
             if line[2:8] == 'target':

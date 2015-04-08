@@ -25,6 +25,7 @@ class DrawingController(object):
         self.graph = people
         pygame.init()
         surface = pygame.display.set_mode((1920, 1080))
+        pygame.display.set_caption("User Interactions")
         clock = pygame.time.Clock()
 
         self.graphDrawrer = GraphDrawrer(self.graph, self.mainConfig, self.influenceConfig, self.adConfig, self.recommendationConfig, self.graphConfig, self.envConfig)
@@ -70,13 +71,15 @@ class DrawingController(object):
 
         if self.mainConfig.advert:
             viral = Viral(self.graph, float(self.adConfig.seed), float(self.adConfig.email), float(self.adConfig.ad), float(self.adConfig.mu), float(self.adConfig.sigma))
-            viral.seedEmail(self.graph, 5)
-            viral.seedAdvert(self.graph, 0.1)
+            viral.makeCampaign(self.main.graph)
+            viral.seedEmail(self.graph, 5, 0)
+            viral.seedAdvert(self.graph, 0.1, 0)
+            for person in self.main.graph.people:
+                person.totalPart = 0
             record[counter] = viral.record(self.graph)
 
         while self.graphDrawrer.go:
             counter += 1
-            print(counter)
             if self.mainConfig.social:
                 for person in self.graph.people:
                     social.checkWall(person)

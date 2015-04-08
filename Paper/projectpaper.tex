@@ -97,6 +97,18 @@ My solution focuses on flexibility and allows the user to enable and disable as 
 
 The implementation roughly followed a model, view, controller design pattern in order to ensure that the elements remained as separate as possible
 
+\subsection{Menu System}
+
+The primary control of the system is given initially though a system of menus which are presented to the user before the system begins running.
+
+\begin{figure}[htb]
+\begin{center}
+\caption{Example menu system of the solution}
+\label{fig:menu}
+\includegraphics[scale=0.5]{MenuShot.png}
+\end{center}
+\end{figure}
+
 \subsection{Graph Layout}
 
 This element of my solution is always enabled and allows the system to draw its main view which is a representation of the relationships between the people interacting at that moment. The system that I have used to lay out my graph has been taken form \cite{fruchterman1991graph}.
@@ -174,13 +186,35 @@ In my implementation I included a set of demonstrations in order to show off the
 
 \subsubsection{Influence}
 
-I implemented the two models of influence spreading through a social network according to \cite{kempe2003maximizing}. In their paper they consider two models. One simple model 
+I implemented the two models of influence spreading through a social network according to \cite{kempe2003maximizing}. This could be used to model behaviour adoption across a social network, for example if a new social game such as 'Farmville' were to be released, this could simulate how social network users would encourage their friends to also play the game.
+
+In the first model of influence, based on 'Linear Threshold Model', initially each vertex is given an adopted value of $False$ a value representing the influence that they are currently feeling and an adoption value, representing how much influence must be exerted over them in order for them to adopt the behaviour. A given set of starting nodes are then chosen and have their adopted value set to $True$. The model then proceeds in steps. At each step, first the weights of all connections to that vertex are added up, then the weights of each vertex that has adopted the behaviour. If the weights of vertices that has adopted divided by the weights of all neighbour is greater than the vertices adoption value, that vertex then adopts the behaviour.
+
+In the second model of influence based on the 'Independent Cascade Model'. Initially, similarly to before each vertex is given a property to show that it hasn't adopted the behaviour, and a random set are chosen to have adopted it. As before the model then proceeds in steps. In each step, each vertex that has adopted the behaviour will have one chance to influence its neighbours to adopt the behaviour. Whether or not they are successful depends both on the 'strength' of the edge between the two vertices and a random element. Each node that is successfully influenced has only one chance to influence its neighbours, but one node will have multiple chances to be influenced if it has multiple neighbours who are influenced.
+
+In this model it is possible to configure many different aspects such as the number of starting nodes and the relative chances of the behaviour being adopted. It is also possible to use both models simultaneously in order to compare their results.
 
 \subsubsection{Advertising}
 
+I implemented a model of the spread of viral advertising within an online environment. This model was based on \cite{van2010viral} and relies on a transition of each person between a number of states. These states are: People who haven't participated in the campaign; people who have received a 'seed' email; people who have seen a traditional advert as part of the campaign;  people who have received an email from a friend about the campaign; people who have chosen not to participate and finally people who have participated.
+
+In the initial setup, all vertices have a status set that they have not participated in the campaign. A random number of 'seed' emails are then sent to people, then a number of 'seed' adverts are shown to the vertices, again with a chance to trigger participation in the campaign. As before this campaign proceeds in steps. At each step, a certain number of vertices being considered will check their email. If they have received an email related to the campaign, either from another user or a 'seed' email then this will give them either a chance to participate in the campaign or choose not to. If they choose not to, nothing happens, if they choose to participate in the campaign, they will then generate emails to a random number of their friends about the campaign and the cycle continues.
+
+In this case it is possible to change all of the relevant variables in order to see their effects such as the number of seed emails sent and the number of users initially seeing the seed advert. It is also possible to determine how likely a user is to respond to either an advert or an email or even to give different response rates for emails from their friends and seed emails.
+
 \subsubsection{Recommendation}
 
+I implemented a model such as might be found in a social recommendation system as inspired by \cite{walter2008model}. This model imagines a system in which users are recommended something, say, films according to what their friends report they enjoyed.
+
+This system begins by seeding a number of ratings for a number of different items, ratings are a value between 0 and 1. Recommendations are then propagated through the graph. This happens once, each vertex looks through its neighbours to see if it can find someone who has a direct opinion of the product, if it fails to find anyone it then looks through its neighbours neighbours and so on until it either finds someone or reaches a pre-determined depth. If it does find somebody it then takes this recommendation with a degradation depending on how many edges separate the vertex under consideration and the one doing the recommending.
+
+It is possible in this model to change several variables within the system such as the number of users that are initially seeded with experiences of what is being recommended, what experience these users have and the depth to which a user will search for a recommendation. This system also accommodates there being multiple items which can each have their own recommendations propagated on their own
+
 \subsubsection{Social}
+
+Finally I took a different approach and implemented a system of interactions such as might happen over a social network. For this I primarily used my personal experiences on Facebook, a platform that I use to interact with people online daily. It is difficult to find reliable statics to use in such a model but in the end I settled on a website which had correlated statistics from many sources of varying reliability \cite{facebookStats}. I was satisfied with this however as it was not necessary for my model to be perfect, only sufficiently accurate to show how my visualisation could be applied to a real situation.
+
+The model encompasses various elements of the Facebook website. Each user has a wall on which they can post either a status of a picture at random intervals, pictures can have one or more friends tagged in them. Each user also has an attribute 'views'. Users will at random intervals check their news feed which is made up of posts from the walls of their friends. Their attitude towards their friends can change according to their attitude towards any other people that might appear tagged in pictures, or the difference in 'views' between a person reading a status and the person writing it.
 
 \subsubsection{Tools Used}
 

@@ -22,6 +22,18 @@ class GraphDrawrer(Drawing):
         self.go = True
         self.current = current
 
+    def drawLabel(self, person, x, y):
+        font = pygame.font.Font(None, 20)
+        text1 = font.render("Name: " + str(person.name), 1, (0,0,0))
+        text2 = font.render("Sex: " + str(person.sex), 1, (0,0,0))
+        topsize = text1.get_size()
+        label = pygame.Surface((topsize[0], topsize[1]*2))
+        label.fill((200, 200, 200))
+        #label.set_colorkey((250, 250, 250))
+        label.blit(text1, (0,0))
+        label.blit(text2, (0, topsize[1]))
+        self.surface.blit(label, (x,y))
+
     def drawConnections(self):
         for connection in self.graph.connections:
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
@@ -43,21 +55,21 @@ class GraphDrawrer(Drawing):
         for person in self.graph.people:
             if self.mainConfig.advert:
                 if not hasattr(person, "status") or person.status[current] == "0":
-                    pygame.draw.circle(self.surface, (255, 0, 0),
+                    self.people.append(pygame.draw.circle(self.surface, (255, 0, 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       10, 0))
                 elif person.status[current] == "n":
-                    pygame.draw.circle(self.surface, (0, 0, 255),
+                    self.people.append(pygame.draw.circle(self.surface, (0, 0, 255),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       10, 0))
                 elif person.status[current] == "e":
-                    pygame.draw.circle(self.surface, (0, 255, 255),
+                    self.people.append(pygame.draw.circle(self.surface, (0, 255, 255),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       10, 0))
                 elif person.status[current] == "1":
-                    pygame.draw.circle(self.surface, (0, 255, 0),
+                    self.people.append(pygame.draw.circle(self.surface, (0, 255, 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       10, 0))
                 else:
                     print("person not drawn")
             if self.mainConfig.influence:
@@ -115,8 +127,12 @@ class GraphDrawrer(Drawing):
                                        10, 0)
                     box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
                     pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
+            if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
+                self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+
 
     def make_frame(self, layout = False, current = 0):
+        self.people = []
         self.surface.fill((255, 255, 255))
         mousex = float(self.getMousexPos()) / self.screenWidth
         mousey = float(self.getMouseyPos()) / self.screenHeight
@@ -152,6 +168,13 @@ class GraphDrawrer(Drawing):
 
         self.drawConnections()
         self.drawPeople(current)
+
+        if keys[K_l]:
+            for person in self.people:
+                if person.collidepoint((self.mousex, self.mousey)):
+                    index = self.people.index(person)
+                    self.drawLabel(self.graph.people[index], self.mousex, self.mousey)
+                    break
 
         if layout:
             font = pygame.font.Font(None, 36)

@@ -43,16 +43,19 @@ class Influence2(object):
     def initialiseGraph(self):
         for person in self.graph.people:
             person.adopted = False
+            person.processed = False
 
     def startingNodes(self, number):
         for n in range(0, number):
             person = random.choice(self.graph.people)
             person.adopted = True
+            person.processed = False
 
 
     def process(self, count):
         for person in self.graph.people:
-            if person.adopted:
+            if person.adopted and person.processed == False:
+                person.processed = True
                 neighbors = []
                 strengths = []
                 adopted = []

@@ -28,6 +28,8 @@ class Viral(object):
                 person.status[campaign] = "a"
                 if random.random()*(1+person.totalPart*0.5) < self.fromAd:
                     self.participate(person, graph, campaign)
+
+
     def decayPart(self, graph):
         for person in graph.people:
             person.totalPart = min(0, person.totalPart - 1)
