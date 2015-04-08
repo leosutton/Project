@@ -17,12 +17,14 @@ class Drawing(object):
         self.screenWidth = video_info.current_w
         self.surface = pygame.Surface(res)
         self.res = res
+        self.events = []
 
     def get_width(self, surface):
         return surface.get_width()
 
     def process_events(self):
-        for event in pygame.event.get():
+        self.events = pygame.event.get()
+        for event in self.events:
             if event.type == QUIT:
                 pygame.quit()
                 sys.exit()

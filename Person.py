@@ -9,6 +9,7 @@ class Person(object):
         self.views = views
         self.sex = sex
         self.name = name
+        self.selected = False
 
 
 class Relationship(object):

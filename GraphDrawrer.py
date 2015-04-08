@@ -176,11 +176,26 @@ class GraphDrawrer(Drawing):
                     self.drawLabel(self.graph.people[index], self.mousex, self.mousey)
                     break
 
+        self.process_events()
+
+        for event in self.events:
+            if event.type == pygame.MOUSEBUTTONUP:
+                for person in self.people:
+                    if person.collidepoint((self.mousex, self.mousey)):
+                        print("Collided with " + str(person))
+                        if self.people.index(person).selected:
+                            self.people.index(person).selected = False
+                            print("person deselected")
+                        else:
+                            self.people.index(person).selected = True
+                            print("person selected")
+                        break
+
+
         if layout:
             font = pygame.font.Font(None, 36)
             text = font.render("Laying out", 1, (255, 0, 0, ))
             self.surface.blit(text, (0,0))
-        self.process_events()
         return self.surface
 
 
