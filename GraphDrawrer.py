@@ -128,7 +128,10 @@ class GraphDrawrer(Drawing):
                     box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
                     pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
             if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
-                self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+                if person.selected:
+                    self.people.append(pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+                else:
+                    self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
 
 
     def make_frame(self, layout = False, current = 0):
@@ -183,14 +186,13 @@ class GraphDrawrer(Drawing):
                 for person in self.people:
                     if person.collidepoint((self.mousex, self.mousey)):
                         print("Collided with " + str(person))
-                        if self.people.index(person).selected:
-                            self.people.index(person).selected = False
+                        if self.graph.people[self.people.index(person)].selected:
+                            self.graph.people[self.people.index(person)].selected = False
                             print("person deselected")
                         else:
-                            self.people.index(person).selected = True
+                            self.graph.people[self.people.index(person)].selected = True
                             print("person selected")
                         break
-
 
         if layout:
             font = pygame.font.Font(None, 36)
