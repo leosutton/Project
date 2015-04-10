@@ -39,17 +39,22 @@ class GraphDrawrer(Drawing):
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
             destination = (int(self.getx(connection.between[1].drawx)), int(self.gety(connection.between[1].drawy)))
             if self.mainConfig.social:
-                pygame.draw.line(self.surface, (0, 0, 0), source, destination, int(connection.strength*5))
+                pygame.draw.line(self.surface, (0, 0, 0), source, destination, 1)
             else:
                 pygame.draw.line(self.surface, (0, 0, 0), source, destination, int(self.graphConfig.weight))
+        thumb = pygame.image.load("ThumbsUp.png")
+        thumb = pygame.transform.scale(thumb, (20,20))
         for transition in self.transitions:
             direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x,
-                                  transition.person_to.draw_y - transition.person_to.draw_y])
+                                  transition.person_to.draw_y - transition.person_from.draw_y])
             location = np.array(
-                [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step
-            print("drawing circle from " + str(transition.person_from) + " to " + str(transition.person_to))
-            pygame.draw.circle(self.surface, (0, 0, 0), (int(self.getx(location[0])), int(self.gety(location[1]))), 3,
-                               0)
+                [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step/60
+#            pygame.draw.circle(self.surface, (0, 0, 255), (int(self.getx(location[0])), int(self.gety(location[1]))), 3)
+            self.surface.blit(thumb, (int(self.getx(location[0]) - 10), int(self.gety(location[1]) - 10)))
+            transition.step += 1
+            if transition.step > 59:
+                self.transitions.pop(self.transitions.index(transition))
+
 
     def drawPeople(self, current):
         for person in self.graph.people:

@@ -58,7 +58,28 @@ Secondly I wanted to move the focus of the systems away from the current system 
 
 \subsection{Project Aims}
 
-Put aims here
+These are the aims as laid out in my Design Report
+
+\begin{enumerate}
+\item Basic Deliverables
+\begin{enumerate}
+\item Develop a simple system that models user interactions with a visual output
+\item Use this system to implement an existing model of user interaction
+\item Expand this system and model to be able to visualise different modes of interaction
+\end{enumerate}
+\item Intermediate Deliverables
+\begin{enumerate}
+\item Expand the initial system so that its state will evolve over time according to the interactions of its users
+\item Examine and visualise the way in which users cluster according to their interactions
+\item Allow the system to set its initial state by real-world social network data
+\end{enumerate}
+\item Advanced Deliverables
+\begin{enumerate}
+\item Visualise change in the clustering of users according to their interactions over time
+\item Generate quantitative output related to the change in clustering of users over time
+\item Apply my quantitative output to attempt to solve a real-world problem
+\end{enumerate}
+\end{enumerate}
 
 \section{Related Work}
 
@@ -109,17 +130,25 @@ The primary control of the system is given initially though a system of menus wh
 \end{center}
 \end{figure}
 
+Figure \ref{fig:menu} shows an example of these menus. The main window on the left represents the main control of the application. In this window it is possible to enable and disable the various demonstration models that can be used in order to demonstrate the visualisation system. The buttons next to these check boxes allow various aspects of each the demonstration to be configured so as to give different results. The aspects that can be configured are detailed in the descriptions of each system below.
+
+This menu also allows the user to select what initial input data will be used. They can either generate random data that will be realistic enough in order to demonstrate the system or import their own data. Users own data must come from the netvizz Facebook app (https://apps.facebook.com/netvizz). This allows users to download a 'gml' file containing a list of all friends of a user, the sex of the users, how many things they like and a seperate list of all friendships between the listed users in order to build up a network.
+
 \subsection{Interactions with Vertices}
 
-Vertices are able to do many different things. Here I demonstrate two elements.
+The user is able to interact with vertices representing people in the graph in two different ways. These are shown in \ref{fig:labels}.
 
-%\begin{figure}
-%\begin{center}
-%\caption{Diagram showing labels and selctions}7
-%\label{fig:labels}
-%\includegraphics[scale=1]{Select.png}
-%\end{center}
-%\end{figure}
+\begin{figure}[htb]
+\begin{center}
+\caption{Diagram showing labels and selctions}
+\label{fig:labels}
+\includegraphics[scale=1]{Select.png}
+\end{center}
+\end{figure}
+
+The first way is that if the user has selected it as an option in the first menu, they have the ability to move their mouse over a node in order to see more information about it. This can be seen as the box with a grey background in the figure. It can be configured to show what information the user requests, in this case it shows the name and sex of the person represented by the vertex.
+
+The second way in which the user can interact directly with vertices is by clicking on them. This has a different meaning depending on the context for example, it could be used to select the points being used to seed in the advert or influence models laid out below. This would work as in the picture if say, a user was to select a green vertex it would change colour to indicate it was selected and if a user selected a red vertex it would change back to green in order to indicate it was deselected.
 
 \subsection{Graph Layout}
 
@@ -192,6 +221,76 @@ A Gaussian distribution is given by equation \ref{eq:Guass}. In my solution $f(x
 
 It can be seen in figure \ref{fig:lens} that the lens allows the interactions surrounding the cursor (highlighted by a black ring) to be viewed much more effectively.
 
+\subsection{Transitions}
+
+One way of showing interactions between users in real times is by showing movement in the graph. An example of this can be seen in figure \ref{fig:transitions}. In this case these are being used to show the likes that users give others in the 'social' demonstration laid out below. As a user likes another's post a Facebook 'thumb' image is generated at the person who likes and travels over the course of about a second to the person who's post is being liked.
+
+It is possible to use this as well to represent other interactions such as the spread of influence. The 'thumb' can be replaced by another image or by a simple disc or other relevant symbol.
+
+\begin{figure}[htb]
+\caption{Examples of transitions}
+\label{fig:transitions}
+\begin{center}
+\includegraphics[scale=1]{Transitions.png}
+\end{center}
+\end{figure}
+
+\subsection{History}
+
+In order to make a fast moving interaction more clear, it is possible for the system to record the state of each user at given times and then to display this data once the model has run.
+
+\begin{figure}[htb]
+\caption{Example if a display of the history of states}
+\label{fig:history}
+\begin{center}
+\includegraphics[scale=0.3]{Graph.png}
+\end{center}
+\end{figure}
+
+An example of this can be seen in figure \ref{fig:history}. In this case the history is taken from an example running of the viral advertising model detailed below. The horizontal axis represents time while the vertical axis represents the number of users. In this case the colours in the graph match the colours that are used to represent the vertices in the graph view.
+
+This visualisation makes it clear how the distribution of users changed over time. In this view the progress of the first campaign can clearly be seen, as can the jump when this campaign is ended and a second introduced.
+
+\subsection{Vertices}
+
+The system allows for many different ways of representing people as vertices depending on their attributes in order to make it as clear as possible what is being represented.
+
+\begin{figure}[htb]
+\caption{Examples of possible representations of vertices}
+\label{fig:vertices}
+\begin{center}
+\includegraphics[scale=1]{Nodes.png}
+\end{center}
+\end{figure}
+
+Figure \ref{fig:vertices} shows examples of different ways that attributes of the vertex can be changed in order to show different information.
+
+The vertex on the left represents the most basic at only one solid colour, this colour could change for example to represent changes of state between a finite number of states or could have its brightness or hue changed to represent a continuous change in a property. For example in the advertising system detailed below the vertex changes colour to indicate what stage it has reached in the viral campaign.
+
+The second vertex from the left shows that this can be build up in layers with an edge or another band of colour. This could be used to represent multiple properties win the same vertex. For example if the user wanted to track the difference that starting variables made to a system or to run multiple systems simultaneously that all relied on being represented by colour change of the vertex.
+
+The second vertex from the right shows how it is then further possible to represent properties by the length of a filled arc around a vertex. This could be used to represent the state of a property that it is known will fall between two bounds for example age.
+
+The final example on the far fight shows how it is possible to represent vertices as arbitrary shapes constructed as necessary in order to be fully customisable for whatever is being represented at the time.
+
+\subsection{Edges}
+
+There are multiple ways of using edges of the graphs to represent the relationships between people. A selection of these can be seen in figure \ref{fig:edges}.
+
+\begin{figure}
+\caption{Examples of possible representations of edges}
+\label{fig:edges}
+\begin{center}
+\includegraphics[scale=1]{Edges.png}
+\end{center}
+\end{figure}
+
+The bottom line shows how edges are generally represented as a single pixel line joining the two users who have a relationship between then.
+
+The middle like then shows that the thickness of the line can be changed in represent different things about the relationship between two people. This could for example be used to represent the strength of the relationship between two people.
+
+Finally I have shown how it is possible to change the colour of the line joining the two vertices. This could be changed to represent some interaction between he users and can obviously be combined with either of the two previous methods.
+
 \subsection{Demonstration Models}
 
 In my implementation I included a set of demonstrations in order to show off the usefulness and effectiveness of my implementation as applied to real-world scenarios.
@@ -235,6 +334,8 @@ The solution is entirely written using a combination of Python 3.4 and various l
 Visualisations were produced using the PyGame library. I obtained this by building the source available from https://bitbucket.org/pygame/pygame on my system at the time of writing with CPython as mentioned above. PyGame was chosen because if its ease of use over OpenGL allowing for rapid prototyping. Additionally its use of optimised C code would ensure that the visualisations would not interfere with time required for other computations.
 
 Menus were implemented in the solution using the Python package Tkinter. This was obtained from my system's package repository (http://archive.ubuntu.com/ubuntu/dists/utopic/). I chose to use this as it would provide easy implementation of menus in my solution while not distracting from the models being used.
+
+Graph drawing was done using the pyplot library from Matplotlib. This was as with Tkinter obtained from by systems package repository. I chose this as a method of graph drawing as it provided easy drawing of simple graphs and would easily allow me to change the style in order to experiment with different ways of displaying the data.
 
 \subsection{Verification and Validation}
 

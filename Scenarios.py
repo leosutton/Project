@@ -119,7 +119,7 @@ class influenceScen(object):
 class AdvertScen(object):
     def __init__(self, main):
         self.main = main
-        self.main.MainMenuReturn = mainConfiguration(False, True, False, False)
+        self.main.MainMenuReturn = mainConfiguration(False, True, False, False, False)
         self.main.InfluenceMenuReturn = influenceConfiguration('10', '2')
         f = open("graph.gml")
         self.main.InputMenuReturn = inputConfiguration("1", f.read(), "1000", "100", "100")
@@ -253,4 +253,4 @@ class RecommendationScen(object):
         for n in book3:
             graph.people[n].ratings.append(Rating("item3", 0.99))
 
-RecommendationScen(Main())
+AdvertScen(Main())
