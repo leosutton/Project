@@ -17,7 +17,7 @@ from MenuScreen import advertConfiguration, AdvertMenu
 class influenceScen(object):
     def __init__(self, main=Main()):
         self.main = main
-        self.main.MainMenuReturn = mainConfiguration(False, False, True, False)
+        self.main.MainMenuReturn = mainConfiguration(False, False, True, False, False)
         self.main.InfluenceMenuReturn1 = influenceConfiguration('10', '1')
         self.main.InfluenceMenuReturn2 = influenceConfiguration('10', '2')
         f = open("graph.gml")
@@ -75,6 +75,10 @@ class influenceScen(object):
         self.graphDrawrer1 = GraphDrawrer(self.main.graph1, self.main.MainMenuReturn, self.main.InfluenceMenuReturn2, self.main.AdMenuReturn, self.main.RecommendationMenuReturn, self.main.GraphMenuReturn, self.main.EnvMenuReturn, (960,1080))
 #        self.prepareSeperate(self.main.graph)
 #        self.prepareTogether(self.main.graph1)
+        for person in self.main.graph0.people:
+            person.processed = False
+        for person in self.main.graph1.people:
+            person.processed = False
         stay = True
         count = 1
         while stay:
@@ -175,7 +179,7 @@ class AdvertScen(object):
 class RecommendationScen(object):
     def __init__(self, main=Main()):
         self.main = main
-        self.main.MainMenuReturn = mainConfiguration(False, False, False, True)
+        self.main.MainMenuReturn = mainConfiguration(False, False, False, True, False)
         self.main.InfluenceMenuReturn = influenceConfiguration('10', '1')
         f = open("graph.gml")
         self.main.InputMenuReturn = inputConfiguration("1", f.read(), "1000", "100", "100")
