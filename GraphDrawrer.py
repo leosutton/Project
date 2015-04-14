@@ -21,6 +21,7 @@ class GraphDrawrer(Drawing):
         self.transitions = []
         self.go = True
         self.current = current
+        self.key = 1
 
     def drawLabel(self, person, x, y):
         font = pygame.font.Font(None, 20)
@@ -145,7 +146,6 @@ class GraphDrawrer(Drawing):
         mousex = float(self.getMousexPos()) / self.screenWidth
         mousey = float(self.getMouseyPos()) / self.screenHeight
         sigma = 0.1
-        self.key = 1
         lens = Lens(sigma)
         keys = pygame.key.get_pressed()
         if keys[K_z]:

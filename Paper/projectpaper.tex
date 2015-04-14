@@ -5,7 +5,8 @@
 \usepackage{graphicx}
 \usepackage{algpseudocode}
 \usepackage{algorithm}
-
+\usepackage{subcaption}
+\usepackage{caption}
 \citationmode{abbr}
 \bibliographystyle{agsm}
 
@@ -109,11 +110,10 @@ Detecting features of social networks that are not immediately apparent is also 
 My solution focuses on flexibility and allows the user to enable and disable as well as configure many different elements. These various elements are described below.
 
 \begin{figure}[htb]
-\begin{center}
+\centering
 \caption{Architectural diagram of solution}
 \label{fig:diagram}
 \includegraphics[scale=0.75]{ArchitectureDiagram.pdf}
-\end{center}
 \end{figure}
 
 The implementation roughly followed a model, view, controller design pattern in order to ensure that the elements remained as separate as possible
@@ -123,11 +123,10 @@ The implementation roughly followed a model, view, controller design pattern in 
 The primary control of the system is given initially though a system of menus which are presented to the user before the system begins running.
 
 \begin{figure}[htb]
-\begin{center}
+\centering
 \caption{Example menu system of the solution}
 \label{fig:menu}
 \includegraphics[scale=0.5]{MenuShot.png}
-\end{center}
 \end{figure}
 
 Figure \ref{fig:menu} shows an example of these menus. The main window on the left represents the main control of the application. In this window it is possible to enable and disable the various demonstration models that can be used in order to demonstrate the visualisation system. The buttons next to these check boxes allow various aspects of each the demonstration to be configured so as to give different results. The aspects that can be configured are detailed in the descriptions of each system below.
@@ -139,11 +138,10 @@ This menu also allows the user to select what initial input data will be used. T
 The user is able to interact with vertices representing people in the graph in two different ways. These are shown in \ref{fig:labels}.
 
 \begin{figure}[htb]
-\begin{center}
+\centering
 \caption{Diagram showing labels and selctions}
 \label{fig:labels}
 \includegraphics[scale=1]{Select.png}
-\end{center}
 \end{figure}
 
 The first way is that if the user has selected it as an option in the first menu, they have the ability to move their mouse over a node in order to see more information about it. This can be seen as the box with a grey background in the figure. It can be configured to show what information the user requests, in this case it shows the name and sex of the person represented by the vertex.
@@ -189,9 +187,8 @@ The algorithm can then use an iterative approach in order to find a local point 
 \begin{figure}[htb]
 \caption{Graph Layout}
 \label{fig:layout}
-\begin{center}
+\centering
 \includegraphics[scale=0.12]{Pygame.png}
-\end{center}
 \end{figure}
 
 I have detailed the algorithm that I used in Algorithm \ref{alg:graph}. This is split into three main parts after the set up. Initially the value of $k$ is set to the value suggested in the above paper and $t$ is set to a value which was determined through testing to be the best.
@@ -214,9 +211,8 @@ A Gaussian distribution is given by equation \ref{eq:Guass}. In my solution $f(x
 \begin{figure}[htb]
 \caption{Example of lens}
 \label{fig:lens}
-\begin{center}
+\centering
 \includegraphics[scale=0.12]{Gaussian.png}
-\end{center}
 \end{figure}
 
 It can be seen in figure \ref{fig:lens} that the lens allows the interactions surrounding the cursor (highlighted by a black ring) to be viewed much more effectively.
@@ -230,9 +226,8 @@ It is possible to use this as well to represent other interactions such as the s
 \begin{figure}[htb]
 \caption{Examples of transitions}
 \label{fig:transitions}
-\begin{center}
+\centering
 \includegraphics[scale=1]{Transitions.png}
-\end{center}
 \end{figure}
 
 \subsection{History}
@@ -242,9 +237,8 @@ In order to make a fast moving interaction more clear, it is possible for the sy
 \begin{figure}[htb]
 \caption{Example if a display of the history of states}
 \label{fig:history}
-\begin{center}
+\centering
 \includegraphics[scale=0.3]{Graph.png}
-\end{center}
 \end{figure}
 
 An example of this can be seen in figure \ref{fig:history}. In this case the history is taken from an example running of the viral advertising model detailed below. The horizontal axis represents time while the vertical axis represents the number of users. In this case the colours in the graph match the colours that are used to represent the vertices in the graph view.
@@ -258,9 +252,8 @@ The system allows for many different ways of representing people as vertices dep
 \begin{figure}[htb]
 \caption{Examples of possible representations of vertices}
 \label{fig:vertices}
-\begin{center}
+\centering
 \includegraphics[scale=1]{Nodes.png}
-\end{center}
 \end{figure}
 
 Figure \ref{fig:vertices} shows examples of different ways that attributes of the vertex can be changed in order to show different information.
@@ -280,9 +273,8 @@ There are multiple ways of using edges of the graphs to represent the relationsh
 \begin{figure}
 \caption{Examples of possible representations of edges}
 \label{fig:edges}
-\begin{center}
+\centering
 \includegraphics[scale=1]{Edges.png}
-\end{center}
 \end{figure}
 
 The bottom line shows how edges are generally represented as a single pixel line joining the two users who have a relationship between then.
@@ -348,6 +340,85 @@ Software validation was made in reference to the objectives and functional requi
 As I prototyped my implementation, I undertook both static and dynamic testing to ensure that my project was both valid and verified 
 
 \section{Results}
+
+In order to demonstrate my system I made serveral mock ups to show what it could be capable of. I present those here.
+
+\subsection{Viral System}
+
+Here I implemented the Viral model specified above.
+
+\begin{figure}
+\centering
+	\begin{subfigure}[b]{0.3\linewidth}
+	\caption{Viral graph view, showing the states of the people}
+	\label{fig:viralStates}
+	\includegraphics[scale=0.1]{Viral1.png}
+	\end{subfigure}
+
+	\begin{subfigure}[b]{0.3\linewidth}
+	\caption{Window showing configuration of new viral campaign}
+	\label{fig:viralConfig}
+	\includegraphics[scale=0.3]{Viral2.png}
+	\end{subfigure}
+\quad
+	\begin{subfigure}[b]{0.3\linewidth}
+	\caption{Graph showing evolution of states of people over time}
+	\label{fig:viralGraph}
+	\includegraphics[scale=0.2]{Viral3.png}
+	\end{subfigure}
+\caption{Examples of output produced from Viral model}
+\label{fig:viral}
+\end{figure}
+
+\subsection{Recommendation System}
+
+\begin{figure}
+\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+	\caption{Initial graph view showing who has experienced and who has been recommended a product}
+	\label{fig:recommendationInitial}
+	\includegraphics[scale=0.1]{Recommendation1.png}
+	\end{subfigure}
+\quad
+	\begin{subfigure}[b]{0.4\linewidth}
+	\caption{View demonstrating everyone's favourite product}
+	\label{fig:recommendationFavourite}
+	\includegraphics[scale=0.1]{Recommendation2.png}
+	\end{subfigure}
+	
+	\begin{subfigure}[b]{0.4\linewidth}
+	\caption{View comparing what products people like}
+	\label{fig:RecommendationComparison}
+	\includegraphics[scale=0.1]{Recommendation3.png}
+	\end{subfigure}
+\quad
+	\begin{subfigure}[b]{0.4\linewidth}
+	\caption{View showing different distribution of preerence for another product}
+	\label{fig:RecommendationDifferent}
+	\includegraphics[scale=0.1]{Recommendation4.png}
+	\end{subfigure}
+\caption{Examples of output produced from the recommendation model}
+\label{fig:recommendation}
+\end{figure}
+
+\subsection{Influence}
+
+\begin{figure}
+\centering
+	\begin{subfigure}[b]{0.4\linewidth}
+	\caption{Showing selection of vertices to be influenced}
+	\label{fig:influenceSelect}
+	\includegraphics[scale=0.1]{Influence1.png}
+	\end{subfigure}
+\quad
+	\begin{subfigure}[b]{0.4\linewidth}
+	\caption{Showing comparison of two models of influence spread}
+	\label{fig:influenceCompare}
+	\includegraphics[scale=0.1]{Influence3.png}
+	\end{subfigure}
+\caption{Example outputs form the influence package}
+\label{fig:influence}
+\end{figure}
 
 \section{Evaluation}
 

@@ -215,7 +215,7 @@ class RecommendationScen(object):
             Layout(self.main.graph).force_directed()
             pygame.display.update()
             clock.tick(60)
-        for n in range(0,60):
+        for n in range(0,200):
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             pygame.display.update()
             clock.tick(60)
@@ -245,6 +245,14 @@ class RecommendationScen(object):
             pygame.display.update()
             clock.tick(60)
 
+        for n in range(0,200):
+            surface.blit(self.graphDrawrerTL.make_frame(), (0, 0))
+            surface.blit(self.graphDrawrerTR.make_frame(), (960, 0))
+            surface.blit(self.graphDrawrerBL.make_frame(), (0, 540))
+            surface.blit(self.graphDrawrerBR.make_frame(), (960, 540))
+            pygame.display.update()
+            clock.tick(60)
+
 
     def preparePeople(self, graph):
         book1 = [230, 3, 249, 303, 224]
@@ -257,4 +265,4 @@ class RecommendationScen(object):
         for n in book3:
             graph.people[n].ratings.append(Rating("item3", 0.99))
 
-AdvertScen(Main())
+RecommendationScen(Main())
