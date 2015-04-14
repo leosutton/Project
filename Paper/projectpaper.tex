@@ -339,22 +339,29 @@ Software validation was made in reference to the objectives and functional requi
 
 As I prototyped my implementation, I undertook both static and dynamic testing to ensure that my project was both valid and verified 
 
+\subsection{Implementation Difficulties}
+
+The main difficulty that I faced during implementation was the speed at which the Python would run using the interpreter on my computer. It was necessary at all times to make a special effort to ensure that algorithms remained as fast as possible so that the user interface would not spend long periods unresponsive.
+
+I attempted to rectify this by using an alternative Python interpreter PyPy. However, this did not support the Pygame binaries I was using at the time and I was unable to use it to build suitable binaries.
+
 \section{Results}
 
-In order to demonstrate my system I made serveral mock ups to show what it could be capable of. I present those here.
+In order to demonstrate my system I made several mock ups to show what it could be capable of. I present those here.
 
 \subsection{Viral System}
 
-Here I implemented the Viral model specified above.
+Here I implemented the Viral model specified above. I will then use this to demonstrate various aspects of the representation possible in my system.
 
-\begin{figure}
+\begin{figure}[htb]
 \centering
+\captionsetup[subfigure]{justification=centering}
 	\begin{subfigure}[b]{0.3\linewidth}
 	\caption{Viral graph view, showing the states of the people}
 	\label{fig:viralStates}
 	\includegraphics[scale=0.1]{Viral1.png}
 	\end{subfigure}
-
+\\
 	\begin{subfigure}[b]{0.3\linewidth}
 	\caption{Window showing configuration of new viral campaign}
 	\label{fig:viralConfig}
@@ -370,10 +377,19 @@ Here I implemented the Viral model specified above.
 \label{fig:viral}
 \end{figure}
 
+In figure \ref{fig:viralStates} we can see a representation of the state of all the actors involved in the model. In this case the colour represents the current state of the person in relation to the current campaign. It can immediately be seen that people at the edge of the network haven't yet heard about the campaign at all and are in red, meanwhile the people who have already been sent emails (in turquoise), can clearly be seen to be clustered around the people who have already taken part in the campaign (in green).
+
+Figure \ref{fig:viralConfig} clearly shows the kind of configuration that is possible when adding a new campaign during the running of the model along with a set of preset suggested parameters.
+
+Figure \ref{fig:viralGraph} demonstrates how the time evolution of the model can then be shown after it has run. On the vertical axis we have the number of people in each state at a given time and on the horizontal axis we have the number of iterations of the simulation. The colours match those that were used to represent the states on the graph. This clearly allows features to be picked out such as the beginning of new campaigns as well as more subtle features such as the time it takes for people who haven't yet participated to outnumber those who have.
+
 \subsection{Recommendation System}
 
-\begin{figure}
+The same can be seen with the recommendation system which demonstrates a different set of features.
+
+\begin{figure}[htb]
 \centering
+\captionsetup[subfigure]{justification=centering}
 	\begin{subfigure}[b]{0.4\linewidth}
 	\caption{Initial graph view showing who has experienced and who has been recommended a product}
 	\label{fig:recommendationInitial}
@@ -385,26 +401,35 @@ Here I implemented the Viral model specified above.
 	\label{fig:recommendationFavourite}
 	\includegraphics[scale=0.1]{Recommendation2.png}
 	\end{subfigure}
-	
+\\	
 	\begin{subfigure}[b]{0.4\linewidth}
 	\caption{View comparing what products people like}
-	\label{fig:RecommendationComparison}
+	\label{fig:recommendationComparison}
 	\includegraphics[scale=0.1]{Recommendation3.png}
 	\end{subfigure}
 \quad
 	\begin{subfigure}[b]{0.4\linewidth}
 	\caption{View showing different distribution of preerence for another product}
-	\label{fig:RecommendationDifferent}
+	\label{fig:recommendationDifferent}
 	\includegraphics[scale=0.1]{Recommendation4.png}
 	\end{subfigure}
 \caption{Examples of output produced from the recommendation model}
 \label{fig:recommendation}
 \end{figure}
 
+Here we can see in figure \ref{fig:recommendationInitial} that the user is able to see the effect of those who have experience of a product on who will be recommended it. In this case those people who appear purple have a direcct experience meanwhile those who appear in green are those who will be recommended the product. The brightness of the green depends on the confidence of the recommendation.
+
+Figure \ref{fig:recommendationFavourite} then demonstrates a different way of looking at this data. The colours represent the item which each person is most likely to enjoy.
+
+Then in figure \ref{fig:recommendationComparison} we can see a different layout of the data. Here each of the streched horizontal polts represents one of the products while the horizontal distance to the right represents how much they are likely to enjoy the product. The comparison between this and figure \ref{fig:recommendationDifferent} then shows the interaction between the way different people enjoy different products and the extent to which enjoyment of one product will mean that they enjoy another
+
 \subsection{Influence}
 
-\begin{figure}
+Finally I did the same with the influence system detailed above.
+
+\begin{figure}[htb]
 \centering
+\captionsetup[subfigure]{justification=centering}
 	\begin{subfigure}[b]{0.4\linewidth}
 	\caption{Showing selection of vertices to be influenced}
 	\label{fig:influenceSelect}
@@ -420,9 +445,63 @@ Here I implemented the Viral model specified above.
 \label{fig:influence}
 \end{figure}
 
+In figure \ref{fig:influenceSelect} we can see the operation of the user selecting which will be the people who are initially responsible for influencing the rest of the population. This selection occurs by clicking on the green circles which then turn red to indicate they have been selected.
+
+We can then see in figure \ref{fig:influenceCompare} how it is possible to compare the two different models of the spread of influence. Once a person has become influenced they turn from green to red allowing the differences in the models to be seen in real time.
+
 \section{Evaluation}
 
+As I laid out in my Design Report, I will evaluate my system according to a set or criteria.
+
+\subsection{Comparison}
+
+\begin{description}
+	\item[The ability of the system to clearly represent the state of and relationships between people] \hfill \\
+	Compared to Gephi my implementation does a similar job of representing the states of people using the same methods such as changes in size and colour of the nodes of the graph. Gephi also represents relationships in the same way, using simple lines of connection.
+	
+	Vizster uses people's names to represent them rather than symbols, emphasising the importance of the actual people. However, it represents relationships in the same way using a series of lines.
+	
+	WolframAlpha again uses colours and lines to represent people's relationships
+	
+	\item[The ability of the system to represent the interactions over different modes between people] \hfill \\
+	None of the other systems represent interactions, but only static relationships, in this respect my system is more effective than any of them.
+	
+	\item[The ability of the system to represent clustering of the people in the system based on interactions] \hfill \\
+	As none of the other systems represent interactions, but only the static relationships between people, my system is clearly the more effective in this respect. My system is able to visualise the clustering both in respect to the layout of the data and an output of qualitative data
+	
+	\item[The ability of the system to output quantitative data which can be used to draw useful conclusions regarding the nature of some aspect of the evolution of the model over time] \hfill \\
+	Gephi has a significant amount of numerical output, presented in the form of graphs, showing many aspects of clustering, however, this does not change over time.
+	
+	Vizster does not offer any numerical output.
+	
+	WolframAlpha does not immediately offer and numerical output, however it can be gained if the user then extracts the graph data.
+\end{description}
+
+\subsection{Application}
+
+\subsubsection{Viral}
+
+I believe that this is a good application for this system. It is useful to be able to see the transition between various states and the system is particularly good at representing this state transition through the use of colour.
+
+Also the ability to then visualise these changes over time means that even features of the spread that would be missed by watching it in real time can be analysed later.
+
+\subsection{Influence}
+
+This system is slightly less well suited to a system of influence spread as this doesn't rely on such complex interactions between the users. However, it still remains useful in order to see a comparison between two instances of this mode, even if it isn't of interest itself.
+
+\subsection{Recommendation}
+
+This is again a good application for this system as it is possible to see clustering that varies depending on the starting conditions for the system. It also allows important comparisons between multiple systems within itself.
+
 \section{Conclusions}
+
+I believed I have managed to some extent to produce a solution that was able to meet previous research into data presentation of social networks and apply this to a dynamic system of interactions. On top of this I think that my system is able to be applied to various scenarios which show its benefit.
+
+I can demonstrate that I have built on previous research though my implementation of various of its features in the Solution section. This shows that it is indeed possible to use research previously done on static network and apply this to dynamic systems of interactions.
+
+On top of this the 'models' that I have implemented show that this system is a useful one that can be applied to a diverse range of systems. The threee that I have demonstrated here are all very different in nature but my system is able to offer some unique way of viewing each.
+
+In the future I believe that my work would benefit from a re-work in a faster language than Python which would provide two benefits. First it would allow more computation of the data to take place, particularly where data was changing in real time according to multiple models of evolution at once. Secondly it would allow a better user experience with smoother interactions as the program was no longer waiting between drawing each frame and updating the view.
 
 \bibliography{projectpaper}
 
