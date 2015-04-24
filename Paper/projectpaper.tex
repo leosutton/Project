@@ -33,10 +33,10 @@ What has been learned from the visualisation of static networks of relationships
 A system has been created in Python using Pygame to represent various different modes of interactions between users in a virtual environment. This system has then been applied to various models of real-world scenarios in order to demonstrate its utility.
 
 {\bf Results}
-The system is able to effectively represent several different real-world scenarios representing a wide variety of situations. Furthermore it is can be seen that this system of looking at interactions is more effective than currently available approaches in several situations.
+The system is able to effectively represent several different real-world scenarios representing a wide variety of situations for example the spread of viral advertising, the propagation of to adopt certain behaviours or a model of a trust-based recommendation system. Furthermore it is can be seen that this system of looking at interactions is more effective than currently available approaches in several situations. This is shown by the visual output that my solution has produced which effectively represent the situations listed above in ways clearer than would have previously been possible.
 
 {\bf Conclusions}
-In conclusion it appears that this is an important and effective way of looking at different real-world scenarios and allows insight to be gained in ways in which it would previously have been much more challenging.
+In conclusion the results of this solution meet the aims given above. The real-world applications show how my solution is able to represent systems in terms of the interactions between users and how these interactions evolve over time. Additionally they show how this is a more useful way of looking at these systems that simply a static graph of relationships.
 
 \end{abstract}
 
@@ -224,7 +224,7 @@ In my solution $f(x, \mu, \sigma)$ represents the distance that the point will b
 \includegraphics[scale=0.12]{Gaussian.png}
 \end{figure}
 
-It can be seen in figure \ref{fig:lens} that the lens allows the interactions surrounding the cursor (highlighted by a black ring) to be viewed much more effectively.
+It can be seen in figure \ref{fig:lens} that the lens allows the interactions surrounding the cursor (highlighted by a green ring) to be viewed much more effectively.
 
 \subsection{Transitions}
 
@@ -332,7 +332,7 @@ It is possible in this model to change several variables within the system such 
 
 %The model encompasses various elements of the Facebook website. Each user has a wall on which they can post either a status of a picture at random intervals, pictures can have one or more friends tagged in them. Each user also has an attribute 'views'. Users will at random intervals check their news feed which is made up of posts from the walls of their friends. Their attitude towards their friends can change according to their attitude towards any other people that might appear tagged in pictures, or the difference in 'views' between a person reading a status and the person writing it.
 
-\subsubsection{Tools Used}
+\subsection{Tools Used}
 
 The solution is entirely written using a combination of Python 3.4 and various libraries. I used a 64 bit binary of version 3.4.2 of CPython as my interpreter, downloaded from www.python.org. This was chosen as at the time of writing it was the latest version of the most popular Python interpreter. I used a 64 bit edition so that if it became necessary I would be able to make use of all available memory of my computer and python 3 was chosen rather than python 2 so that I was able to make use of recent performance optimisations.
 
@@ -361,6 +361,8 @@ While the system is highly modular, the modules all rely on one another in order
 The main difficulty that I faced during implementation was the speed at which the Python would run using the interpreter on my computer. It was necessary at all times to make a special effort to ensure that algorithms remained as fast as possible so that the user interface would not spend long periods unresponsive as this would degraded the user experience so important to the project.
 
 I attempted to rectify this by using an alternative Python interpreter PyPy. However, this did not support the Pygame binaries I was using at the time and I was unable to use it to build suitable binaries. While there is an alternative to Pygame compatible with PyPy, Pygame\_cffi (https://github.com/CTPUG/pygame\_cffi), at the time of writing this did not appear sufficiently complete or stable for use with the project.
+
+Additionally, part way though the project, Facebook changed its privacy polity restricting the amount of data that was accessible through its API. This means that at the time of writing NetVizz is no longer able to download new data. It would be necessary therefore that an alternative solution was found in order to continue using a users's own social network data.
 
 \section{Results}
 
@@ -468,7 +470,7 @@ We can then see in figure \ref{fig:influenceCompare} how it is possible to compa
 
 \section{Evaluation}
 
-As I laid out in my Design Report, I will evaluate my system according to a set of criteria in comparison to Gephi, Vizster and WolframAlpha Facebook report, I will then consider its application to real-world problems.
+As detailed in the Design Report I will take two approaches to evaluation. First I will take 4 criteria and use them to compare my solution to three other, similar solutions, Gephi \cite{ICWSM09154}, Vizster \cite{heer2005vizster} and WolframAlpha Facebook report \cite{wolfram}. Then second I will look at the application of my solution to real-world problems in order to see if it offers anything additional to what was previously available.
 
 \subsection{Comparison}
 
@@ -500,17 +502,17 @@ As I laid out in my Design Report, I will evaluate my system according to a set 
 
 \subsection{Applications}
 
-\subsubsection{Viral}
+\subsubsection{Influence}
+
+This system is slightly less well suited to a system of influence spread as this doesn't rely on such complex interactions between the users. However, it still remains useful in order to see a comparison between two instances of this mode, even if it isn't of interest itself. Even in this case my system provides significant improvement in a static system as, even though the interactions are simple, they evolve over time.
+
+\subsubsection{Advertising}
 
 I believe that this is a good application for this system. It is useful to be able to see the transition between various states and the system is particularly good at representing this state transition through the use of colour.
 
 Also the ability to then visualise these changes over time at the end means that even features of the system that would be missed by watching it in real time can be analysed later.
 
-\subsection{Influence}
-
-This system is slightly less well suited to a system of influence spread as this doesn't rely on such complex interactions between the users. However, it still remains useful in order to see a comparison between two instances of this mode, even if it isn't of interest itself. Even in this case my system provides significant improvement in a static system as, even though the interactions are simple, they evolve over time.
-
-\subsection{Recommendation}
+\subsubsection{Recommendation}
 
 This is again a good application for this system as it is possible to see clustering that varies depending on the starting conditions for the system. It also allows important comparisons between multiple systems within itself. However this would be able to be represented as easily in a system showing static relationships as, when the recommendations are calculated the system then remains static.
 
