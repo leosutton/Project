@@ -37,6 +37,12 @@ class GraphDrawrer(Drawing):
 
     def drawConnections(self):
         for connection in self.graph.connections:
+            if not connection.between[0] in self.graph.people:
+                self.graph.connections.remove(connection)
+                break
+            if not connection.between[1] in self.graph.people:
+                self.graph.connections.remove(connection)
+                break
             source = (int(self.getx(connection.between[0].drawx)), int(self.gety(connection.between[0].drawy)))
             destination = (int(self.getx(connection.between[1].drawx)), int(self.gety(connection.between[1].drawy)))
             if self.mainConfig.social:
@@ -46,10 +52,10 @@ class GraphDrawrer(Drawing):
         thumb = pygame.image.load("ThumbsUp.png")
         thumb = pygame.transform.scale(thumb, (20,20))
         for transition in self.transitions:
-            direction = np.array([transition.person_to.draw_x - transition.person_from.draw_x,
-                                  transition.person_to.draw_y - transition.person_from.draw_y])
+            direction = np.array([transition.person_to.x - transition.person_from.x,
+                                  transition.person_to.y - transition.person_from.y])
             location = np.array(
-                [transition.person_from.draw_x, transition.person_from.draw_y]) + direction * transition.step/60
+                [transition.person_from.x, transition.person_from.y]) + direction * transition.step/60
 #            pygame.draw.circle(self.surface, (0, 0, 255), (int(self.getx(location[0])), int(self.gety(location[1]))), 3)
             self.surface.blit(thumb, (int(self.getx(location[0]) - 10), int(self.gety(location[1]) - 10)))
             transition.step += 1
@@ -133,11 +139,11 @@ class GraphDrawrer(Drawing):
                                        10, 0)
                     box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
                     pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
-            if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
-                if person.selected:
-                    self.people.append(pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
-                else:
-                    self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+            # if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
+            #     if person.selected:
+            #         self.people.append(pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+            #     else:
+            #         self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
 
 
     def make_frame(self, layout = False, current = 0):
@@ -150,19 +156,19 @@ class GraphDrawrer(Drawing):
         keys = pygame.key.get_pressed()
         if keys[K_z]:
             for person in self.graph.people:
-                xdistance = mousex - person.draw_x
-                ydistance = mousey - person.draw_y
+                xdistance = mousex - person.x
+                ydistance = mousey - person.y
                 distance = math.sqrt(xdistance ** 2 + ydistance ** 2)
                 x_multiplier = lens.gaussian(distance) + 1
                 y_multiplier = lens.gaussian(distance) + 1
-                xposition = person.draw_x - x_multiplier * xdistance / 5
-                yposition = person.draw_y - y_multiplier * ydistance / 5
+                xposition = person.x - x_multiplier * xdistance / 5
+                yposition = person.y - y_multiplier * ydistance / 5
                 person.drawx = xposition
                 person.drawy = yposition
         else:
             for person in self.graph.people:
-                person.drawx = person.draw_x
-                person.drawy = person.draw_y
+                person.drawx = person.x
+                person.drawy = person.y
         if keys[K_1]:
             self.key = 1
         if keys[K_2]:
@@ -211,26 +217,26 @@ class Layout(object):
         self.graph = graph
 
     def displace(self, person, t):
-        person.draw_x = person.draw_x + (person.displacement[0] / self.distance(person.displacement)) * min(
+        person.x = person.x + (person.displacement[0] / self.distance(person.displacement)) * min(
             self.distance(person.displacement), t)
-        person.draw_y = person.draw_y + (person.displacement[1] / self.distance(person.displacement)) * min(
+        person.y = person.y + (person.displacement[1] / self.distance(person.displacement)) * min(
             self.distance(person.displacement), t)
-        person.draw_x = min(0.95, max(0.05, person.draw_x))
-        person.draw_y = min(0.95, max(0.05, person.draw_y))
+        person.x = min(0.95, max(0.05, person.x))
+        person.y = min(0.95, max(0.05, person.y))
 
     def repel(self, k, person):
         person.displacement = [0, 0]
         for other in self.graph.people:
             if not (person is other):
-                delta = [person.draw_x - other.draw_x, person.draw_y - other.draw_y]
+                delta = [person.x - other.x, person.y - other.y]
                 distance = self.distance(delta)
                 difference = (1 / distance) * self.repulsion(k, distance)
                 person.displacement[0] += delta[0] * difference
                 person.displacement[1] += delta[1] * difference
 
     def attract(self, connection, k):
-        delta = [connection.between[0].draw_x - connection.between[1].draw_x,
-                 connection.between[0].draw_y - connection.between[1].draw_y]
+        delta = [connection.between[0].x - connection.between[1].x,
+                 connection.between[0].y - connection.between[1].y]
         distance = self.distance(delta)
         difference = (1 / distance) * self.attraction(k, distance)
         connection.between[0].displacement[0] -= delta[0] * difference

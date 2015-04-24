@@ -23,6 +23,7 @@ class DrawingController(object):
         self.graphConfig = graph
         self.envConfig = env
         self.graph = people
+        self.environment = Environment(self.graph, self.envConfig)
         pygame.init()
         surface = pygame.display.set_mode((1920, 1080))
         pygame.display.set_caption("User Interactions")
@@ -55,17 +56,27 @@ class DrawingController(object):
         if self.mainConfig.social:
             social = Social(self.graph, self.graphDrawrer)
 
-        for connection in self.graph.connections:
-            if not (connection.between[0] in self.graph.people):
-                self.graph.connections.remove(connection)
-                continue
-            if not (connection.between[1] in self.graph.people):
-                self.graph.connections.remove(connection)
-                continue
+        for n in range(0,10):
+            for connection in self.graph.connections:
+                if not (connection.between[0] in self.graph.people):
+                    self.graph.connections.remove(connection)
+                    print("removed 0")
+                    print(len(self.graph.connections))
+                    print(n)
 
-        for n in range(0, 50):
-            surface.blit(self.graphDrawrer.make_frame(), (0, 0))
+            for connection in self.graph.connections:
+                if not (connection.between[1] in self.graph.people):
+                    self.graph.connections.remove(connection)
+                    print("removed 1")
+                    print(len(self.graph.connections))
+                    print(n)
+
+        for n in range(0, 20):
             Layout(self.graph).force_directed()
+            graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
+            env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
+            surface.blit(graph, (0, 0))
+            surface.blit(env, (960, 0))
             pygame.display.update()
             clock.tick(60)
 
@@ -88,7 +99,10 @@ class DrawingController(object):
                             social.postPhoto(person)
                         if random.random() < 0.1:
                             social.postStatus(person)
-            surface.blit(self.graphDrawrer.make_frame(), (0, 0))
+            graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
+            env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
+            surface.blit(graph, (0, 0))
+            surface.blit(env, (960, 0))
             pygame.display.update()
             clock.tick(60)
             if counter % 5 == 0:

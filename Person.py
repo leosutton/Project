@@ -1,7 +1,7 @@
 class Person(object):
-    def __init__(self, draw_x, draw_y, env_x, env_y, direction, views, sex, name = ""):
-        self.draw_x = draw_x
-        self.draw_y = draw_y
+    def __init__(self, x, y, env_x, env_y, direction, views, sex, name = ""):
+        self.x = x
+        self.y = y
         self.env_x = env_x
         self.env_y = env_y
         self.direction = direction

@@ -12,6 +12,7 @@ class Drawing(object):
     mousey = 0
 
     def __init__(self, res):
+        pygame.init()
         video_info = pygame.display.Info()
         self.screenHeight = video_info.current_h
         self.screenWidth = video_info.current_w

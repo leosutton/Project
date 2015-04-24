@@ -38,13 +38,13 @@ class Main(object):
 
         self.makeGraph()
 
+        self.graph.trim(100)
+
         cluster = Clustering(self.graph)
         print("clustering " + str(cluster.findTriangles()))
 
         drawing = DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)
 
-        print("return")
-
 if __name__ == '__main__':
-    cProfile.run('Main().run()')
-    #Main().run()
+    #cProfile.run('Main().run()')
+    Main().run()

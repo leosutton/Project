@@ -10,8 +10,8 @@ from Drawing import Drawing
 
 
 class Environment(Drawing):
-    def __init__(self, graph, config):
-        Drawing.__init__(self)
+    def __init__(self, graph, config, res = (1920, 1080)):
+        Drawing.__init__(self, res = (1920, 1080))
         self.graph = graph
         self.config = config
 
