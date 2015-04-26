@@ -25,19 +25,19 @@
 \begin{abstract}
 
 {\bf Context/Background}
-Within the past 20 years there has been an explosion in computer mediated interactions between people. There has been much previous work in the area of visualising relationships between people in these virtual environments such as social networks or within office communication systems. However this has almost exclusively focused on static systems of relationships rather than a representation of the dynamic interactions themselves.
+Within the past 20 years there has been an explosion in computer mediated interactions between people. There has been much previous work in the area of visualising networks of people in these virtual environments such as social networks or within office communication systems, however this has almost exclusively focused on static systems of relationships rather than a representation of the dynamic interactions themselves.
 
 {\bf Aims}
-What has been learned from the visualisation of static networks of relationships will be applied to the representation of dynamic systems with a focus on the interactions between the users rather than simple the static relationships.
+What has been learned from the visualisation of static networks of relationships will be applied to the representation of dynamic systems with a focus on the interactions between the users rather than simple the static relationships in order to produce a new visualisation system that will allow new features of data sets to become apparent.
 
 {\bf Method}
-A system has been created in Python using Pygame to represent various different modes of interactions between users in a virtual environment. This system has then been applied to various models of real-world scenarios in order to demonstrate its utility.
+A system has been created in Python using the Pygame library to represent various different modes of interactions between users in a virtual environment in different ways along with the state of the users. This system has then been applied to various models of real-world scenarios in order to demonstrate its utility.
 
 {\bf Results}
-The system is able to effectively represent several different real-world scenarios representing a wide variety of situations for example the spread of viral advertising, the propagation of to adopt certain behaviours or a model of a trust-based recommendation system. Furthermore it is can be seen that this system of looking at interactions is more effective than currently available approaches in several situations. This is shown by the visual output that my solution has produced which effectively represent the situations listed above in ways clearer than would have previously been possible.
+The system is able to effectively represent several different real-world scenarios across a wide variety of situations for example the spread of viral advertising, the propagation adoption of certain behaviours or a trust-based recommendation system. Furthermore it can be seen that this system of looking at interactions is more effective than currently available approaches in several areas. This is shown by the visual output that my solution has produced which effectively represent the situations listed above in ways clearer than would otherwise be possible.
 
 {\bf Conclusions}
-In conclusion the results of this solution meet the aims given above. The real-world applications show how my solution is able to represent systems in terms of the interactions between users and how these interactions evolve over time. Additionally they show how this is a more useful way of looking at these systems that simply a static graph of relationships.
+In conclusion the results of this solution meet the aims given above. The application to various models show how my solution is able to represent systems in terms of the interactions between users and how these interactions evolve over time. Additionally they show how this is a more useful way of looking at these systems that simply a static graph of relationships.
 
 \end{abstract}
 
@@ -47,7 +47,19 @@ user interaction; virtual environments; visualisation; clustering
 
 \section{Introduction}
 
-In the 21st century, people spend more time than ever interacting with other people in virtual environments, whether that takes the form of social networking, email or video games. There is a long history of visualising the structures that form within these environments \cite{freeman2000visualizing}. This has evolved significantly over time with early graphs of relationships being drawn by hand to the present day where layout algorithms running on computers ensures makes it possible to visualise ever more complex graphs with greater numbers of nodes effectively. Finally, recently some of these systems have been made interactive such that they are able to be manipulated in real time allowing increasingly novel ways of visualising data and opening the possibility that these graphs can be used to show more than simply static relationships but rather become effective tools for visualising a dynamic system of interactions that evolves over time.
+\noindent   
+In the 21st century, people spend more time than ever interacting in virtual environments. Figure \ref{fig:interactions} shows how social media and email in particular are not only very commonly used in the UK, but still growing in popularity. With this growth it is clear that it is becoming ever more important that these systems of relationships and interactions can be better understood not only though statistical analysis, but through effective visualisation.
+
+There is a long history of visualising the structures that form within these environments \cite{freeman2000visualizing}. This has evolved significantly over time with early graphs of relationships being hand drawn to the present day where layout algorithms running on computers make it possible to visualise ever more complex graphs with greater numbers of nodes effectively. 
+
+Finally, as an extension of these graphs, interactivity has become possible such that they are able to be manipulated in real time. This then allows increasingly novel ways of visualising data and opens up the possibility that these graphs can be used to show more than simply static relationships but rather become effective tools for visualising a dynamic system of interactions that evolves over time.
+
+\begin{figure}[htb]
+\centering
+\caption{Graph of growth on online interactions in the UK \protect\cite{ons}}
+\label{fig:interactions}
+\includegraphics[scale=0.4]{Chart.pdf}
+\end{figure}
 
 In this project I have taken 'User Interaction' to mean any way in which users consciously affect other users so that the other users would be able to identify the specific other users they were interacting with. This could take place over a period of time of be instantaneous; it could be between two users or many; it could be a single event or it could be ongoing. For example I will consider interactions such as users sending emails between one another but I will not consider interactions such as a user's advertising preference changing what another user sees as this falls beyond my scope.
 
