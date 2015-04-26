@@ -471,51 +471,93 @@ We can then see in figure \ref{fig:influenceCompare} how it is possible to compa
 
 \section{Evaluation}
 
-As detailed in the Design Report I will take two approaches to evaluation. First I will take 4 criteria and use them to compare my solution to three other, similar solutions, Gephi \cite{ICWSM09154}, Vizster \cite{heer2005vizster} and WolframAlpha Facebook report \cite{wolfram}. Then second I will look at the application of my solution to real-world problems in order to see if it offers anything additional to what was previously available.
+I will evaluate my project according to Edward Tufte's principles of information visualisation \cite{tufte1983visual}. These represent a check-list for effective data visualisation that, although it is many years old is still often used in connection with modern graphic design.
 
-\subsection{Comparison}
+Therefore according to Tufte, graphical representations should:
 
 \begin{enumerate}
-	\item {\bf The ability of the system to clearly represent the state of and relationships between people}
-	
-	Compared to Gephi my implementation does a similar job of representing the states of people using the same methods such as changes in size and colour of the nodes of the graph. Gephi also represents relationships in the same way, using simple lines of connection.
-	
-	Vizster uses people's names to represent them rather than symbols, emphasising the importance of the actual people. However, it represents relationships in the same way using a series of lines however in this case I believe it works better than my implementation in the cases which Vister was intended for.
-	
-	WolframAlpha again uses colours and lines to represent people's relationships and so is very similar to mine.
-	
-	\item {\bf The ability of the system to represent the interactions over different modes between people}
-	
-	None of the other systems represent dynamic interactions, but only static relationships, in this respect my system is more effective than any of them.
-	
-	\item {\bf The ability of the system to represent clustering of the people in the system based on interactions}
-	
-	As none of the other systems represent interactions, but only the static relationships between people, my system is clearly the more effective in this respect. My system is able to visualise the clustering both in respect to the layout of the data and an output of qualitative data
-	
-	\item {\bf The ability of the system to output quantitative data which can be used to draw useful conclusions regarding the nature of some aspect of the evolution of the model over time}
-	
-	Gephi has a significant amount of numerical output, presented in the form of graphs, showing many aspects of clustering, however, this does not change over time. As a static view however it is superior to my solution.
-	
-	Vizster does not offer any numerical output.
-	
-	WolframAlpha does not immediately offer and numerical output, however it can be gained if the user then extracts the graph data so while my solution provides better initial data, with effort WolframAlpha can provide more insight.
+\item {\bf Show the data}
+
+I believe it is clear that my system does indeed show the data. This item is included to ensure that actual data is being shown rather than simply results of computation or some other qualitative measure.
+
+\item {\bf Induce the viewer to think about the substance rather than about methodology, graphic design, the technology of graphic production or something else}
+
+My solution is to some extent able to allow the viewer to focus only on the substance than the  implementation as it is able to 
+
+\item {\bf Avoid distorting what the data has to say}
+
+Some aspects of my system ensure that the data is not distorted, for example where a property is represented by something that can have an absolute relationship to a feature of the graph like colour this makes it impossible for the system to distort data. On the other hand in elements like the layout where an iterative algorithm is used to layout with results that are difficult to predict before, this leave the possibility of distortion if the layout algorithm were to find an poor local minimum. 
+
+\item {\bf Present many numbers in a small space}
+
+My solution can take up any pre-defined area, by default it produces an output the size of the whole screen. However, my solution also tries to ensure that in order to show the maximum amount of data it can it does this in an efficient way. However, my solution is optimised for certain scales rather than being able to accommodate a wide range of display sizes.
+
+\item {\bf Make large data sets coherent}
+
+This isn't something that my system is able to do. Due to the nature of the layout algorithm the system becomes unusably slow beyond a few hundered data points. Additionally, beyond this number the view will become too cluttered and make the visualisation unusable
+
+\item {\bf Encourage the eye to compare different pieces of data}
+
+The system ensures that it is possible for different pieces of data to be compared. It achieves this through a side-by-side comparison as can be seen in the figures \ref{fig:influenceCompare} and \ref{fig:recommendationComparison}. Figure \ref{fig:recommendationComparison} also shows an alternative way of comparison whereby different colours can be applied to the same points in order to show differences.
+
+\item {\bf Reveal the data at several levels of detail, from a broad overview to the fine structure}
+
+My solution doesn't perform particularly well at this aspect as it follows a broadly flat graph model. However, it integrates some aspects of this in its ability to view extra data through hovering over data points or using magnification of areas of the graph which are very tightly packed.
+
+\item {\bf Serve a reasonably clear purpose: description, exploration, tabulation and decoration}
+
+The extent to which my implementation fulfils this purpose depends on what it is applied to as it is designed that it could be applied to many different data sets. It can be seen for example in the influence application that each element has a clear description, however the exploration of different elements...
+
+\item {\bf Be closely integrated with the statistical and verbal descriptions of the data set}
+
+This is an element that my solution does not address particularly effectively. First of all it was not a part of the project to provide a verbal explanation of the data and in many cases the visualistions themselves have little meaning without such explanation. However, in some cases my visualisations are closely related to statisitical representations of the data set.
 \end{enumerate}
 
-\subsection{Applications}
-
-\subsubsection{Influence}
-
-This system is slightly less well suited to a system of influence spread as this doesn't rely on such complex interactions between the users. However, it still remains useful in order to see a comparison between two instances of this mode, even if it isn't of interest itself. Even in this case my system provides significant improvement in a static system as, even though the interactions are simple, they evolve over time.
-
-\subsubsection{Advertising}
-
-I believe that this is a good application for this system. It is useful to be able to see the transition between various states and the system is particularly good at representing this state transition through the use of colour.
-
-Also the ability to then visualise these changes over time at the end means that even features of the system that would be missed by watching it in real time can be analysed later.
-
-\subsubsection{Recommendation}
-
-This is again a good application for this system as it is possible to see clustering that varies depending on the starting conditions for the system. It also allows important comparisons between multiple systems within itself. However this would be able to be represented as easily in a system showing static relationships as, when the recommendations are calculated the system then remains static.
+%As detailed in the Design Report I will take two approaches to evaluation. First I will take 4 criteria and use them to compare my solution to three other, similar solutions, Gephi \cite{ICWSM09154}, Vizster \cite{heer2005vizster} and WolframAlpha Facebook report \cite{wolfram}. Then second I will look at the application of my solution to real-world problems in order to see if it offers anything additional to what was previously available.
+%
+%\subsection{Comparison}
+%
+%\begin{enumerate}
+%	\item {\bf The ability of the system to clearly represent the state of and relationships between people}
+%	
+%	Compared to Gephi my implementation does a similar job of representing the states of people using the same methods such as changes in size and colour of the nodes of the graph. Gephi also represents relationships in the same way, using simple lines of connection.
+%	
+%	Vizster uses people's names to represent them rather than symbols, emphasising the importance of the actual people. However, it represents relationships in the same way using a series of lines however in this case I believe it works better than my implementation in the cases which Vister was intended for.
+%	
+%	WolframAlpha again uses colours and lines to represent people's relationships and so is very similar to mine.
+%	
+%	\item {\bf The ability of the system to represent the interactions over different modes between people}
+%	
+%	None of the other systems represent dynamic interactions, but only static relationships, in this respect my system is more effective than any of them.
+%	
+%	\item {\bf The ability of the system to represent clustering of the people in the system based on interactions}
+%	
+%	As none of the other systems represent interactions, but only the static relationships between people, my system is clearly the more effective in this respect. My system is able to visualise the clustering both in respect to the layout of the data and an output of qualitative data
+%	
+%	\item {\bf The ability of the system to output quantitative data which can be used to draw useful conclusions regarding the nature of some aspect of the evolution of the model over time}
+%	
+%	Gephi has a significant amount of numerical output, presented in the form of graphs, showing many aspects of clustering, however, this does not change over time. As a static view however it is superior to my solution.
+%	
+%	Vizster does not offer any numerical output.
+%	
+%	WolframAlpha does not immediately offer and numerical output, however it can be gained if the user then extracts the graph data so while my solution provides better initial data, with effort WolframAlpha can provide more insight.
+%\end{enumerate}
+%
+%\subsection{Applications}
+%
+%\subsubsection{Influence}
+%
+%This system is slightly less well suited to a system of influence spread as this doesn't rely on such complex interactions between the users. However, it still remains useful in order to see a comparison between two instances of this mode, even if it isn't of interest itself. Even in this case my system provides significant improvement in a static system as, even though the interactions are simple, they evolve over time.
+%
+%\subsubsection{Advertising}
+%
+%I believe that this is a good application for this system. It is useful to be able to see the transition between various states and the system is particularly good at representing this state transition through the use of colour.
+%
+%Also the ability to then visualise these changes over time at the end means that even features of the system that would be missed by watching it in real time can be analysed later.
+%
+%\subsubsection{Recommendation}
+%
+%This is again a good application for this system as it is possible to see clustering that varies depending on the starting conditions for the system. It also allows important comparisons between multiple systems within itself. However this would be able to be represented as easily in a system showing static relationships as, when the recommendations are calculated the system then remains static.
 
 \section{Conclusions}
 
