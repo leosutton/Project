@@ -5,36 +5,34 @@
 \BOOKMARK [2][-]{subsection.2.1}{Social Network Visualisation}{section.2}% 5
 \BOOKMARK [2][-]{subsection.2.2}{Information Presentation}{section.2}% 6
 \BOOKMARK [2][-]{subsection.2.3}{Graph Drawing}{section.2}% 7
-\BOOKMARK [2][-]{subsection.2.4}{Modelling Social Networks}{section.2}% 8
+\BOOKMARK [2][-]{subsection.2.4}{Modelling Network Interactions}{section.2}% 8
 \BOOKMARK [2][-]{subsection.2.5}{Categorisation of Interactions}{section.2}% 9
-\BOOKMARK [2][-]{subsection.2.6}{Evolution of social networks}{section.2}% 10
-\BOOKMARK [2][-]{subsection.2.7}{Detection of clustering}{section.2}% 11
-\BOOKMARK [1][-]{section.3}{Solution}{}% 12
-\BOOKMARK [2][-]{subsection.3.1}{Menu System}{section.3}% 13
-\BOOKMARK [2][-]{subsection.3.2}{Interactions with Vertices}{section.3}% 14
-\BOOKMARK [2][-]{subsection.3.3}{Graph Layout}{section.3}% 15
-\BOOKMARK [2][-]{subsection.3.4}{Lens}{section.3}% 16
-\BOOKMARK [2][-]{subsection.3.5}{Transitions}{section.3}% 17
-\BOOKMARK [2][-]{subsection.3.6}{History}{section.3}% 18
-\BOOKMARK [2][-]{subsection.3.7}{Vertices}{section.3}% 19
-\BOOKMARK [2][-]{subsection.3.8}{Edges}{section.3}% 20
-\BOOKMARK [2][-]{subsection.3.9}{Demonstration Models}{section.3}% 21
-\BOOKMARK [3][-]{subsubsection.3.9.1}{Influence}{subsection.3.9}% 22
-\BOOKMARK [3][-]{subsubsection.3.9.2}{Advertising}{subsection.3.9}% 23
-\BOOKMARK [3][-]{subsubsection.3.9.3}{Recommendation}{subsection.3.9}% 24
-\BOOKMARK [3][-]{subsubsection.3.9.4}{Social}{subsection.3.9}% 25
-\BOOKMARK [3][-]{subsubsection.3.9.5}{Tools Used}{subsection.3.9}% 26
-\BOOKMARK [2][-]{subsection.3.10}{Verification and Validation}{section.3}% 27
-\BOOKMARK [2][-]{subsection.3.11}{Testing}{section.3}% 28
-\BOOKMARK [2][-]{subsection.3.12}{Implementation Difficulties}{section.3}% 29
-\BOOKMARK [1][-]{section.4}{Results}{}% 30
-\BOOKMARK [2][-]{subsection.4.1}{Viral System}{section.4}% 31
-\BOOKMARK [2][-]{subsection.4.2}{Recommendation System}{section.4}% 32
-\BOOKMARK [2][-]{subsection.4.3}{Influence}{section.4}% 33
-\BOOKMARK [1][-]{section.5}{Evaluation}{}% 34
-\BOOKMARK [2][-]{subsection.5.1}{Comparison}{section.5}% 35
-\BOOKMARK [2][-]{subsection.5.2}{Application}{section.5}% 36
-\BOOKMARK [3][-]{subsubsection.5.2.1}{Viral}{subsection.5.2}% 37
-\BOOKMARK [2][-]{subsection.5.3}{Influence}{section.5}% 38
-\BOOKMARK [2][-]{subsection.5.4}{Recommendation}{section.5}% 39
-\BOOKMARK [1][-]{section.6}{Conclusions}{}% 40
+\BOOKMARK [2][-]{subsection.2.6}{Detection of clustering}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Solution}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Menu System}{section.3}% 12
+\BOOKMARK [2][-]{subsection.3.2}{Interactions with Vertices}{section.3}% 13
+\BOOKMARK [2][-]{subsection.3.3}{Graph Layout}{section.3}% 14
+\BOOKMARK [2][-]{subsection.3.4}{Lens}{section.3}% 15
+\BOOKMARK [2][-]{subsection.3.5}{Transitions}{section.3}% 16
+\BOOKMARK [2][-]{subsection.3.6}{History}{section.3}% 17
+\BOOKMARK [2][-]{subsection.3.7}{Vertices}{section.3}% 18
+\BOOKMARK [2][-]{subsection.3.8}{Edges}{section.3}% 19
+\BOOKMARK [2][-]{subsection.3.9}{Demonstration Models}{section.3}% 20
+\BOOKMARK [3][-]{subsubsection.3.9.1}{Influence}{subsection.3.9}% 21
+\BOOKMARK [3][-]{subsubsection.3.9.2}{Advertising}{subsection.3.9}% 22
+\BOOKMARK [3][-]{subsubsection.3.9.3}{Recommendation}{subsection.3.9}% 23
+\BOOKMARK [2][-]{subsection.3.10}{Tools Used}{section.3}% 24
+\BOOKMARK [2][-]{subsection.3.11}{Verification and Validation}{section.3}% 25
+\BOOKMARK [2][-]{subsection.3.12}{Testing}{section.3}% 26
+\BOOKMARK [2][-]{subsection.3.13}{Implementation Difficulties}{section.3}% 27
+\BOOKMARK [1][-]{section.4}{Results}{}% 28
+\BOOKMARK [2][-]{subsection.4.1}{Viral System}{section.4}% 29
+\BOOKMARK [2][-]{subsection.4.2}{Recommendation System}{section.4}% 30
+\BOOKMARK [2][-]{subsection.4.3}{Influence}{section.4}% 31
+\BOOKMARK [1][-]{section.5}{Evaluation}{}% 32
+\BOOKMARK [2][-]{subsection.5.1}{Comparison}{section.5}% 33
+\BOOKMARK [2][-]{subsection.5.2}{Applications}{section.5}% 34
+\BOOKMARK [3][-]{subsubsection.5.2.1}{Influence}{subsection.5.2}% 35
+\BOOKMARK [3][-]{subsubsection.5.2.2}{Advertising}{subsection.5.2}% 36
+\BOOKMARK [3][-]{subsubsection.5.2.3}{Recommendation}{subsection.5.2}% 37
+\BOOKMARK [1][-]{section.6}{Conclusions}{}% 38
