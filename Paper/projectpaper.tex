@@ -3,11 +3,11 @@
 \usepackage{durhampaper}
 \usepackage{harvard}
 \usepackage{graphicx}
-\usepackage{algpseudocode}
+\usepackage[noend]{algpseudocode}
 \usepackage{algorithm}
 \usepackage{subcaption}
 \usepackage{caption}
-\renewcommand{\harvardurl}{URL:\url}
+%\renewcommand{\harvardurl}{URL:\url}
 \citationmode{abbr}
 \bibliographystyle{agsm}
 
@@ -25,18 +25,23 @@
 \begin{abstract}
 
 {\bf Context/Background}
-Within the past 20 years there has been an explosion in computer mediated interactions between people. There has been much previous work in the area of visualising networks of people in these virtual environments such as social networks or within office communication systems, however this has almost exclusively focused on static systems of relationships rather than a representation of the dynamic interactions themselves.
+\noindent
+In the past 20 years there has been an rapid increase in computer mediated interactions between people. There has been much previous work in the area of visualising networks of people in these virtual environments such as social networks or within office communication systems, however this has almost exclusively focused on static systems of relationships rather than a representation of the dynamic interactions themselves.
 
 {\bf Aims}
-What has been learned from the visualisation of static networks of relationships will be applied to the representation of dynamic systems with a focus on the interactions between the users rather than simple the static relationships in order to produce a new visualisation system that will allow new features of data sets to become apparent.
+\noindent
+What has been learned from the visualisation of static networks of relationships will be applied to the representation of dynamic systems with a focus on the interactions between the users rather than simple the static relationships. This will be used to produce a new visualisation system that will allow new features of virtual interactions to become apparent.
 
 {\bf Method}
+\noindent
 A system has been created in Python using the Pygame library to represent various different modes of interactions between users in a virtual environment in different ways along with the state of the users. This system has then been applied to various models of real-world scenarios in order to demonstrate its utility.
 
 {\bf Results}
-The system is able to effectively represent several different real-world scenarios across a wide variety of situations for example the spread of viral advertising, the propagation adoption of certain behaviours or a trust-based recommendation system. Furthermore it can be seen that this system of looking at interactions is more effective than currently available approaches in several areas. This is shown by the visual output that my solution has produced which effectively represent the situations listed above in ways clearer than would otherwise be possible.
+\noindent
+The system is able to effectively represent several different real-world scenarios across a wide variety of situations for example the spread of viral advertising, the propagation of adoption of certain behaviours or a trust-based recommendation system. it can then be seen that this system of looking at interactions is more effective than currently available approaches in several areas. This is shown by the visual output which effectively represent the situations listed above in ways clearer than would otherwise be possible.
 
 {\bf Conclusions}
+\noindent
 In conclusion the results of this solution meet the aims given above. The application to various models show how my solution is able to represent systems in terms of the interactions between users and how these interactions evolve over time. Additionally they show how this is a more useful way of looking at these systems that simply a static graph of relationships.
 
 \end{abstract}
@@ -47,13 +52,6 @@ user interaction; virtual environments; visualisation; clustering
 
 \section{Introduction}
 
-\noindent   
-In the 21st century, people spend more time than ever interacting in virtual environments. Figure \ref{fig:interactions} shows how social media and email in particular are not only very commonly used in the UK, but still growing in popularity. With this growth it is clear that it is becoming ever more important that these systems of relationships and interactions can be better understood not only though statistical analysis, but through effective visualisation.
-
-There is a long history of visualising the structures that form within these environments \cite{freeman2000visualizing}. This has evolved significantly over time with early graphs of relationships being hand drawn to the present day where layout algorithms running on computers make it possible to visualise ever more complex graphs with greater numbers of nodes effectively. 
-
-Finally, as an extension of these graphs, interactivity has become possible such that they are able to be manipulated in real time. This then allows increasingly novel ways of visualising data and opens up the possibility that these graphs can be used to show more than simply static relationships but rather become effective tools for visualising a dynamic system of interactions that evolves over time.
-
 \begin{figure}[htb]
 \centering
 \caption{Graph of growth on online interactions in the UK \protect\cite{ons}}
@@ -61,73 +59,95 @@ Finally, as an extension of these graphs, interactivity has become possible such
 \includegraphics[scale=0.4]{Chart.pdf}
 \end{figure}
 
-In this project I have taken 'User Interaction' to mean any way in which users consciously affect other users so that the other users would be able to identify the specific other users they were interacting with. This could take place over a period of time of be instantaneous; it could be between two users or many; it could be a single event or it could be ongoing. For example I will consider interactions such as users sending emails between one another but I will not consider interactions such as a user's advertising preference changing what another user sees as this falls beyond my scope.
+\noindent   
+In the 21st century, people spend more time than ever interacting in virtual environments. Figure \ref{fig:interactions} shows how social media and email in particular are not only very commonly used in the UK, but still growing in popularity. Indeed they are both used by the majority of the population. With this growth it is clear that it is becoming ever more important that these systems of relationships and interactions can be effectively understood not only though statistical analysis, but through effective visualisation.
 
-Virtual environments in this project will mean any environment in which users are able to interact in the ways I have previously mentioned, mediated by computers. This will most likely mean over the internet, however it could also be the case that it occurs over smaller network such as within an office or university internal network. This could be for example a video game, a social networking website or a messaging system such as email.
+There is a long history of visualising the structures that form within these environments \cite{freeman2000visualizing}. This has evolved significantly over time from early graphs of relationships being hand drawn to the present day where layout algorithms running on computers make it possible to visualise ever more complex graphs with greater numbers of nodes effectively. 
+
+Finally, as an extension of these graphs, interactivity has become possible such that they are able to be manipulated in real time. This allows increasingly novel ways of visualising data and opens up the possibility that these graphs can be used to show more than simple, static relationships but rather become effective tools for visualising a dynamic system of interactions that evolves over time.
+
+In this project I have taken 'User Interaction' to mean any way in which users consciously, intentionally affect others. This could take place over a period of time of be instantaneous; it could be between two users or many; it could be a single event or it could be ongoing. I call all of these different ways of interacting 'modes'. For example I will consider interactions such as users sending emails between one another but not interactions such as a user's advertising preference changing what another user sees.
+
+Virtual environments in this project will mean any environment in which users are able to interact in the ways previously mentioned, mediated by computers. This will most likely mean over the internet, but it could also be over smaller network such as within an office or university internal network. It may also be taken to mean a 3 dimensional virtual environment in which users can interact as avatars. This could be for example a video game, a social networking website or a messaging system such as email.
 
 \subsection{Project Motivation}
+\noindent
+Previous attempts to visualise the structure of virtual environments through relationships between their uses have suffered two main drawbacks: Firstly they have only been interested in static 'snapshots' of social networks that either represent a state at a particular time or use a static graph to represent a period of evolution. This as a result of the ability to produce dynamic representations being relatively in an already well established field of research. Secondly they have focused only on the relationships between people within these networks rather than exploring the interactions themselves that make up these relationships. In some cases the relationships that are show are inferred from the interactions and in some cases the interactions are ignored completely and the relationship data gathered in a different way.
 
-While there have been many previous attempts to visualise the structure of virtual environments, these have have two drawbacks. Firstly they have only bee interested in static 'snapshots' of social networks that either represent their state at a particular time or assume that they do not change significantly over time. This is no surprise as the ability to produce dynamic representations is a relatively new ability in the long history or social network representation. Secondly they have focused only on the relationships between people within these networks rather than exploring other aspects of the system at a more fundamental level.
-
-With increasing ease of interacting in virtual environments and the explosion in modes over which these interactions are possible it is increasingly important that new ways are developed to visualise this data. It was therefore decided that the current systems could be extended in two ways.
-
-Firstly I wanted to extend the existing work that covered these static representations of relationships and take what was learned to apply to dynamic systems of interactions that were able to evolve over time.
-
-Secondly I wanted to move the focus of the systems away from the current system of representing only the relationships between users that are inferred from the interactions. I would instead represent the interactions themselves.
+With increasing ease of interacting in virtual environments and the explosion in modes over which these interactions are possible it is increasingly important that new ways are developed to visualise this data. It was therefore decided that current systems could be extended in two ways: Firstly to take these static representations of relationships and apply what was learned to dynamic systems of interactions that were able to evolve over time. Secondly to move the focus of the systems away from the current paradigm of representing only the relationships between users that are inferred from the interactions. I would instead represent the interactions themselves.
 
 \subsection{Project Aims}
+\noindent
+In order to guide the project, a set of deliverables were set out that the project aimed to meet. These evolved over time as the project was in progress and were broadly split into basic, intermediate and advanced objectives.
 
-These are the aims for the project, as laid out in the Design Report.
+The basic objective was to create a basic system of modelling user interaction with a visual output. This model would be based on an existing system and the visual output should be able to handle more than one mode of interaction
 
-\begin{enumerate}
-\item Basic Deliverables
-\begin{enumerate}
-\item Develop a simple system that models user interactions with a visual output
-\item Use this system to implement an existing model of user interaction
-\item Expand this system and model to be able to visualise different modes of interaction
-\end{enumerate}
-\item Intermediate Deliverables
-\begin{enumerate}
-\item Expand the initial system so that its state will evolve over time according to the interactions of its users
-\item Examine and visualise the way in which users cluster according to their interactions
-\item Allow the system to set its initial state by real-world social network data
-\end{enumerate}
-\item Advanced Deliverables
-\begin{enumerate}
-\item Visualise change in the clustering of users according to their interactions over time
-\item Generate quantitative output related to the change in clustering of users over time
-\item Apply my quantitative output to attempt to solve a real-world problem
-\end{enumerate}
-\end{enumerate}
+This was then to be extend through an intermediate objective. First the basic system should be evolved so that it was able to include changes of state of the users within the model affective the way in which they interact. The system should then also include a way of visualising clustering of users according to their reactions and finally the system should allow real-world data to be used as an input for the visualisation.
+
+Finally the system was to be extended through advanced objectives. In order to meet these the system should be adapted so that changes in the way user interactions cluster should be visualised and this should be able to be examined quantitatively. Finally this system should be applied to a real world problem.
+
+%These are the aims for the project, as laid out in the Design Report.
+%
+%\begin{enumerate}
+%\item Basic Deliverables
+%\begin{enumerate}
+%\item Develop a simple system that models user interactions with a visual output
+%\item Use this system to implement an existing model of user interaction
+%\item Expand this system and model to be able to visualise different modes of interaction
+%\end{enumerate}
+%\item Intermediate Deliverables
+%\begin{enumerate}
+%\item Expand the initial system so that its state will evolve over time according to the interactions of its users
+%\item Examine and visualise the way in which users cluster according to their interactions
+%\item Allow the system to set its initial state by real-world social network data
+%\end{enumerate}
+%\item Advanced Deliverables
+%\begin{enumerate}
+%\item Visualise change in the clustering of users according to their interactions over time
+%\item Generate quantitative output related to the change in clustering of users over time
+%\item Apply my quantitative output to attempt to solve a real-world problem
+%\end{enumerate}
+%\end{enumerate}
 
 \section{Related Work}
 
 \subsection{Social Network Visualisation}
-As I have already mentioned, network visualisation is a science with a long history, the interest here however is after computer started being used to assist in the drawing of graphs. There are currently low-level tools that exist with the intention that they have the necessary flexibility to accommodate a wide variety of visualisation styles and techniques \cite{heer2005prefuse}. As well as this, there are tools that exist to provide numerical analysis \cite{borgatti2002ucinet}. However, these tools have focused on the analysis and visualisation of snapshots of data remaining static, rather than data sets that evolve over time. They therefore demonstrate the problems that I have talked about above. These have also previously been used to build ways of visualising social network data from Friendster \cite{heer2005vizster} in order to facilitate discovery of more information than would be apparent from other ways, showing that there is merit in using a graphical approach, and indicating that another approach may be useful.
+\noindent
+As has already mentioned, network visualisation is a science with a long history, here, however the focus will be on the period after computers begun being used to assist in the drawing of social network graphs. There are currently low-level tools that exist with the intention that they have the necessary flexibility to accommodate a wide variety of visualisation styles and techniques \cite{heer2005prefuse}. As well as this, there are tools that exist to provide numerical analysis \cite{borgatti2002ucinet}. However, these tools have focused on the analysis and visualisation of snapshots of data remaining static, rather than data sets that evolve over time. They therefore demonstrate the problems that I have talked about above.
+
+These have been used to build ways of visualising social network data from Friendster \cite{heer2005vizster} in order to facilitate discovery of more information than would be apparent from other ways, showing that there is merit in using a graphical approach, and indicating that another approach may be useful. Systems intended for use by members of the public also exist \cite{wolfram} which again reinforce this and show that this is something that need not be complex to use.
 
 \subsection{Information Presentation}
-There is also a wide variety of information on the presentation of data on computer screens.The most popular model can be summed up as 'Overview, Zoom, Filter' \cite{shneiderman1996eyes}. In this model it is suggested that the initial view of the data should be a movable field of view with emphasis on allowing the user to gain an 'overview' of relevant data and identify areas which will be of interest. Specific areas of interest can then be zoomed in on preserving the context of the overall picture before extra information of areas of interest can be viewed possibly by clicking on them. This paper also talks about the importance of smooth display updates and responsiveness to user input, something also considered in this project. This is built upon by the ideas of making information more clear by distorting the 'presentation space' \cite{carpendale2001framework}. This is the method used in Vizster and can be seen in common usage in many different data visualisation applications. It imagines that the virtual space in which the data is presented is a real material that can be stretched and viewed through a movable lens as necessary to make the relevant areas of the information more clear. These ideas area also expanded on further to see what kinds of lenses are suitable for which purposes, and mathematical frameworks for implementing such a lens \cite{leung1994review} have been discussed. Together these papers can provide a unified way of presenting graphs in a dynamic way by as the techniques are complimentary. This is the approach that will therefore be taken in this project.
+\noindent
+Much previous research has been carried out into the presentation of data. The most popular model can be summed up as 'Overview, Zoom, Filter' \cite{shneiderman1996eyes}. In this model it is suggested that the initial view of the data should be a movable field of view with emphasis on allowing the user to gain an 'overview' of relevant data and identify areas which will be of interest. Specific areas of interest can then be zoomed in on preserving the context of the overall picture before extra information of areas of interest can be viewed possibly by clicking on them. Also shown is the importance of smooth display updates and responsiveness to user input, something considered in this project. Building on this is the concept of distorting the 'presentation space' \cite{carpendale2001framework}. This is the method used in Vizster and is common usage in many other data visualisation applications. It imagines that the virtual space in which the data is presented is a real material that can be stretched and viewed through a movable lens as necessary to make the relevant areas of the information more clear. These ideas can expanded on by comparison of lenses, and mathematical frameworks for implementation \cite{leung1994review}. Together these papers can provide a unified way of presenting graphs in a dynamic way and this is the approach that will therefore be taken in this project.
+
+Work has also been completed on evaluation of data presentation. Most notably it is possible to find sets of criteria that effective data presentation should fulfil \cite{tufte1983visual}. This can be then used in the evaluation of my specific implementation.
 
 \subsection{Graph Drawing}
-There is also previous literature on the drawing of graphs in aesthetically pleasing ways. Almost all current research makes use of a force directed spring layout. In this algorithm, each node is modelled is repelling each other node and the edges between them are modelled as springs\cite{fruchterman1991graph}. Included in these papers are suggestions for the strength of the attractive and repulsive forces different distances and the size of graph that this can be expected to create. However, this algorithm doesn't scale well with rapidly increasing numbers of vertices. It has been pointed out that with a large number of nodes, calculating the layout in this way is very expensive in terms of computing power. However, with the correct optimisations it is possible to reduce the complexity to $o(nlog(n))$ \cite{barnes1986hierarchical}. However, this significantly increases the complexity of the implementation. A compromise is therefore taken in this solution whereby there is a limit on the number of nodes that can be laid out for a given application.
+\noindent
+There is also previous literature on the drawing of graphs in aesthetically pleasing ways. The most effective ways for drawing graphs such as this is my making use of a force-directed algorithm \cite{himsolt1995comparing} because of the effectiveness in displaying the structure of the graph clearly despite is drawbacks in terms of speed. In this algorithm, each node is modelled is repelling each other node and the edges between them are modelled as springs\cite{fruchterman1991graph}. However, this algorithm doesn't scale well with rapidly increasing numbers of vertices. It has been pointed out that with a large number of nodes, calculating the layout in this way is very expensive in terms of computing power. With the correct optimisations it is possible to reduce the complexity to $o(nlog(n))$ \cite{barnes1986hierarchical}. Unfortunately, this significantly increases the complexity of the implementation. A compromise is therefore taken in this solution whereby there is a limit on the number of nodes that can be laid out for a given application.
 
 \subsection{Modelling Network Interactions}
-The ability to produce networks of relations and interactions from many different data sources is also explored in a variety of different papers. For example, networks of social interaction have been produced from a history of email correspondence within an organisation \cite{fisher2004social} or the transcript of an internet relay chat \cite{mutton2004inferring}. It is also possible to use data gathered from a users's social network using tools made for the purpose of downloading such data in a usable form. For example Netvizz (https://apps.facebook.com/netvizz/)
+\noindent
+The ability to produce networks of relations and interactions from many different data sources is also explored in a variety of different papers. For example, networks of social interaction have been produced from a history of email correspondence within an organisation \cite{fisher2004social} or the transcript of an internet relay chat \cite{mutton2004inferring}. These explore problems associated with inferring complete graphs from incomplete data. Alternatively, it is possible to use data gathered from a users's social network using tools made for the purpose of downloading such data in a usable form. For example Netvizz (https://apps.facebook.com/netvizz/), which allows the download of a text file containign a list of a users's 'friends' along with various attributes about them and a list of connections between them.
 %Here other relevant ideas are explored such as the privacy implications of collecting data on a large scale and the ability to reconstruct the whole graph from only partial data. The same has also been achieved using the transcript of an internet relay chat \cite{mutton2004inferring} again struggling with the problem of reconstructing a complete graph from partial data. It is then further shown that the same method including the temporal decay of relationships can be applied to other sources of relationship information involving over time such as the plays of William Shakespeare.
-There are also many models that have been proposed for interactions in other ways. These include models for the spread of influence \cite{kempe2003maximizing}, the spread of viral advertising \cite{van2010viral} and a proposal for a social recommendation system \cite{walter2008model}. The combination of all of these gives many possible systems which can be used to demonstrate the effectiveness of the system.
+
+There are also many models that have been proposed for interactions in other ways. These include models for the spread of influence to adopt behaviours \cite{kempe2003maximizing}, the spread of viral advertising \cite{van2010viral} and a proposal for a social recommendation system \cite{walter2008model}. The combination of all of these gives many possible systems which can be used to demonstrate the effectiveness of the system.
 
 \subsection{Categorisation of Interactions}
-Previous research has also explored categorisation of interactions by their characteristics. This has mainly in the past been applied to social iterations within 3D virtual environments in which people interact as virtual avatars, referred to as Networked-Virtual Environments. One particular application of this is games \cite{manninen2000interaction}. Here we can see that there is more than one way of categorising interactions, one way being based on their purpose. These papers also show how it is possible for many different modes of interaction to happen simultaneously. It is possible to use communicative action theory to categorise interactions by their purpose, this is extended in other papers by comparing interactions in a selection of game environments \cite{becker2002social}. Extending this to other environments such as the social network, other papers show how much of the interaction that goes on writhing a virtual environment is hidden from the user. We can see just how much data website such as Facebook collect about us including in our making interactions which we wouldn't normally consider meaningful \cite{schneier2010taxonomy}
+\noindent
+Previous research has also explored categorisation of interactions by their characteristics. This has mainly in the past been applied to social iterations within 3D virtual environments in which people interact as avatars, referred to as Networked-Virtual Environments. One particular application of this is games \cite{manninen2000interaction}, where we can see that there are multiple ways of categorising interactions, but most usefully according to their purpose. This also explores how many different modes of interaction can happen simultaneously. Alternatively it is possible to use communicative action theory to categorise interactions by their purpose, this is extended in other papers by comparing interactions in a selection of game environments \cite{becker2002social}. Extending this to other environments such as the social network, other papers show how much of the interaction that goes on within a virtual environment is hidden from the user. We can see just how much data website such as Facebook collect about us including in our making interactions which we wouldn't normally consider meaningful \cite{schneier2010taxonomy}, it is therefore important that we consciously exclude or include those in our visualisations.
 
 %\subsection{Evolution of social networks}
 %Ideas of the behaviour of users in social networks have been the subject of many different papers. This includes homophily \cite{adamic2003social} which is the idea that people on social networks tend to associate with people who are similar to themselves in terms of age, political views etc. Work has also been completed on the behaviours of users within a social network and the ways in which interactions can spread behaviour across networks of people represented as graphs. It has been suggested that this can be explained using a virus like model \cite{centola2010spread} in which users pass between susceptible, infected and recovered states, analogous to a computer-virus or a real virus.
 
-\subsection{Detection of clustering}
-Detecting features of social networks that are not immediately apparent is also extremely important. We can see that algorithms have been developed that aim to detect communities, related to clustered sections of graph representations of these networks \cite{newman2004fast}. These algorithms can be applied to real world networks with a good degree of success reported in identifying the same communities that the users themselves identify with. Given the visual nature of my project I will therefore endeavour to present the graph in such a way that any clustering based on interactions between the users becomes obvious.
+%\subsection{Detection of clustering}
+%\noindent
+%Detecting features of social networks that are not immediately apparent is also extremely important. We can see that algorithms have been developed that aim to detect communities, related to clustered sections of graph representations of these networks \cite{newman2004fast}. These algorithms can be applied to real world networks with a good degree of success reported in identifying the same communities that the users themselves identify with. Given the visual nature of my project I will therefore endeavour to present the graph in such a way that any clustering based on interactions between the users becomes obvious.
 
 \section{Solution}
 
-My solution focuses on flexibility and allows the user to enable and disable as well as configure many different elements. These various elements are described below.
+\subsection{Architecture}
 
 \begin{figure}[htb]
 \centering
@@ -136,13 +156,14 @@ My solution focuses on flexibility and allows the user to enable and disable as 
 \includegraphics[scale=0.75]{ArchitectureDiagram.pdf}
 \end{figure}
 
-As was described in my Design Report, I have used a 'Model, View, Controller' software pattern to guide the architecture of my solution. This has allowed the compoenets to remain as separate as possible as shown in figure \ref{fig:diagram}.
+\noindent
+I have used a 'Model, View, Controller' software pattern to guide the architecture of my solution. This has allowed the components to remain as separate as possible which was important so that the visualisation could remain the same between different data sets being visualised and configurations being used.
 
-It can be seen in this diagram how the the Model contains all necessary logic in the system along its state with the Drawing Controller and the Graph while keeping this separate from the Controller which handles the Menu generation and storage of its results. The View is then again separate and can focus on its interactions with the Model and the Controller to draw the graph and distort it with the Gaussian Lens.
+It can be seen in figure \ref{fig:diagram} how the the Model contains all necessary logic in the system along its state. The graph contains the state of the users and the relationships between while the drawing controller provides an interface to the 'view' and the Models handles the logic of evolution. This is kept separate from the Controller which handles the Menu generation and storage of its results as 'Configuration'. The View is then again separate and can focus on its interactions with the Model and the Controller to draw the graph and distort it with the Gaussian Lens.
 
 \subsection{Menu System}
-
-The primary control of the system is given initially though a system of menus which are presented to the user before the system begins running.
+\noindent
+The system is primarily controlled though a system of menus which are presented to the user before the system begins running.
 
 \begin{figure}[htb]
 \centering
@@ -151,32 +172,27 @@ The primary control of the system is given initially though a system of menus wh
 \includegraphics[scale=0.5]{MenuShot.png}
 \end{figure}
 
-Figure \ref{fig:menu} shows an example of these menus. The main window on the left represents the main control of the application. In this window it is possible to enable and disable various models that can be used in order to demonstrate the visualisation system. The buttons next to these check boxes allow various aspects of each the demonstration to be configured so as to give different results. The aspects that can be configured are detailed in the descriptions of each system below.
+Figure \ref{fig:menu} shows an example of these menus. The main window on the left represents the main control of the application. In this window it is possible to enable and disable various models that can be used in order to demonstrate the visualisation system. The buttons next to these check boxes allow various aspects of each the demonstration to be configured so as to give different results. The aspects that can be configured are detailed in the descriptions of each system below, we see examples of this in the menus on the right.
 
-This menu also allows the user to select what initial input data will be used. They can either generate random data that will be realistic enough in order to demonstrate the system or import their own data. Users own data will come from the netvizz Facebook app (https://apps.facebook.com/netvizz). This allows users to download a '.gml' file containing a list of all friends of a user, the sex of the users, how many things they like and a separate list of all friendships between the listed users in order to build up a network.
+This menu also allows the user to select what initial input data will be used. They can either generate random data that will be realistic enough in order to demonstrate the system or import their own data. Users own data will come from the Netvizz Facebook app (https://apps.facebook.com/netvizz). This allows users to download a '.gml' file containing a list of all friends of a user along with various of their attributes and a list of all friendships between the listed users in order to build up a network.
 
 \subsection{Interactions with Vertices}
-
-The user is able to interact with vertices representing people in the graph in two different ways. These are shown in \ref{fig:labels}.
 
 \begin{figure}[htb]
 \centering
 \caption{Diagram showing labels and selctions}
 \label{fig:labels}
-\includegraphics[scale=1]{Select.png}
+\includegraphics[scale=0.7]{Select.png}
 \end{figure}
 
-The first way is that if the user has selected it as an option in the first menu, they have the ability to move their mouse over a node in order to see more information about it. This can be seen as the box with a grey background in the figure. It can be configured to show what information the user requests, in this case it shows the name and sex of the person represented by the vertex.
+\noindent
+The user is able to interact with vertices representing people in the graph in two different ways as shown in figure \ref{fig:labels}. The first way is that they have the ability to move their mouse over a node in order to see more information about it. This can be seen as the box with a grey background in the figure. It can be configured to show different information, in this case it shows the name and sex of the person represented by the vertex.
 
-The second way in which the user can interact directly with vertices is by clicking on them. This has a different meaning depending on the context for example, it could be used to select the points being used to seed in the advert or influence models laid out below, the colour change is then used to indicate which vertices are selected.
+The second way is by clicking on them. This can be used when it is necessary to choose vertices, for example it could be used to select the points being used to seed in the advert or influence models laid out below, the colour change is then used to indicate which vertices are selected.
 
 \subsection{Graph Layout}
-
-This element of my solution is always enabled and allows the system to lay out the graph which forms the basis for for its representation of interactions. The system that I have used to lay out my graph is based on a previous sprint-directed layout algorithm \cite{fruchterman1991graph}.
-
-Current data visualisations make almost exclusive use of a force-directed spring layout for graph drawing. This method models a graph as a set of springs along each edge joined at each node. These springs, as in my case, need not respond to force in the same way as a real, physical spring but can instead have whatever response gives the best layout for the graph.
-
-The algorithm can then use an iterative approach in order to find a local point of least tension on the springs as a collection. 
+\noindent
+This element of my solution allows the system to lay out the graph which forms the basis for for its representation of interactions. Current data visualisations make almost exclusive use of a force-directed spring layout for graph drawing. This method models a graph as a set of springs along each edge joined at each node. These springs, as in my case, need not respond to force in the same way as a real, physical spring but can instead have whatever response gives the best layout for the graph.
 
 \begin{algorithm}[htb]
 \caption{Graph sprint-directed layout algorithm}
@@ -187,7 +203,7 @@ The algorithm can then use an iterative approach in order to find a local point 
 \State $t \gets 0.05$
 \ForAll{Vertex in V}
 	\State $Vertex.displacement \gets (0,0)$
-	\ForAll{Other in V \textbackslash Vertex}
+	\ForAll{Other in \{V{\textbackslash}Vertex\}}
 		\State $dist \gets distance(Vertex, Other)$ \Comment{$distance$ gets Euclidean distance}
 		\State $diff \gets (Vertex.x-Other.x, Vertex.y-Other.y)$
 		\State $Vertex.displacement \gets Vertex.displacement + diff \times (k^{2}/dist)$
@@ -207,54 +223,55 @@ The algorithm can then use an iterative approach in order to find a local point 
 \end{algorithm}
 
 \begin{figure}[htb]
-\caption{Graph Layout}
+\caption{Example of application of graph layout algorithm}
 \label{fig:layout}
 \centering
 \includegraphics[scale=0.12]{Pygame.png}
 \end{figure}
 
-I have detailed the algorithm that I used in Algorithm \ref{alg:graph}. This is split into three main parts after the set up. where the value of $k$ is set to the value suggested in the above paper and $t$ is set to a value which was determined through experimental testing to be the best.
+The algorithm uses an iterative approach in order to find a local point of least tension on the springs as a collection and is based on \cite{fruchterman1991graph}. I have detailed the algorithm that I used in Algorithm \ref{alg:graph}. This is split into three main parts after the set up. where the value of $k$ is set to the value suggested in the above paper and $t$ is set to a value which was determined through experimental testing.
 
-Ever vertex starts with 0 displacement. The first part of the algorithm then calculates the repulsion between every pair of vertices and updates its displacement an amount proportional to the inverse of the distance. The second part of the algorithm then calculates the attraction along every edge and updates the displacement of each vertices in this edge proportionally to the square of the distance. Finally, each vertex is moved either its displacement or t, a pre-determined distance, whichever is smaller, then the algorithm checks that none of the points have been moved outside the boundary of the screen.
+Ever vertex starts with 0 displacement. The algorithm then calculates the repulsion between every pair of vertices and updates its displacement an amount proportional to the inverse of the distance. The algorithm then calculates the attraction along every edge and updates the displacement of each vertex in this edge proportional to the square of the distance. Finally, each vertex is moved either its displacement or t, a pre-determined distance, whichever is smaller, then the algorithm checks that none of the points have been moved outside the boundary of the screen.
 
-In my implementation, the input graph is initially laid out totally at random. We can then see an example of an application of this algorithm over a number of iterations in figure \ref{fig:layout}. It can be seen how the points are taken from a random layout to a layout in which it is easy to see the structure of the graph.
+In my implementation, the input graph is initially laid out totally at random. We can then see an example of an application of this algorithm over a number of iterations in figure \ref{fig:layout}. It can be seen on the left how the points are initially given a random layout with only the edges between them drawn and it is impossible to see any structure in the graph. After approximately 10 iterations of the algorithm the image on the right is obtained where elements of the graph become clear showing two main clusters, one much tighter than the other.
 
 \subsection{Lens}
-
-Many of smaller details of graphs, especially when they include a large number of nodes can become hidden. After experimentation it was decided that a Gaussian lens would be best suited for this. This allows a gentle falloff and smooth transition through the point of maximum magnification that made the interaction natural as the user moved the 'lens' around the visualisation. Gauss's equation is given by 
+\noindent
+Details of graphs, especially when they include a large number of nodes can become hidden. After experimentation it was determined that a Gaussian lens would be best suited for this. This allows a gentle falloff and smooth transition through the point of maximum magnification that made the interaction natural as the user moved the 'lens' around the visualisation. Gauss's equation is given by 
 
 \begin{equation}
 \label{eq:Guass}
 f(x,\mu,\sigma)=\frac{1}{\sigma\sqrt{2\pi}}e^{\frac{(x-\mu)^{2}}{2\sigma^{2}}}.
 \end{equation}
 
-In my solution $f(x, \mu, \sigma)$ represents the distance that the point will be displaced away form the cursor. In my implementation $x-\mu$ is the initial distance between the vertex and the cursor and $\sigma$ is a value that was determined by experiment in order to give the best result. I settled on 0.1, meaning that vertices over 20\% of the width or height of the screen away would no longer be significantly affected.
+In my solution $f(x, \mu, \sigma)$ represents the distance that the point will be displaced away form the cursor. $x-\mu$ is the initial distance between the vertex and the cursor and $\sigma$ is a value that was determined by experiment in order to give the best result. 0.1 was chosen, meaning that vertices over 20\% of the width or height of the screen away would no longer be significantly affected.
 
 \begin{figure}[htb]
-\caption{Example of lens}
+\caption{Example of use of Gaussian lens}
 \label{fig:lens}
 \centering
 \includegraphics[scale=0.12]{Gaussian.png}
 \end{figure}
 
-It can be seen in figure \ref{fig:lens} that the lens allows the interactions surrounding the cursor (highlighted by a green ring) to be viewed much more effectively.
+An example of the lens in use is shown in figure \ref{fig:lens}. Here on the left we see an image with no lens effects, on the right we see the image affected by the lens centred on the cursor (highlighted by a green circle). It can be seen how it is much easier to see the structure of the tightly clustered group of points int he bottom left through the use of this lens.
 
 \subsection{Transitions}
-
-One way of showing interactions between users in real times is by showing movement in the graph. An example of this can be seen in figure \ref{fig:transitions}. In this example these might be used to show 'likes'. As a user likes another's post a Facebook 'thumb' image is generated at the person who likes and travels over the course of about a second to the person who's post is being liked.
-
-It is possible to use this as well to represent other interactions such as the spread of influence. The 'thumb' can be replaced by another image or by a simple disc or other relevant symbol.
 
 \begin{figure}[htb]
 \caption{Examples of transitions}
 \label{fig:transitions}
 \centering
-\includegraphics[scale=1]{Transitions.png}
+\includegraphics[scale=0.7]{Transitions.png}
 \end{figure}
 
-\subsection{History}
+\noindent
+One way of showing interactions between users in real times is by showing movement in the graph. An example of this can be seen in figure \ref{fig:transitions}. This example might be used in a social model to show 'likes'; As a user likes another's post on a social network, a 'thumb' image is generated at the person who likes and travels over the course of about a second to the person who's post is being liked.
 
-In order to make a fast moving interaction more clear, it is possible for the system to record the state of each user at given times and then to display this data once the model has run.
+It is possible to use this as well to represent other interactions as well such as the spread of influence. The 'thumb' can be replaced by another image or by a simple disc or other relevant symbol.
+
+\subsection{Quantitative Output}
+\noindent
+It is possible for the system to record the state of each user at given times and then to display this data once the model has run. This both makes it easier for a user to make sense of a rapidly evolving model but gives the possibility of a quantitative output for later analysis.
 
 \begin{figure}[htb]
 \caption{Example if a display of the history of states}
@@ -263,81 +280,71 @@ In order to make a fast moving interaction more clear, it is possible for the sy
 \includegraphics[scale=0.3]{Graph.png}
 \end{figure}
 
-An example of this can be seen in figure \ref{fig:history}. The horizontal axis represents time while the vertical axis represents the number of users. In this case the colours in the graph match the colours that are used to represent the vertices in the graph view.
+An example of this can be seen in figure \ref{fig:history}. This graph comes from a visualisation of the viral advertising model detailed below. The horizontal axis represents time while the vertical axis represents the number of users. In this case the colours in the graph match the colours that are used to represent the vertices in the network.
 
-This visualisation makes it clear how the distribution of users changed over time. In this view the progress of the first campaign can clearly be seen, as can the jump when this campaign is ended and a second introduced.
+This visualisation makes it clear how the distribution of users changed over time. In this view the progress of the first campaign can clearly be seen, as can the jump when this campaign is ended and a second introduced. This compliments well watching the evolution in real time allowing different features to be seen.
 
 \subsection{Vertices}
-
-The system allows for many different ways of representing people as vertices depending on their attributes in order to make it as clear as possible what is being represented.
+\noindent
+The system allows many different ways of representing people as vertices depending on their attributes in order to make it as clear as possible what is being represented. Figure \ref{fig:vertices} shows examples of different ways that attributes of the vertex can be changed in order to show different information.
 
 \begin{figure}[htb]
 \caption{Examples of possible representations of vertices}
 \label{fig:vertices}
 \centering
-\includegraphics[scale=1]{Nodes.png}
+\includegraphics[scale=0.7]{Nodes.png}
 \end{figure}
 
-Figure \ref{fig:vertices} shows examples of different ways that attributes of the vertex can be changed in order to show different information.
-
-The vertex on the left represents the most basic at only one solid colour, this colour could change for example to represent changes of state between a finite number of states or could have its brightness or hue changed to represent a continuous change in a property.
+The vertex on the left represents the most basic at only one solid colour, this could change between preset colours to represent changes between a finite number of states or could have its brightness or hue changed to represent a continuous change in a property.
 %For example in the advertising system detailed below the vertex changes colour to indicate what stage it has reached in the viral campaign.
-
-The second vertex from the left shows that this can be build up in layers with an edge or another band of colour. This could be used to represent multiple properties win the same vertex.
+The second vertex from the left shows that this can be build up in layers with an edge or another band of colour. Each layer can then be used to represent multiple properties in the same way as the first vertex.
 %For example if the user wanted to track the difference that starting variables made to a system or to run multiple systems simultaneously that all relied on being represented by colour change of the vertex.
-
-The second vertex from the right shows how it is then further possible to represent properties by the length of a filled arc around a vertex. This could be used to represent the state of a property that it is known will fall between two bounds for example age.
-
+The second vertex from the right shows possible to represent properties by the length of an arc around a vertex. This could be used to represent the state of a property that it is known will fall between two bounds for example age.
 The final example on the far fight shows how it is possible to represent vertices as arbitrary shapes constructed as necessary in order to be fully customisable for whatever is being represented at the time.
 
 \subsection{Edges}
-
+\noindent
 There are multiple ways of using edges of the graphs to represent the relationships between people. A selection of these can be seen in figure \ref{fig:edges}.
 
 \begin{figure}[htb]
 \caption{Examples of possible representations of edges}
 \label{fig:edges}
 \centering
-\includegraphics[scale=1]{Edges.png}
+\includegraphics[scale=0.7]{Edges.png}
 \end{figure}
 
-The bottom line shows how edges are generally represented as a single pixel line joining the two users who have a relationship between then.
-
-The middle like then shows that the thickness of the line can be changed in represent different things about the relationship between two people. This could for example be used to represent the strength of the relationship between two people.
-
-On the right I have shown how it is possible to change the colour of the line joining the two vertices. This could be changed to represent some interaction between he users and can obviously be combined with either of the two previous methods.
-
-Finally it is also possible to add significance to the weight of the lines by adjusting the graph layout algorithm. This could then be used to affect the shape of the graph so that, for example, users who interacted more frequently were more clustered.
+The top line shows how edges are generally represented as a single pixel line joining the two users who have a relationship between then.
+The middle like then shows that the thickness of the line can be changed to represent different things about the relationship such as strength or interaction frequency. On the bottom I have shown how it is possible to change the colour of the line joining the two vertices. This could be changed to represent some interaction between he users and can be combined with either of the two previous methods. Finally it is also possible to add significance to the weight of the lines by adjusting the graph layout algorithm. This could then be used to affect the shape of the graph so that in order to show more complex interactions between properties.
 
 \subsection{Demonstration Models}
-
+\noindent
 In my implementation I included a set of demonstrations in order to show off the usefulness and effectiveness of my implementation as applied to real-world scenarios.
 
 \subsubsection{Influence}
 
-I implemented the two models of influence spreading through a social network according to \cite{kempe2003maximizing}. This could be used to model behaviour adoption across a social network, for example if a new social game such as 'Farmville' were to be released, this could simulate how social network users would encourage their friends to also play the game.
+I implemented the two established models of influence spreading through a social network \cite{kempe2003maximizing}. This could be used to model behaviour adoption across a social network, for example if a new social game were to be released, this could simulate how users encouraged their friends to also play the game.
 
-In the first model of influence, based on 'Linear Threshold Model', initially each vertex is given an adopted value of $False$ a value representing the influence that they are currently feeling and an adoption value, representing how much influence must be exerted over them in order for them to adopt the behaviour. A given set of starting nodes are then chosen and have their adopted value set to $True$. The model then proceeds in steps. At each step, first the weights of all connections to that vertex are added up, then the weights of each vertex that has adopted the behaviour. If the weights of vertices that has adopted divided by the weights of all neighbour is greater than the vertices adoption value, that vertex then adopts the behaviour.
+In the first model of influence, based on a 'Linear Threshold Model', initially each vertex is given an adoption value, representing how much influence must be exerted over them in order for them to adopt the behaviour. A set of starting nodes are then chosen to seed the behaviour and the model then proceeds in discrete steps. At each step, first the weights of all connections to that vertex are added up, then the weights of each vertex that has adopted the behaviour. If the weights of vertices that has adopted divided by the weights of all neighbour is greater than the vertices adoption value, that vertex then adopts the behaviour.
 
-In the second model of influence based on the 'Independent Cascade Model'. Initially, similarly to before each vertex is given a property to show that it hasn't adopted the behaviour, and a random set are chosen to have adopted it. As before the model then proceeds in steps. In each step, each vertex that has adopted the behaviour will have one chance to influence its neighbours to adopt the behaviour. Whether or not they are successful depends both on the 'strength' of the edge between the two vertices and a random element. Each node that is successfully influenced has only one chance to influence its neighbours, but one node will have multiple chances to be influenced if it has multiple neighbours who are influenced.
+The second model of influence is based on the 'Independent Cascade Model'. A set of seed nodes are chosen to adopt the behaviour then through the steps, each vertex that has adopted the behaviour will have one chance to influence its neighbours to adopt the behaviour. Whether or not they are successful depends partly on the strength of the relationship and is partly random.
 
 In this model it is possible to configure many different aspects such as the number of starting nodes and the relative chances of the behaviour being adopted. It is also possible to use both models simultaneously in order to compare their results.
 
 \subsubsection{Advertising}
 
-A model of the spread of viral advertising was implemented based on a pre-existing method \cite{van2010viral} which relies on a transition of each person between a number of states. These states are: People who haven't participated in the campaign; people who have received a 'seed' email; people who have seen a traditional advert as part of the campaign;  people who have received an email from a friend about the campaign; people who have chosen not to participate and finally people who have participated.
+A model of the spread of viral advertising was implemented based on a current model \cite{van2010viral} which relies on a transition of each person between a number of states. These states depend on whether they have or haven’t participated, or in what way they have been asked to participate.
 
-In the initial set-up, all vertices have a status set that they have not participated in the campaign. A random number of 'seed' emails are then sent to people, then a number of 'seed' adverts are shown to the vertices, both with a chance to trigger participation in the campaign. As before this campaign proceeds in steps. At each step, a certain number of vertices being considered will check their email. If they have received an email related to the campaign, either from another user or a 'seed' email then this will give them either a chance to participate in the campaign or choose not to. If they choose to participate in the campaign, they will then generate emails to a random number of their friends about the campaign and the cycle continues.
+In the initial set-up, a random number of 'seed' emails are sent to people, then a number of 'seed' adverts are shown, both with a chance to trigger participation in the campaign. As before this campaign proceeds in steps. At each step, a certain number of vertices will check their email. If they have received an email related to the campaign, either from another user or a 'seed' email then this will give them a chance to participate. If they choose to participate in the campaign, they will then generate emails to a normally distributed number of their friends about the campaign and the cycle continues.
 
-In this case it is possible to change all of the relevant variables in order to see their effects such as the number of seed emails sent and the number of users initially seeing the seed advert. It is also possible to determine how likely a user is to respond to either an advert or an email or even to give different response rates for emails from their friends and seed emails.
+In this case it is possible to change all of the relevant variables such as the number of seed emails sent and the number of users initially seeing the seed advert. It is also possible to determine how likely a user is to respond to either an advert or an email not necessarily at the same rate.
 
 \subsubsection{Recommendation}
 
-I implemented a model such as might be found in a social recommendation system as inspired by \cite{walter2008model}. This model imagines a system in which users are recommended something, say, films according to what their friends report they enjoyed.
+Finally, I implemented a model of social recommendation system\cite{walter2008model}. This model imagines a system in which users are recommended something, say, films according to what their friends report they enjoyed.
 
-This system begins by seeding a number of ratings for a number of different items, ratings are a value between 0 and 1. Recommendations are then propagated through the graph. This happens once, each vertex looks through its neighbours to see if it can find someone who has a direct opinion of the product, if it fails to find anyone it then looks through its neighbours neighbours and so on until it either finds someone or reaches a pre-determined depth. If it does find somebody it then takes this recommendation with a degradation depending on how many edges separate the vertex under consideration and the one doing the recommending.
+This system begins by seeding a number of ratings for a number of different items varying between 0 and 1. Recommendations are then propagated through the graph. This happens once, each vertex looks through its neighbours to see if it can find someone who has a direct opinion of the film, if it fails to find anyone it then looks through its neighbours neighbours and so on until it either finds someone or reaches a pre-determined depth. If it does find one or more people it then takes this recommendation with a degradation depending on the degrees of separation.
 
-It is possible in this model to change several variables within the system such as the number of users that are initially seeded with experiences of what is being recommended, what experience these users have and the depth to which a user will search for a recommendation. This system also accommodates there being multiple items which can each have their own recommendations propagated independently.
+It is possible in this model to change several variables such as the number of users that are initially seeded with experiences of what is being recommended, what experience these users have and the depth to which a user will search for a recommendation. This system also accommodates there being multiple items which can each have their own recommendations propagated independently.
 
 %\subsubsection{Social}
 
@@ -346,61 +353,64 @@ It is possible in this model to change several variables within the system such 
 %The model encompasses various elements of the Facebook website. Each user has a wall on which they can post either a status of a picture at random intervals, pictures can have one or more friends tagged in them. Each user also has an attribute 'views'. Users will at random intervals check their news feed which is made up of posts from the walls of their friends. Their attitude towards their friends can change according to their attitude towards any other people that might appear tagged in pictures, or the difference in 'views' between a person reading a status and the person writing it.
 
 \subsection{Tools Used}
-
+\noindent
 The solution is entirely written using a combination of Python 3.4 and various libraries. I used a 64 bit binary of version 3.4.2 of CPython as my interpreter, downloaded from www.python.org. This was chosen as at the time of writing it was the latest version of the most popular Python interpreter. I used a 64 bit edition so that if it became necessary I would be able to make use of all available memory of my computer and python 3 was chosen rather than python 2 so that I was able to make use of recent performance optimisations.
 
-Visualisations were produced using the PyGame library. I obtained this by building the source available from https://bitbucket.org/pygame/pygame on my system at the time of writing with CPython as mentioned above. PyGame was chosen because if its ease of use over OpenGL allowing for rapid prototyping. Additionally its use of optimised C code would ensure that the visualisations would not interfere with time required for other computations.
+Visualisations were produced using the PyGame library. I obtained this by building the source available from https://bitbucket.org/pygame/pygame on my system with CPython as mentioned above. PyGame was chosen because if its ease of use over OpenGL allowing for rapid prototyping. Additionally its use of optimised C code would ensure that the visualisations would not interfere with time required for other computations.
 
 Menus were implemented in the solution using the Python package Tkinter. This was obtained from my system's package repository (http://archive.ubuntu.com/ubuntu/dists/utopic/). I chose to use this as it would provide easy implementation of menus in my solution while not distracting from the models being used.
 
 Graph drawing was done using the pyplot library from Matplotlib. This was as with Tkinter obtained from by systems package repository. I chose this as a method of graph drawing as it provided easy drawing of simple graphs and would easily allow me to change the style in order to experiment with different ways of displaying the data.
 
 \subsection{Verification and Validation}
-
+\noindent
 Software verification was undertaken at all stages of the implementation. This was primarily achieved with reference to my Design Report, in which I had given thought to the design and architecture necessary in order to achieve the objectives set out at the beginning of the project.
 
-Software validation was made in reference to the objectives and functional requirements set out in my Design Report which were designed to allow me to meet the objectives of the project in several layered steps. This was also helped by the project supervisor who advised on direction at all stages and ensured that focus was maintained on the areas in which it was most needed.
+Software validation was done in reference to the objectives and functional requirements set out in my Design Report which were designed to allow me to meet the objectives of the project in several layered steps. This was also assisted by the project supervisor who advised on direction at all stages and ensured that focus was maintained on the areas in which it was most needed.
 
 \subsection{Testing}
-
-As I prototyped my implementation, testing was mainly undertaken through a dynamic approach, matching the output given by the code to an expected output based on the software design. This was done at all stages of implementation in order to check progress against aims and ensure that subsequent work would be able to function on top of old as expected. In the case of algorithm checking however static testing was undertaken in order to ensure that the results that they gave were as expected.
+\noindent
+As I prototyped my implementation, testing was mainly undertaken through a dynamic approach, matching the output given by the code to an expected output based on the software design. This was done at all stages of implementation in order to check progress against aims and ensure that subsequent work would be able to function as expected. In the case of algorithm checking however static testing was undertaken in order to ensure that the results that they gave were as expected.
 
 The dynamic testing used a grey-box approach with a focus on the user output but with hopes of testing cases that would challenge the internal models driving the output.
 
-While the system is highly modular, the modules all rely on one another in order to provide a useful output. Given that each module was fairly simple testing focused on an integration and system level enabling a focus to be given to the output visible to the user as was the focus of the project.
+While the system is highly modular, the modules all rely on one another in order to provide a useful output. Given that each module was fairly simple testing was focused at an integration and system level enabling  more time to be given to the output visible to the user as was the focus of the project.
 
 \subsection{Implementation Difficulties}
-
+\noindent
 The main difficulty that I faced during implementation was the speed at which the Python would run using the interpreter on my computer. It was necessary at all times to make a special effort to ensure that algorithms remained as fast as possible so that the user interface would not spend long periods unresponsive as this would degraded the user experience so important to the project.
 
-I attempted to rectify this by using an alternative Python interpreter PyPy. However, this did not support the Pygame binaries I was using at the time and I was unable to use it to build suitable binaries. While there is an alternative to Pygame compatible with PyPy, Pygame\_cffi (https://github.com/CTPUG/pygame\_cffi), at the time of writing this did not appear sufficiently complete or stable for use with the project.
+I attempted to rectify this by using an alternative Python interpreter PyPy. However, this did not support the Pygame binaries I was using at the time and I was unable to use it to build suitable binaries. While there is an alternative to Pygame compatible with PyPy, Pygame\_cffi (https://github.com/CTPUG/pygame\_cffi), at the time of writing this did not appear sufficiently complete or stable for use with the project. I also tried to replace some of my loops with NumPy arrays \cite{van2011numpy}. However it became apparent that the cost of initialising many of these small arrays was greater than the time saving for elimination of loops.
 
 Additionally, part way though the project, Facebook changed its privacy polity restricting the amount of data that was accessible through its API. This means that at the time of writing NetVizz is no longer able to download new data. It would be necessary therefore that an alternative solution was found in order to continue using a users's own social network data.
 
 \section{Results}
-
-In order to demonstrate my system I made several mock ups to show what it could be capable of. I present those here.
+\noindent
+In order to demonstrate my system I made several mock ups to show what it could be capable of making use of combinations of the models and techniques I have detailed above.
 
 \subsection{Viral System}
-
+\noindent
 Here I implemented the viral advertising model specified above. I will then use this to demonstrate various aspects of the representation possible in my system.
 
 \begin{figure}[htb]
 \centering
 \captionsetup[subfigure]{justification=centering}
-	\begin{subfigure}[b]{0.3\linewidth}
+	\begin{subfigure}[c]{0.9\linewidth}
+	\centering
 	\caption{Viral graph view, showing the states of the people}
 	\label{fig:viralStates}
 	\includegraphics[scale=0.1]{Viral1.png}
 	\end{subfigure}
 \\
-	\begin{subfigure}[b]{0.3\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
+	\centering
 	\caption{Window showing configuration of new viral campaign}
 	\label{fig:viralConfig}
 	\includegraphics[scale=0.3]{Viral2.png}
 	\end{subfigure}
 \quad
-	\begin{subfigure}[b]{0.3\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
+	\centering
 	\caption{Graph showing evolution of states of people over time}
 	\label{fig:viralGraph}
 	\includegraphics[scale=0.2]{Viral3.png}
@@ -409,38 +419,38 @@ Here I implemented the viral advertising model specified above. I will then use 
 \label{fig:viral}
 \end{figure}
 
-In figure \ref{fig:viralStates} we can see a representation of the state of all the actors involved in the model. In this case the colour represents the current state of the person in relation to the current campaign. It can immediately be seen that people at the edge of the network haven't yet heard about the campaign at all and are in red, meanwhile the people who have already been sent emails (in turquoise), can clearly be seen to be clustered around the people who have already taken part in the campaign (in green).
+In figure \ref{fig:viralStates} we can see a representation of the state of all the actors involved in the model. In this case the colour represents the current state of the person in relation to the current campaign. It can immediately be seen that people at the edge of the network haven't yet heard about the campaign at all and are in red, meanwhile the people who have already been sent emails (in turquoise), can be seen to be clustered around the people who have already taken part in the campaign (in green).
 
-Figure \ref{fig:viralConfig} clearly shows the kind of configuration that is possible when adding a new campaign during the running of the model along with a set of preset suggested parameters.
+Figure \ref{fig:viralConfig} shows the kind of configuration that is possible when adding a new campaign during the running of the model along with a set of preset suggested parameters that are used by default.
 
-Figure \ref{fig:viralGraph} demonstrates how the time evolution of the model can then be shown after it has run. On the vertical axis we have the number of people in each state at a given time and on the horizontal axis we have the number of iterations of the simulation. The colours match those that were used to represent the states on the graph. This clearly allows features to be picked out such as the beginning of new campaigns as well as more subtle features such as the time it takes for people who haven't yet participated to outnumber those who have.
+Figure \ref{fig:viralGraph} demonstrates how the time evolution of the model can then be shown in a quantitative way after it has run. On the vertical axis we have the number of people in each state at a given time and on the horizontal axis we have the number of iterations of the simulation. The colours match those that were used to represent the states on the graph making interpretation intuitive. This allows important features to be picked out such as the beginning of new campaigns as well as more subtle features such as the time it takes for new participants to slow.
 
 \subsection{Recommendation System}
-
-The same can be seen with the recommendation system which demonstrates a different set of features.
+\noindent
+I then implemented the recommendation system in order to demonstrate a different set of features. The system was run for three products simultaneously using different sets of starting nodes for each product.
 
 \begin{figure}[htb]
 \centering
 \captionsetup[subfigure]{justification=centering}
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
 	\caption{Initial graph view showing who has experienced and who has been recommended a product}
 	\label{fig:recommendationInitial}
 	\includegraphics[scale=0.1]{Recommendation1.png}
 	\end{subfigure}
 \quad
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
 	\caption{View demonstrating everyone's favourite product}
 	\label{fig:recommendationFavourite}
 	\includegraphics[scale=0.1]{Recommendation2.png}
 	\end{subfigure}
 \\	
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
 	\caption{View comparing what products people like}
 	\label{fig:recommendationComparison}
 	\includegraphics[scale=0.1]{Recommendation3.png}
 	\end{subfigure}
 \quad
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
 	\caption{View showing different distribution of preerence for another product}
 	\label{fig:recommendationDifferent}
 	\includegraphics[scale=0.1]{Recommendation4.png}
@@ -449,26 +459,28 @@ The same can be seen with the recommendation system which demonstrates a differe
 \label{fig:recommendation}
 \end{figure}
 
-Here we can see in figure \ref{fig:recommendationInitial} that the user is able to see the effect of those who have experience of a product on who will be recommended it. In this case those people who appear purple have a direcct experience meanwhile those who appear in green are those who will be recommended the product. The brightness of the green depends on the confidence of the recommendation.
+Here we can see in figure \ref{fig:recommendationInitial} that the user is able to see the effect of those who have experience of a product on who will be recommended it. In this case those people who appear purple have a direct experience meanwhile those who appear in green are those who will be recommended the product. The brightness of the green depends on the confidence of the recommendation. It can therefore be seen that as only people in one cluster have any experience of this product, only that cluster will be recommended it.
 
-Figure \ref{fig:recommendationFavourite} then demonstrates a different way of looking at this data. The colours represent the item which each person is most likely to enjoy.
+Figure \ref{fig:recommendationFavourite} then demonstrates a different way of looking at this data. The colours represent the item which each person is most likely to enjoy by making use of the three simultaneous recommendation systems.
 
-Then in figure \ref{fig:recommendationComparison} we can see a different layout of the data. Here each of the streched horizontal polts represents one of the products while the horizontal distance to the right represents how much they are likely to enjoy the product. The comparison between this and figure \ref{fig:recommendationDifferent} then shows the interaction between the way different people enjoy different products and the extent to which enjoyment of one product will mean that they enjoy another
+Then in figure \ref{fig:recommendationComparison} we can see a different layout of the data. Here each of the streched horizontal polts represents one of the three simultaneous recommendation systems. The horizontal distance from the left represents how much they are likely to enjoy the product based on the system while the layout of these plots aims to keep the clusters in relationships distinguished. The highlights show the people who have experience of and have been recommended ond of the products as before. Figure \ref{fig:recommendationDifferent} then shows different highlights, based on the second product. This easily allows anyone to see the relationships between preferences between the product and how they cluster.
 
 \subsection{Influence}
-
-Finally I did the same with the influence system detailed above.
+\noindent
+Finally the same was done making use of both models of influence spread detailed above.
 
 \begin{figure}[htb]
 \centering
 \captionsetup[subfigure]{justification=centering}
-	\begin{subfigure}[b]{0.4\linewidth}
+	\centering
+	\begin{subfigure}[c]{0.4\linewidth}
 	\caption{Showing selection of vertices to be influenced}
 	\label{fig:influenceSelect}
 	\includegraphics[scale=0.1]{Influence1.png}
 	\end{subfigure}
 \quad
-	\begin{subfigure}[b]{0.4\linewidth}
+	\begin{subfigure}[c]{0.4\linewidth}
+	\centering
 	\caption{Showing comparison of two models of influence spread}
 	\label{fig:influenceCompare}
 	\includegraphics[scale=0.1]{Influence3.png}
@@ -477,12 +489,12 @@ Finally I did the same with the influence system detailed above.
 \label{fig:influence}
 \end{figure}
 
-In figure \ref{fig:influenceSelect} we can see the operation of the user selecting which will be the people who are initially responsible for influencing the rest of the population. This selection occurs by clicking on the green circles which then turn red to indicate they have been selected.
+In figure \ref{fig:influenceSelect} we can see the operation of selecting which will be the people who are initially responsible for influencing the rest of the population. This selection occurs by clicking on the green circles which then turn red to indicate they have been selected.
 
-We can then see in figure \ref{fig:influenceCompare} how it is possible to compare the two different models of the spread of influence. Once a person has become influenced they turn from green to red allowing the differences in the models to be seen in real time.
+We can then see in figure \ref{fig:influenceCompare} how it is possible to compare the two different models of the spread of influence. Once a person has become influenced they turn from green to red allowing the spread from the initial points can be seen. The side-by-side comparison then means that comparison between the two models can easily be made.
 
 \section{Evaluation}
-
+\noindent
 I will evaluate my project according to Edward Tufte's principles of information visualisation \cite{tufte1983visual}. These represent a check-list for effective data visualisation that, although it is many years old is still often used in connection with modern graphic design.
 
 Therefore according to Tufte, graphical representations should:
@@ -490,15 +502,15 @@ Therefore according to Tufte, graphical representations should:
 \begin{enumerate}
 \item {\bf Show the data}
 
-I believe it is clear that my system does indeed show the data. This item is included to ensure that actual data is being shown rather than simply results of computation or some other qualitative measure.
+It is clear that my system does indeed show the data. The calculations that I perform are in order to provide the data from models, I do not process the data from these models itself and so it is only the data that is being represented.
 
 \item {\bf Induce the viewer to think about the substance rather than about methodology, graphic design, the technology of graphic production or something else}
 
-My solution is to some extent able to allow the viewer to focus only on the substance than the  implementation as it is able to 
+The solution is able to allow a user to focus on the substance because of its simplicity. The limited interactivity allows a user to focus on areas that they need to without becoming distracted. On top of this the graphics  are simple and so do not distract from the substance
 
 \item {\bf Avoid distorting what the data has to say}
 
-Some aspects of my system ensure that the data is not distorted, for example where a property is represented by something that can have an absolute relationship to a feature of the graph like colour this makes it impossible for the system to distort data. On the other hand in elements like the layout where an iterative algorithm is used to layout with results that are difficult to predict before, this leave the possibility of distortion if the layout algorithm were to find an poor local minimum. 
+Some aspects of the system ensure that the data is not distorted, for example properties are generally represented by a linear relationship to to a feature of the graph such as colour. This makes it difficult for the system to distort data. On the other hand in elements such the layout are unpredictable. This gives the possibility of distortion if the layout algorithm were to find an poor local minimum or if it were to be run for an insufficient number of iterations.
 
 \item {\bf Present many numbers in a small space}
 
@@ -506,24 +518,30 @@ My solution can take up any pre-defined area, by default it produces an output t
 
 \item {\bf Make large data sets coherent}
 
-This isn't something that my system is able to do. Due to the nature of the layout algorithm the system becomes unusably slow beyond a few hundered data points. Additionally, beyond this number the view will become too cluttered and make the visualisation unusable
+This isn't something the system is able to do effectively. Due to the nature of the layout algorithm the system becomes unusably slow beyond a few hundred data points. Additionally, beyond this number the view will become too cluttered and make the visualisation unusable.
 
 \item {\bf Encourage the eye to compare different pieces of data}
 
-The system ensures that it is possible for different pieces of data to be compared. It achieves this through a side-by-side comparison as can be seen in the figures \ref{fig:influenceCompare} and \ref{fig:recommendationComparison}. Figure \ref{fig:recommendationComparison} also shows an alternative way of comparison whereby different colours can be applied to the same points in order to show differences.
+The system ensures that it is possible for different pieces of data to be compared. It achieves this through a side-by-side comparison as can be seen in the figures \ref{fig:influenceCompare} and \ref{fig:recommendationComparison}. Figure \ref{fig:recommendationComparison} also shows an alternative way of comparison whereby different colours can be applied to the same layout of points in order to show differences.
 
 \item {\bf Reveal the data at several levels of detail, from a broad overview to the fine structure}
 
-My solution doesn't perform particularly well at this aspect as it follows a broadly flat graph model. However, it integrates some aspects of this in its ability to view extra data through hovering over data points or using magnification of areas of the graph which are very tightly packed.
+The solution does not perform particularly well at this aspect as it follows a broadly flat graph model. However, it attempts to address some aspects of this in its ability to view extra data through hovering over data points or using magnification of areas of the graph which are very tightly packed.
 
 \item {\bf Serve a reasonably clear purpose: description, exploration, tabulation and decoration}
 
-The extent to which my implementation fulfils this purpose depends on what it is applied to as it is designed that it could be applied to many different data sets. It can be seen for example in the influence application that each element has a clear description, however the exploration of different elements...
+The extent to which my implementation fulfils a clear purpose depends on what it is applied to as it is designed with the intention that it could be applied to many different data sets. It can be seen in the results above though that it is possible to tailor this to specific applications, enabling, disabling and customising features as necessary.
 
 \item {\bf Be closely integrated with the statistical and verbal descriptions of the data set}
 
-This is an element that my solution does not address particularly effectively. First of all it was not a part of the project to provide a verbal explanation of the data and in many cases the visualistions themselves have little meaning without such explanation. However, in some cases my visualisations are closely related to statisitical representations of the data set.
+This is an element that the solution does not address particularly effectively. First of all little thought was given to providing a verbal explanation of the results and in many cases the visualisations themselves have little meaning without such explanation. However, as I have explained above, generally visualisations are closely related to statistical representations of the data set.
 \end{enumerate}
+
+\subsection{Project Organisation}
+
+Overall the organisation of the project was effective making use of a combination of external and self-imposed deadlines in order to ensure that work progressed week by week throughout the time given. Git was made use of to provide a version control system so that work could take place over multiple machines and to back up work to a remote server to ensure it could not all be lost.
+
+The design of the project changed many times during the implementation and probably would have benefited from being better defined at an earlier stage however this flexibility gave me the opportunity to experiment with many different techniques before settling on a final implementation. 
 
 %As detailed in the Design Report I will take two approaches to evaluation. First I will take 4 criteria and use them to compare my solution to three other, similar solutions, Gephi \cite{ICWSM09154}, Vizster \cite{heer2005vizster} and WolframAlpha Facebook report \cite{wolfram}. Then second I will look at the application of my solution to real-world problems in order to see if it offers anything additional to what was previously available.
 %
@@ -572,18 +590,16 @@ This is an element that my solution does not address particularly effectively. F
 %This is again a good application for this system as it is possible to see clustering that varies depending on the starting conditions for the system. It also allows important comparisons between multiple systems within itself. However this would be able to be represented as easily in a system showing static relationships as, when the recommendations are calculated the system then remains static.
 
 \section{Conclusions}
+\noindent
+Overall I believe I have met the aims of my project: I have effectively managed to produce a solution that is able to combine previous research in data presentation of social networks and apply this to a dynamic system of interactions. It can be seen that my solution is able to not only display relationships between people interacting in an environment but can as well represent the more fundamental interactions themselves. It is also able to represent elements of time evolution of those interactions rather than only representing a snapshot at a given point. Finally it is able to output quantitative information information that can be used along with the visualisation in order to gain additional understanding.
 
-I believed I have managed to some extent to produce a solution that was able to combine previous research in data presentation of social networks and apply this to a dynamic system of interactions. On top of this I think that my system is able to be applied to various scenarios which show its benefit.
+On top of this the models that I have implemented show that this system is a useful one that can be applied to a diverse range of systems. The three that I have demonstrated here are all very different in nature but my system is able to offer some unique way of viewing each. In each case my visualisation systems offer something different to a simple static overview of the relationships and in most cases I believe makes elements of the data set clear that wouldn't otherwise be apparent particularly with regards to clustering as a result of the interactions which become obvious with certain visualisations.
 
-I can demonstrate that I have built on previous research though my implementation of various of its features in the Solution section. This shows that it is indeed possible to use research previously done on static network and apply this to dynamic systems of interactions.
+Through my evaluation we can see that the solution is reasonably effective in achieving its aims to be an effective graphical representation, mostly in the areas of ensuring that data isn't distorted and its ability to ensure that implementation doesn't get in the way of substance. However it could still benefit from additional work in some areas, particularly the problems of its ability to view the data at different levels of detail and its ability had handle large data sets. 
 
-My results show that my system is not only able to extend previous work to include visualisation in new ways that were not commonplace before but that on top of this it is also able to handle similar visualisation to that currently exists simultaneously.
+As an extension I believe that my work would benefit from re-writing in a faster language than Python which would provide two benefits. First it would allow more computation of the data to take place, particularly where data was changing in real time according to multiple models of evolution at once. Secondly it would allow a better user experience with smoother interactions as the program was no longer waiting between drawing each frame and updating the view.
 
-On top of this the 'models' that I have implemented show that this system is a useful one that can be applied to a diverse range of systems. The three that I have demonstrated here are all very different in nature but my system is able to offer some unique way of viewing each. I hope that these applications are also more useful that previous efforts to visualise them using a static system of relationships and that this allows for greater insight into their evolution.
-
-In the future I believe that my work would benefit from re-writing in a faster language than Python which would provide two benefits. First it would allow more computation of the data to take place, particularly where data was changing in real time according to multiple models of evolution at once. Secondly it would allow a better user experience with smoother interactions as the program was no longer waiting between drawing each frame and updating the view.
-
-Another potential extension my work would be to provide a more cohesive interface that allows the user to interact with models in more depth as they are being run. For example the user may wish to change the way in which something is represented and didn't want to start the system again with new settings.
+Another potential extension my work would be to provide a more cohesive interface that allows the user to interact with models in more depth as they are being run. For example the user may wish to change the way in which something is represented and didn't want to start the system again with new settings. However it must be ensured that this didn't interfere with the substance of the 
 
 \bibliography{projectpaper}
 
