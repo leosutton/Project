@@ -267,11 +267,14 @@ class RecommendationScen(object):
             graph.people[n].ratings.append(Rating("item3", 0.99))
 
 if __name__ == '__main__':
-    arg = sys.argv[1]
-    print(sys.argv)
+    arg = 0
+    if len(sys.argv) > 1:
+        arg = sys.argv[1]
     if arg == "recommendation":
         RecommendationScen()
     elif arg == "viral":
         AdvertScen()
     elif arg == "influence":
         influenceScen()
+    else:
+        RecommendationScen()

@@ -139,11 +139,11 @@ class GraphDrawrer(Drawing):
                                        10, 0)
                     box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
                     pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
-            # if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
-            #     if person.selected:
-            #         self.people.append(pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
-            #     else:
-            #         self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+            if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
+                if person.selected:
+                    self.people.append(pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+                else:
+                    self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
 
 
     def make_frame(self, layout = False, current = 0):

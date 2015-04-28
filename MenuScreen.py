@@ -296,14 +296,14 @@ class InputMenu(object):
         self.randomPeopleVariable = StringVar()
         randomPeopleInput = ttk.Entry(self.root, textvariable=self.randomPeopleVariable)
         randomPeopleInput.grid(column=1, row=7)
-        self.randomConnectionsVariable.set("300")
+        self.randomPeopleVariable.set("300")
 
         randomConnectionsLabel = ttk.Label(self.root, text="How many connections to randomly generate")
         randomConnectionsLabel.grid(column=0, row=8)
         self.randomConnectionsVariable = StringVar()
         randomConnectionsInput = ttk.Entry(self.root, textvariable=self.randomConnectionsVariable)
         randomConnectionsInput.grid(column=1, row=8)
-        self.randomConnectionsVariable("300")
+        self.randomConnectionsVariable.set("300")
 
         self.root.mainloop()
 

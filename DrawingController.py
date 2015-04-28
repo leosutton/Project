@@ -73,12 +73,12 @@ class DrawingController(object):
         for n in range(0, 20):
             Layout(self.graph).force_directed()
             if self.mainConfig.second:
-                graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
+                graph = pygame.transform.scale(self.graphDrawrer.make_frame(True), (960 , 1080))
                 env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
                 surface.blit(graph, (0, 0))
                 surface.blit(env, (960, 0))
             else:
-                surface.blit(self.graphDrawrer.make_frame(), (0,0))
+                surface.blit(self.graphDrawrer.make_frame(True), (0,0))
             pygame.display.update()
             clock.tick(60)
 
