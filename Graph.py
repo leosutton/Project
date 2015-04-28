@@ -37,8 +37,6 @@ class Graph:
             for connection in self.connections:
                 if (not (connection.between[0] in self.people)) or (not (connection.between[1] in self.people)):
                     self.connections.remove(connection)
-                    print("removed connection")
-                    print(len(self.connections))
 
     def getNeighbors(self, person):
         neighbors = []

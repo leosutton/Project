@@ -10,6 +10,7 @@ from Plotter import Plotter
 from Influence import Influence1, Influence2
 from Recommendation import Recommendation
 from Social import Social
+from Intersection import LineIntersection
 import random
 
 
@@ -60,16 +61,12 @@ class DrawingController(object):
             for connection in self.graph.connections:
                 if not (connection.between[0] in self.graph.people):
                     self.graph.connections.remove(connection)
-                    print("removed 0")
-                    print(len(self.graph.connections))
-                    print(n)
 
             for connection in self.graph.connections:
                 if not (connection.between[1] in self.graph.people):
                     self.graph.connections.remove(connection)
-                    print("removed 1")
-                    print(len(self.graph.connections))
-                    print(n)
+
+        LineIntersection(self.graph)
 
         for n in range(0, 20):
             Layout(self.graph).force_directed()
@@ -79,6 +76,8 @@ class DrawingController(object):
             surface.blit(env, (960, 0))
             pygame.display.update()
             clock.tick(60)
+
+        LineIntersection(self.graph)
 
         if self.mainConfig.advert:
             viral = Viral(self.graph, float(self.adConfig.seed), float(self.adConfig.email), float(self.adConfig.ad), float(self.adConfig.mu), float(self.adConfig.sigma))

@@ -12,6 +12,7 @@ from pygame.locals import *
 from Viral import Viral
 from Plotter import Plotter
 from MenuScreen import advertConfiguration, AdvertMenu
+import sys
 
 
 class influenceScen(object):
@@ -121,7 +122,7 @@ class influenceScen(object):
         graph.people[49].adopted = True #Josh Wood
 
 class AdvertScen(object):
-    def __init__(self, main):
+    def __init__(self, main = Main()):
         self.main = main
         self.main.MainMenuReturn = mainConfiguration(False, True, False, False, False)
         self.main.InfluenceMenuReturn = influenceConfiguration('10', '2')
@@ -234,13 +235,13 @@ class RecommendationScen(object):
             surface.blit(self.graphDrawrerBR.make_frame(), (960, 540))
             Layout(self.graphTL).force_directed()
             for person in self.graphTR.people:
-                person.draw_x = person.item1
+                person.x = person.item1
             Layout(self.graphTR).force_directed()
             for person in self.graphBL.people:
-                person.draw_x = person.item2
+                person.x = person.item2
             Layout(self.graphBL).force_directed()
             for person in self.graphBR.people:
-                person.draw_x = person.item3
+                person.x = person.item3
             Layout(self.graphBR).force_directed()
             pygame.display.update()
             clock.tick(60)
@@ -265,4 +266,12 @@ class RecommendationScen(object):
         for n in book3:
             graph.people[n].ratings.append(Rating("item3", 0.99))
 
-RecommendationScen(Main())
+if __name__ == '__main__':
+    arg = sys.argv[1]
+    print(sys.argv)
+    if arg == "recommendation":
+        RecommendationScen()
+    elif arg == "viral":
+        AdvertScen()
+    elif arg == "influence":
+        influenceScen()
