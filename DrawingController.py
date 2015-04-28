@@ -57,36 +57,41 @@ class DrawingController(object):
         if self.mainConfig.social:
             social = Social(self.graph, self.graphDrawrer)
 
-        for n in range(0,10):
-            for connection in self.graph.connections:
-                if not (connection.between[0] in self.graph.people):
-                    self.graph.connections.remove(connection)
+        if int(self.inputConfig.cull) < len(self.graph.connections):
+            self.graph.trim(int(self.inputConfig.cull))
+            for n in range(0,10):
+                for connection in self.graph.connections:
+                    if not (connection.between[0] in self.graph.people):
+                        self.graph.connections.remove(connection)
 
-            for connection in self.graph.connections:
-                if not (connection.between[1] in self.graph.people):
-                    self.graph.connections.remove(connection)
+                for connection in self.graph.connections:
+                    if not (connection.between[1] in self.graph.people):
+                        self.graph.connections.remove(connection)
 
-        LineIntersection(self.graph)
+#        LineIntersection(self.graph)
 
         for n in range(0, 20):
             Layout(self.graph).force_directed()
-            graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
-            env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
-            surface.blit(graph, (0, 0))
-            surface.blit(env, (960, 0))
+            if self.mainConfig.second:
+                graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
+                env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
+                surface.blit(graph, (0, 0))
+                surface.blit(env, (960, 0))
+            else:
+                surface.blit(self.graphDrawrer.make_frame(), (0,0))
             pygame.display.update()
             clock.tick(60)
 
-        LineIntersection(self.graph)
+#        LineIntersection(self.graph)
 
         if self.mainConfig.advert:
             viral = Viral(self.graph, float(self.adConfig.seed), float(self.adConfig.email), float(self.adConfig.ad), float(self.adConfig.mu), float(self.adConfig.sigma))
-            viral.makeCampaign(self.main.graph)
+            for person in self.graph.people:
+                person.totalPart = 0
+            viral.makeCampaign(self.graph)
             viral.seedEmail(self.graph, 5, 0)
             viral.seedAdvert(self.graph, 0.1, 0)
-            for person in self.main.graph.people:
-                person.totalPart = 0
-            record[counter] = viral.record(self.graph)
+            record[counter] = viral.record(self.graph, 0)
 
         while self.graphDrawrer.go:
             counter += 1
@@ -98,17 +103,20 @@ class DrawingController(object):
                             social.postPhoto(person)
                         if random.random() < 0.1:
                             social.postStatus(person)
-            graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
-            env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
-            surface.blit(graph, (0, 0))
-            surface.blit(env, (960, 0))
+            if self.mainConfig.second:
+                graph = pygame.transform.scale(self.graphDrawrer.make_frame(), (960 , 1080))
+                env = pygame.transform.scale(self.environment.make_frame(), (960, 1080))
+                surface.blit(graph, (0, 0))
+                surface.blit(env, (960, 0))
+            else:
+                surface.blit(self.graphDrawrer.make_frame(), (0,0))
             pygame.display.update()
             clock.tick(60)
             if counter % 5 == 0:
                 if self.mainConfig.advert:
-                    viral.checkEmail(self.graph)
-                    record[counter] = viral.record(self.graph)
+                    viral.checkEmail(self.graph, 0)
+                    record[counter] = viral.record(self.graph, 0)
                 if self.mainConfig.influence:
-                    influence.process()
+                    influence.process(counter)
 
         Plotter(record)

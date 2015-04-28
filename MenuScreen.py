@@ -53,8 +53,8 @@ class Menu:
         title = ttk.Label(content, text="Configuration")
         start = ttk.Button(content, text="start", command=start)
         second = ttk.Checkbutton(content, text="Second screen", variable=self.secondScreen)
-        leftHeading = ttk.Label(content, text="First Screen")
-        rightHeading = ttk.Label(content, text="Second Screen")
+#        leftHeading = ttk.Label(content, text="First Screen")
+#        rightHeading = ttk.Label(content, text="Second Screen")
         inputMenu = ttk.Button(content, text="Configure Input", command=inputConfig)
         envMenu = ttk.Button(content, text="Environment Configure", command=envConfig)
         graphMenu = ttk.Button(content, text="Graph Configure", command=graphConfig)
@@ -66,14 +66,14 @@ class Menu:
                                                  variable=self.recommendationActivate)
         recommendationConfig = ttk.Button(content, text="Configure Recommendation", command=recommendationConfig)
         socialActivate = ttk.Checkbutton(content, text="Activate Social", variable=self.socialActiavate)
-        socialConfig = ttk.Button(content, text="Configure Social", command=socialConfig)
+#        socialConfig = ttk.Button(content, text="Configure Social", command=socialConfig)
 
         content.grid(column=0, row=0, sticky=(N, S, E, W))
         title.grid(column=0, row=0, columnspan=2, sticky=(N), pady=5)
         second.grid(column=0, row=1, columnspan=2, sticky=(N), pady=5)
         start.grid(column=0, row=2, columnspan=2, sticky=(N), pady=5)
-        leftHeading.grid(column=0, row=3, sticky=(N), pady=5)
-        rightHeading.grid(column=1, row=3, sticky=(N), pady=5)
+#        leftHeading.grid(column=0, row=3, sticky=(N), pady=5)
+#        rightHeading.grid(column=1, row=3, sticky=(N), pady=5)
         inputMenu.grid(column=0, row=4)
         envMenu.grid(column=0, row=8, sticky=(N), pady=5)
         graphMenu.grid(column=1, row=8, sticky=(N), pady=5)
@@ -84,7 +84,7 @@ class Menu:
         recommendationActivate.grid(column=0, row=11, sticky=(N), pady=5)
         recommendationConfig.grid(column=1, row=11, sticky=(N), pady=5)
         socialActivate.grid(column=0, row=12, sticky=(N), pady=5)
-        socialConfig.grid(column=1, row=12, sticky=(N), pady=5)
+#        socialConfig.grid(column=1, row=12, sticky=(N), pady=5)
 
 
         self.root.columnconfigure(0, weight=1)
@@ -92,6 +92,7 @@ class Menu:
         content.columnconfigure(0, weight=1)
         content.rowconfigure(0, weight=1)
 
+        self.root.protocol("WM_DELETE_WINDOW", sys.exit)
         self.root.mainloop()
 
     def start(self):
@@ -158,9 +159,9 @@ class AdvertMenu(object):
         self.root = Toplevel(master)
         self.app = app
 
-    def __init__(self, app):
+    def __init__(self,master, app):
         self.app = app
-        self.root = Tk()
+        self.root = Toplevel(master)
 
     def save(self):
         self.root.destroy()
@@ -186,7 +187,7 @@ class advertConfiguration(object):
 
 class influenceMenu(object):
     def menu(self):
-        self.root.title("Advert Configuration")
+        self.root.title("Influence Configuration")
 
         def save():
             self.save()
@@ -278,6 +279,7 @@ class InputMenu(object):
         select2 = ttk.Radiobutton(self.root, text="Generate input", variable=loadVar, value="0")
         select2.grid(column=0, row=4)
         self.loadVar = loadVar
+        self.loadVar.set("1")
 
         filePick = ttk.Button(self.root, text="Choose input file", command=askopenfile)
         filePick.grid(column=0, row=5)
@@ -287,18 +289,21 @@ class InputMenu(object):
         self.cullVariable = StringVar()
         cullInput = ttk.Entry(self.root, textvariable=self.cullVariable)
         cullInput.grid(column=1, row=6)
+        self.cullVariable.set("1000")
 
         randomPeopleLabel = ttk.Label(self.root, text="How many people to randomly generate")
         randomPeopleLabel.grid(column=0, row=7)
         self.randomPeopleVariable = StringVar()
         randomPeopleInput = ttk.Entry(self.root, textvariable=self.randomPeopleVariable)
         randomPeopleInput.grid(column=1, row=7)
+        self.randomConnectionsVariable.set("300")
 
         randomConnectionsLabel = ttk.Label(self.root, text="How many connections to randomly generate")
         randomConnectionsLabel.grid(column=0, row=8)
         self.randomConnectionsVariable = StringVar()
         randomConnectionsInput = ttk.Entry(self.root, textvariable=self.randomConnectionsVariable)
         randomConnectionsInput.grid(column=1, row=8)
+        self.randomConnectionsVariable("300")
 
         self.root.mainloop()
 

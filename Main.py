@@ -38,8 +38,6 @@ class Main(object):
 
         self.makeGraph()
 
-        self.graph.trim(100)
-
         cluster = Clustering(self.graph)
         print("clustering " + str(cluster.findTriangles()))
 
