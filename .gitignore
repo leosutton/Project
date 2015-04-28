@@ -26,7 +26,8 @@ $RECYCLE.BIN/
 .LSOverride
 
 # Icon must end with two \r
-Icon
+Icon
+
 
 # Thumbnails
 ._*
@@ -44,11 +45,6 @@ Temporary Items
 
 .idea/workspace.xml
 *.pyc
-*.pyc
-.idea/workspace.xml
-.idea/workspace.xml
-.idea/workspace.xml
-*.out
 *.out
 Paper/projectpaper.out
-Paper/projectpaper.out
+/__pycache__/
