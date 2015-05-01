@@ -18,7 +18,7 @@ class Graph:
             env_y = random.random()
             direction = random.random() * 2 * math.pi
             views = random.random()
-            if random.random <0.5:
+            if random.random() <0.5:
                 sex = 'm'
             else:
                 sex = 'f'

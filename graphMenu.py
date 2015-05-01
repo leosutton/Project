@@ -18,21 +18,21 @@ class GraphMenu(object):
         submit = ttk.Button(self.root, text="save", command=save)
         submit.grid(column=0, row=0)
 
-        colourLabel = ttk.Label(self.root, text="Node colour")
-        colourLabel.grid(column=0, row=1)
-        self.colourVar = StringVar()
-        colourSelect = ttk.Combobox(self.root, textvariable=self.colourVar)
-        colourSelect['values']=("Age", "Views", "Friends", "None")
-        colourSelect.current(3)
-        colourSelect.grid(row=2)
+        # colourLabel = ttk.Label(self.root, text="Node colour")
+        # colourLabel.grid(column=0, row=1)
+        # self.colourVar = StringVar()
+        # colourSelect = ttk.Combobox(self.root, textvariable=self.colourVar)
+        # colourSelect['values']=("Views", "None")
+        # colourSelect.current(3)
+        # colourSelect.grid(row=2)
 
         circleLabel = ttk.Label(self.root, text="Circle value")
         circleLabel.grid(row=3)
         self.circleVar = StringVar()
         circleSelect = ttk.Combobox(self.root, textvariable=self.circleVar)
-        circleSelect['values']=("Age", "Views", "Friends", "None")
-        circleSelect.current(3)
-        colourSelect.grid(row=4)
+        circleSelect['values']=("Views", "None")
+        circleSelect.current(1)
+        circleSelect.grid(row=4)
 
         weightLabel = ttk.Label(self.root, text="Closeness weight on edges")
         weightLabel.grid(row=5)
@@ -46,7 +46,7 @@ class GraphMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.GraphMenuReturn = graphConfiguration(self.colourVar.get(), self.circleVar.get(), self.weightVar.get())
+        self.app.GraphMenuReturn = graphConfiguration(0, self.circleVar.get(), self.weightVar.get())
 
 
 class graphConfiguration(object):

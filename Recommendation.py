@@ -8,12 +8,12 @@ class Recommendation(object):
 
     def __init__(self, graph):
         self.graph = graph
-        self.items = ["item1", "item2", "item3", "item4"]
+        self.items = ["item1", "item2", "item3"]
 
     def intialise(self, number):
         for person in self.graph.people:
             person.ratings = []
-        for n in range (0,number):
+        for n in range (0, number):
             item = random.choice(self.items)
             rating = random.random()
             person = random.choice(self.graph.people)

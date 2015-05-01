@@ -35,7 +35,6 @@ class Drawing(object):
     def centre(self, window_width, surface_width):
         margin = window_width - surface_width
         return margin
-
     def getx(self, x):
         return int(x * self.res[0])
 

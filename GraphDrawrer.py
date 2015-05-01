@@ -69,30 +69,30 @@ class GraphDrawrer(Drawing):
                 if not hasattr(person, "status") or person.status[current] == "0":
                     self.people.append(pygame.draw.circle(self.surface, (255, 0, 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0))
+                                       3, 0))
                 elif person.status[current] == "n":
                     self.people.append(pygame.draw.circle(self.surface, (0, 0, 255),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0))
+                                       3, 0))
                 elif person.status[current] == "e":
                     self.people.append(pygame.draw.circle(self.surface, (0, 255, 255),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0))
+                                       3, 0))
                 elif person.status[current] == "1":
                     self.people.append(pygame.draw.circle(self.surface, (0, 255, 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0))
-                else:
-                    print("person not drawn")
+                                       3, 0))
+                # else:
+                #     print("person not drawn")
             if self.mainConfig.influence:
                 if person.adopted:
                     pygame.draw.circle(self.surface, (255, 0, 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       6, 3)
                 else:
                     pygame.draw.circle(self.surface, (0, 255, 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       6, 3)
             if self.mainConfig.recommendation:
                 item = ""
                 opinion = 0
@@ -112,19 +112,19 @@ class GraphDrawrer(Drawing):
                 if knows:
                     pygame.draw.circle(self.surface, (255 * opinion, 0, 255),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       9, 3)
                 elif item == "item1":
                     pygame.draw.circle(self.surface, (0, min(10 * 255 * person.item1, 255), 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       9, 3)
                 elif item == "item2":
                     pygame.draw.circle(self.surface, (0, min(10 * 255 * person.item2, 255), 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       9, 3)
                 elif item == "item3":
                     pygame.draw.circle(self.surface, (0, min(10 * 255 * person.item3, 255), 0),
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       9, 3)
                 elif item == "max":
                     maximum = max([person.item1, person.item2, person.item3])
                     index = [person.item1, person.item2, person.item3].index(maximum)
@@ -136,7 +136,7 @@ class GraphDrawrer(Drawing):
                         colour = (0, 0, 255)
                     pygame.draw.circle(self.surface, colour,
                                        (int(self.getx(person.drawx)), int(self.gety(person.drawy))),
-                                       10, 0)
+                                       9, 3)
                     box = pygame.Rect(int(self.getx(person.drawx)) - 5, int(self.gety(person.drawy)) - 5, 10, 10)
                     pygame.draw.arc(self.surface, (0, 0, 0), box, 0, person.views * 2 * math.pi)
             if not self.mainConfig.advert and not self.mainConfig.influence and not self.mainConfig.recommendation and not self.mainConfig.social:
@@ -144,6 +144,9 @@ class GraphDrawrer(Drawing):
                     self.people.append(pygame.draw.circle(self.surface, (255, 0, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
                 else:
                     self.people.append(pygame.draw.circle(self.surface, (0, 255, 0), (int(self.getx(person.drawx)), int(self.gety(person.drawy))), 10, 0))
+
+            if self.graphConfig.circle == "Views":
+                pygame.draw.arc(self.surface, (0,0,0), (self.getx(person.drawx)-5, self.gety(person.drawy)-5, 10, 10), 0, 2*math.pi*person.views)
 
 
     def make_frame(self, layout = False, current = 0):

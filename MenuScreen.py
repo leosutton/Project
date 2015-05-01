@@ -154,19 +154,26 @@ class AdvertMenu(object):
 
         self.root.mainloop()
 
-    def __init__(self, master, app):
-        print("init advert")
-        self.root = Toplevel(master)
-        self.app = app
+    # def __init__(self, master, app):
+    #     print("init advert")
+    #     self.root = Toplevel(master)
+    #     self.app = app
+    #
+    # def __init__(self, app):
+    #     self.app = app
+    #     self.root = Tk()
 
-    def __init__(self,master, app):
-        self.app = app
-        self.root = Toplevel(master)
+    def __init__(self, root, main = 0):
+        self.app = main
+        if main == 0:
+            self.root = Tk()
+        else:
+            self.root = Toplevel(root)
 
     def save(self):
         self.root.destroy()
-        self.app.AdMenuReturn = advertConfiguration(self.seedVar.get(), self.emailVar.get(), self.adVar.get(),
-                                                    self.muVar.get(), self.sigmaVar.get())
+        self.app.AdMenuReturn = advertConfiguration(float(self.seedVar.get()), float(self.emailVar.get()), float(self.adVar.get()),
+                                                    float(self.muVar.get()), float(self.sigmaVar.get()))
 
 
 class envConfiguration(object):
@@ -209,6 +216,8 @@ class influenceMenu(object):
         select2.grid(column=0, row=4)
         self.modelVar = modelVar
 
+        modelVar.set("1")
+
         self.root.mainloop()
 
     def __init__(self, master, app):
@@ -217,7 +226,7 @@ class influenceMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.InfluenceMenuReturn = influenceConfiguration(self.seedVar.get(), self.modelVar.get())
+        self.app.InfluenceMenuReturn = influenceConfiguration(int(self.seedVar.get()), self.modelVar.get())
 
 
 class influenceConfiguration(object):
@@ -251,7 +260,7 @@ class RecommendationMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.RecommendationMenuReturn = recommendationConfiguration(self.seedVar.get())
+        self.app.RecommendationMenuReturn = recommendationConfiguration(int(self.seedVar.get()))
 
 
 class recommendationConfiguration(object):
@@ -281,8 +290,8 @@ class InputMenu(object):
         self.loadVar = loadVar
         self.loadVar.set("1")
 
-        filePick = ttk.Button(self.root, text="Choose input file", command=askopenfile)
-        filePick.grid(column=0, row=5)
+        # filePick = ttk.Button(self.root, text="Choose input file", command=askopenfile)
+        # filePick.grid(column=0, row=5)
 
         cullLabel = ttk.Label(self.root, text="How many vertices to import")
         cullLabel.grid(column=0, row=6)
@@ -305,6 +314,8 @@ class InputMenu(object):
         randomConnectionsInput.grid(column=1, row=8)
         self.randomConnectionsVariable.set("300")
 
+
+
         self.root.mainloop()
 
     def __init__(self, master, app):
@@ -313,7 +324,7 @@ class InputMenu(object):
 
     def save(self):
         self.root.destroy()
-        self.app.InputMenuReturn = inputConfiguration(self.loadVar.get(), self.input.get(), self.cullVariable.get(), self.randomPeopleVariable.get(), self.randomConnectionsVariable.get())
+        self.app.InputMenuReturn = inputConfiguration(self.loadVar.get(), open("graph.gml").read(), int(self.cullVariable.get()), int(self.randomPeopleVariable.get()), int(self.randomConnectionsVariable.get()))
 
 
 class inputConfiguration(object):

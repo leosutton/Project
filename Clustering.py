@@ -23,4 +23,8 @@ class Clustering(object):
             triangles += trianglesHere / 2
         print(str(triplets) + " triplets")
         print(str(triangles) + " triangles")
-        return triangles / triplets
+        if triplets == 0:
+            print("no triplets found")
+            return 0
+        else:
+            return triangles / triplets

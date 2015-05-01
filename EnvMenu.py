@@ -17,8 +17,8 @@ class EnvMenu(object):
         colourLabel.grid(row=2)
         self.colourVar = StringVar()
         colourSelect = ttk.Combobox(self.root, textvariable=self.colourVar)
-        colourSelect['values']=('Friends', 'Height', 'None')
-        colourSelect.current(2)
+        colourSelect['values']=('Height', 'None')
+        colourSelect.current(0)
         colourSelect.grid(row=3)
 
         self.facingVar = BooleanVar()

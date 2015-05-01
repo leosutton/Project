@@ -34,6 +34,8 @@ class Main(object):
         self.EnvMenuReturn = envConfiguration("None", True, True)
         self.SocialMenuReturn = socialConfiguration()
 
+        print(f.read())
+
         Menu(self)
 
         self.makeGraph()
@@ -41,7 +43,7 @@ class Main(object):
         cluster = Clustering(self.graph)
         print("clustering " + str(cluster.findTriangles()))
 
-        drawing = DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)
+        DrawingController(self.MainMenuReturn, self.AdMenuReturn, self.InfluenceMenuReturn, self.RecommendationMenuReturn, self.InputMenuReturn, self.GraphMenuReturn, self.EnvMenuReturn, self.graph)
 
 if __name__ == '__main__':
     #cProfile.run('Main().run()')

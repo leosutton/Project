@@ -145,10 +145,26 @@ class AdvertScen(object):
         viral.seedAdvert(self.main.graph, 0.1, 0)
         record = {}
         counter = 0
+        key = pygame.Surface((300, 100))
+        key.fill((255,255,255))
+        pygame.draw.circle(key, (255,0,0), (10,10), 10)
+        pygame.draw.circle(key, (0,0,255), (10,30), 10)
+        pygame.draw.circle(key, (0,255,255), (10,50), 10)
+        pygame.draw.circle(key, (0,255,0), (10,70), 10)
+        font = pygame.font.Font(None, 30)
+        text1 = font.render("not participated", 1, (0,0,0))
+        text2 = font.render("decided not to participate", 1, (0,0,0))
+        text3 = font.render("received email", 1, (0,0,0))
+        text4 = font.render("participated", 1, (0,0,0))
+        key.blit(text1, (20,0))
+        key.blit(text2, (20,20))
+        key.blit(text3, (20,40))
+        key.blit(text4, (20,60))
         record[counter] = viral.record(self.main.graph, 0)
         for n in range(0, 15):
             Layout(self.main.graph).force_directed()
             surface.blit(self.graphDrawrer.make_frame(True), (0, 0))
+            surface.blit(key, (0,880))
             pygame.display.update()
             clock.tick(60)
         stay = True
@@ -160,7 +176,8 @@ class AdvertScen(object):
                 viral.checkEmail(self.main.graph, current)
                 record[counter] = viral.record(self.main.graph, current)
                 surface.blit(self.graphDrawrer.make_frame(current=current), (0,0))
-                clock.tick(1)
+                clock.tick(2)
+                surface.blit(key, (0,880))
                 pygame.display.update()
                 keys = pygame.key.get_pressed()
                 if keys[K_BACKSPACE]:
@@ -169,7 +186,7 @@ class AdvertScen(object):
                     notExit = False
                 if counter % 20 == 0:
                     viral.decayPart(self.main.graph)
-            AdvertMenu(self).menu()
+            #AdvertMenu(self.main).menu()
             stay = True
             current += 1
             viral.makeCampaign(self.main.graph)
@@ -216,9 +233,13 @@ class RecommendationScen(object):
             Layout(self.main.graph).force_directed()
             pygame.display.update()
             clock.tick(60)
-        for n in range(0,200):
+        stay = True
+        while stay:
             surface.blit(self.graphDrawrer.make_frame(), (0, 0))
             pygame.display.update()
+            keys = pygame.key.get_pressed()
+            if keys[K_ESCAPE]:
+                stay = False
             clock.tick(60)
         self.graphTL = deepcopy(self.main.graph)
         self.graphTR = deepcopy(self.main.graph)
@@ -233,7 +254,6 @@ class RecommendationScen(object):
             surface.blit(self.graphDrawrerTR.make_frame(), (960, 0))
             surface.blit(self.graphDrawrerBL.make_frame(), (0, 540))
             surface.blit(self.graphDrawrerBR.make_frame(), (960, 540))
-            Layout(self.graphTL).force_directed()
             for person in self.graphTR.people:
                 person.x = person.item1
             Layout(self.graphTR).force_directed()
@@ -245,14 +265,17 @@ class RecommendationScen(object):
             Layout(self.graphBR).force_directed()
             pygame.display.update()
             clock.tick(60)
-
-        for n in range(0,200):
+        stay = True
+        while stay:
             surface.blit(self.graphDrawrerTL.make_frame(), (0, 0))
             surface.blit(self.graphDrawrerTR.make_frame(), (960, 0))
             surface.blit(self.graphDrawrerBL.make_frame(), (0, 540))
             surface.blit(self.graphDrawrerBR.make_frame(), (960, 540))
             pygame.display.update()
             clock.tick(60)
+            keys = pygame.key.get_pressed()
+            if keys[K_ESCAPE]:
+                stay = False
 
 
     def preparePeople(self, graph):
